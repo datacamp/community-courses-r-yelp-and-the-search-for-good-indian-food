@@ -3,7 +3,7 @@ title_meta  : Chapter 1
 title       : Springboard Yelp Analysis
 description : "Springboard Yelp Analysis"
 
---- type:NormalExercise xp:100 skills:1
+--- type:NormalExercise xp:100 skills:1 key:70e19e0e7d
 ## Quick intro to DataCamp
 
 Welcome to COURSE NAME
@@ -62,7 +62,7 @@ test_student_typed("15", incorrect_msg = "Do not remove the line of R code that 
 success_msg("Awesome! See how the console shows the result of the R code you submitted? Now that you're familiar with the interface, let's get down to R business!")
 ```
 
---- type:NormalExercise xp:100 skills:1,3 
+--- type:NormalExercise xp:100 skills:1,3  key:0d1199072c
 ## Exploring the Data
 
 For this course the data comes in three separate data sets.They have been loaded into the environment already and are ready to be explored!
@@ -126,7 +126,7 @@ success_msg("Good job! We've seen a little more about the data so now let's move
 
 ```
 
---- type:NormalExercise xp:100 skills:1,3 
+--- type:NormalExercise xp:100 skills:1,3  key:a72c7124db
 ## Combining data into one
 
 Before we start manipulating Yelp ratings, we first need to combine the three data sets we just explored so we can understand and adapt the data more effectively. 
@@ -204,7 +204,7 @@ success_msg("Awesome! We've combined the data set, but let's keep moving.")
 
 ```
 
---- type:NormalExercise xp:100 skills:1
+--- type:NormalExercise xp:100 skills:1 key:6a66494184
 ## Isolate Indian restaurants 
 
 Following the direction of the Springboard blog post [Blog post link], we will simplify the task of adapting Yelp reviews by looking only at Indian restaurants. It makes sense to compare restaurants of similar cuisine for obvious reasons and we will stick with Indian food to follow the authors original work. 
@@ -257,7 +257,7 @@ test_error()
 success_msg("Good job! We've seen a little more about the data so now let's move on!")
 ```
 
---- type:MultipleChoiceExercise xp:50 skills:1,3 
+--- type:MultipleChoiceExercise xp:50 skills:1,3  key:f48b5ed8a3
 ## How Many Reviews?
 
 Now that we have created a simplified data set and are almost ready to begin manipulating the reviews lets take a moment to explore the new data set and answer the following question.
@@ -287,7 +287,7 @@ msg4 <- "Very good! You found the total ."
 test_mc(correct =4, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```
 
---- type:NormalExercise xp:100 skills:1
+--- type:NormalExercise xp:100 skills:1 key:1b2e20ac0a
 ## Review Modification Method I
 
 Now that we have a manageable data set with just one type of cuisine we can begin to adapt the Yelp star ratings to see if we can make them more meaningful. In this course we will look into just two of the almost infinite ways one can scale and manipulate ratings. The first method is to create a new rating that gives more weight to those who have reviewed more restaurants of the same cuisine. 
@@ -363,7 +363,7 @@ success_msg("Good job! We've added a new coloumn to the data. Let's use it in th
 
 ```
 
---- type:NormalExercise xp:100 skills:1
+--- type:NormalExercise xp:100 skills:1 key:30db019cde
 ## Review Modification Method I Cont.
 We can use the new data frame to create a weighted star rating. To do so we need to combine the `number_reviews_Indian` data frame with the `indian` data frame.
 
@@ -420,7 +420,7 @@ success_msg("Good job! We've added a new coloumn to the data. Let's use it in th
 
 ```
 
---- type:NormalExercise xp:100 skills:1
+--- type:NormalExercise xp:100 skills:1 key:3981380079
 ## Review Modification Method I Cont. 2
 
 With the combined data set we can now create weighted star reviews. To do this we will simply multiply the unweighted restaurant rating by the total number of reviews that particular user has given for that genre of cuisine. 
@@ -484,7 +484,7 @@ new_rating_Indian <- indian_plus_number %>%
 
 ```
 
---- type:NormalExercise xp:100 skills:1
+--- type:NormalExercise xp:100 skills:1 key:4ad4885c8d
 ## Review Modification Method I Cont. 3
 
 Now that we have new weighted star reviews for our restaurants, let's see if we can detect the effects of the modifications. 
