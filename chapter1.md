@@ -49,15 +49,15 @@ Just add a line of R code that calculates the sum of 8 and 15, just like the exa
 ```{r eval=FALSE}
 test_output_contains("12", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, just add another line that calculates the sum of 8 and 15.")
 
-test_student_typed("3", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, just add another line that calculates the sum of 8 and 15.")
-test_student_typed("*", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, just add another line that calculates the sum of 8 and 15.")
-test_student_typed("4", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, just add another line that calculates the sum of 8 and 15.")
+#test_student_typed("3", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, #just add another line that calculates the sum of 8 and 15.")
+#test_student_typed("*", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, #just add another line that calculates the sum of 8 and 15.")
+#test_student_typed("4", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, #just add another line that calculates the sum of 8 and 15.")
 
 test_output_contains("23", incorrect_msg = "Make sure to add a line of R code, that calculates the sum of 8 and 15. Do not start the line with a `#`, otherwise, your R code will not be executed!")
 
-test_student_typed("8", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, just add another line that calculates the sum of 8 and 15.")
-test_student_typed("+", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, just add another line that calculates the sum of 8 and 15.")
-test_student_typed("15", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, just add another line that calculates the sum of 8 and 15.")
+#test_student_typed("8", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, #just add another line that calculates the sum of 8 and 15.")
+#test_student_typed("+", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, #just add another line that calculates the sum of 8 and 15.")
+#test_student_typed("15", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, #just add another line that calculates the sum of 8 and 15.")
 
 success_msg("Awesome! See how the console shows the result of the R code you submitted? Now that you're familiar with the interface, let's get down to R business!")
 ```
