@@ -488,7 +488,7 @@ new_rating_Indian <- indian_plus_number %>%
 test_data_frame("indian_plus_number", incorrect_msg = "There are some issues with how you generated the weighted stars, check your code.")
 
 # second instruction
-test_data_frame("new_rating_Indian", incorrect_msg = "Although this is not the only way to accomplish this task, using the dplry package is very efficient. If you are having trouble type ?dplyr in the console for more information.")
+test_data_frame("new_rating_Indian", incorrect_msg = "The new data frame `new_rating_Indian` is not correct. If you are having trouble type ?dplyr in the console for more information.")
 
 test_function("group_by",args = c(".data"), index = 1, incorrect_msg = "Did you group the correct variable?. Check your code and type ?group_by into the console for more information")
 
