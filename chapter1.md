@@ -251,7 +251,7 @@ indian <- subset(rub, is_indian == TRUE)
 # first instruction
 msg1 = "Although there are many ways to achieve this, try using grepl and if you are having trouble type ?grepl in the console for more information."
 test_output_contains("rub$is_indian <- grepl('Indian', rub$categories) == TRUE", incorrect_msg = "Although there are many ways to achieve this, try using grepl and if you are having trouble type ?grepl in the console for more information.")
-test_function("grepl",args = c("x","y"), index = 1, incorrect_msg = msg1)
+test_function("grepl", args = c("pattern","x"), index = 1, incorrect_msg = msg1)
 
 # second instruction
 test_output_contains("indian <- subset(rub, is_indian == TRUE)", incorrect_msg = "We know there are other ways to do this too, but subset can be quick and straight forward. If you are having trouble type ?subset in the console for more information.")
