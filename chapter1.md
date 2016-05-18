@@ -499,11 +499,13 @@ success_msg("Good job! We've created weighted reveiws. Let's check them out in t
 ```
 
 --- type:NormalExercise xp:100 skills:1 key:4ad4885c8d
-## Review Modification Method I Cont. 3
+## Detecting Modification Effects
 
 Now that we have new weighted star reviews for our restaurants, let's see if you can detect the effects of the modifications. 
 
-To do so you will make use of some a general histogram plot and a `qplot` from the `ggplot2` package. These graphs will help us visualize the effect of your modification. Take note of the magnitudes of the changes and if there were any patterns in the distribution of the difference in star ratings.
+To do so you will make use of some a general `hist` plot and a `qplot` from the `ggplot2` package. These graphs will help us visualize the effect of your modification. Take note of the magnitudes of the changes and if there were any patterns in the distribution of the difference in star ratings.
+
+A final summary of the `new_rating_Indian` will give context to how the reviews changed as well.
 
 *** =instructions
 - Make `ggplot2` available in the environment 
@@ -527,13 +529,11 @@ library(ggplot2)
 # Plot the distribution of changes to ratings 
 hist(new_rating_Indian$___, main = "Changes in Star Ratings", xlab = "Change")
 
-# Plot the changes to per restaurant 
-qplot(reorder(new_rating_Indian$business_name,new_rating_Indian$dif),new_rating_Indian$dif, xlab = "", ylab = "Changes in Star Rating")
-
-#qplot(new_rating_Indian$new, binwidth = .20)
+# Plot the changes in rating per restaurant 
+qplot(reorder(new_rating_Indian$business_name,new_rating_Indian$dif),new_rating_Indian$__, xlab = "", ylab = "Changes in Star Rating")
 
 # Display a summary of the 
-summary(new_rating_Indian)
+summary(___)
 
 ```
 
@@ -548,8 +548,6 @@ hist(new_rating_Indian$dif, main = "Changes in Star Ratings", xlab = "Change")
 # Plot the changes to per restaurant 
 qplot(reorder(new_rating_Indian$business_name,new_rating_Indian$dif),new_rating_Indian$dif, xlab = "", ylab = "Changes in Star Rating")
 
-#qplot(new_rating_Indian$new, binwidth = .20)
-
 # Display a summary of the 
 summary(new_rating_Indian)
 
@@ -557,16 +555,21 @@ summary(new_rating_Indian)
 
 *** =sct
 ```{r,eval=FALSE}
-test_output_contains("library(ggplot2)", incorrect_msg = "Don't forget to run this code to be able to use the qplot funciton")
 
-test_output_contains("hist(new_rating_Indian$dif, main = 'Changes in Star Ratings', xlab = 'Change')", incorrect_msg = "Something isn't right with your histogram plot. Check your code and type ?hist if you need additional information type ?hist into the console.")
-test_function("hist")
+# second instruction
+msg1 <- "Fill in the varaible that is the change in star rating."
+test_function_v2("hist", "x", eval = FALSE, index = 1, 
+                 incorrect_msg = msg1)
 
-test_output_contains("qplot(reorder(new_rating_Indian$business_name,new_rating_Indian$dif),new_rating_Indian$dif, xlab = '', ylab = 'Changes in Star Rating')", incorrect_msg = "Something isn't right with your qplot plot. Check your code and type ?qplot into your console if you need additionl information.")
-test_function("qplot")
+# third instruction
+msg3 <- "Fill in the varaible that is the change in star rating."
+test_function_v2("qplot", "x", eval = FALSE, index = 1, 
+                 incorrect_msg = msg3)
 
-test_output_contains("summary(new_rating_Indian)", incorrect_msg = "Did you remember to run a summary of the final data frame. If you need help try pping ?summary into the console for more information.")
-test_function("summary")
+# fourth instruction
+msg3 <- "Something went wrong with the `summary()` function. Check your code and run again"
+test_function_v2("summary", "object", index = 1, 
+                 incorrect_msg = msg3)
 
 # General
 test_error()
