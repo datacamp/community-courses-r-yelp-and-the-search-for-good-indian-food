@@ -78,7 +78,7 @@ For this course the data comes in three separate data sets.They have been loaded
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course1073/datasets/Springboard_Yelp_ch1ex1.Rdata.Rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course1073/datasets/Springboard_Yelp_ch1ex1.Rdata"))
 ```
 
 *** =sample_code
