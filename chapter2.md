@@ -29,8 +29,10 @@ When loading the names don't change the sample_code! Just remove the `#`
 
 *** =sample_code
 ```{r, eval = FALSE}
+# This url contains the .txt file with Indian names. (Note: Don't change this code)
+in_names_url = url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt")
+
 # Read Indian names into a list
-#in_names_url = url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt")
 #indian_names <- scan(in_names_url, what = character())
 
 # Show the first 10 names from the indian_names list
