@@ -65,7 +65,7 @@ test_error()
 success_msg("Well done! Now that your data is loaded in, you can start exploring it!")
 ```
 
---- type:NormalExercise xp:100 skills:1,3  key:0d1199072c
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
 
 The second chapter of this tutorial will be an alternative method of manipulating the Yelp star reviews. You will be working with the same sample of reviews of Indian restaurants but adapting the star ratings in a different way. 
