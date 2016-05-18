@@ -289,7 +289,7 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/dat
 msg1 <- "Try again!"
 msg2 <- "Not so good... Maybe have a look at the hint."
 msg3 <- "Incorrect. Maybe have a look at the hint."
-msg4 <- "Very good! You found the total. Let's Start manipulating the star reviews!"
+msg4 <- "Very good! You found the total. Let's start manipulating the star reviews!"
 test_mc(correct = 4, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```
 
