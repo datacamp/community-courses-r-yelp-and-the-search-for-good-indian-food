@@ -255,7 +255,7 @@ test_function("grepl", args = c("pattern","x"), index = 1, incorrect_msg = msg1)
 
 # second instruction
 msg2 = "We know there are other ways to do this too, but subset can be quick and straight forward. If you are having trouble type ?subset in the console for more information."
-test_function("subset", args = c("x","drop"), index = 1, incorrect_msg = msg2)
+test_function("subset", args = c("x","subset"), index = 1, incorrect_msg = msg2)
 test_object("indian", incorrect_msg = msg2)
 
 # General
