@@ -23,7 +23,7 @@ You will load in a list of native Indians names that can be used to sort the nam
 - Don't forget to look at all three data sets
 
 *** =pre_exercise_code
-no pec
+- no pec
 
 *** =sample_code
 ```{r, eval = FALSE}
