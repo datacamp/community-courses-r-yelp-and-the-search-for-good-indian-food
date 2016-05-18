@@ -314,10 +314,12 @@ After making the data frame, explore it! Check out the range in numbers of revie
 *** =pre_exercise_code
 ```{r,eval=FALSE}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian.RData"))
+library(dplyr)
 ```
 
 *** =sample_code
 ```{r,eval=FALSE}
+# The package dplyr is available ot use
 # Generate a new data frame with the number of reviews by each reviewer
 # DO WE NEED THE IS_INDIAN COLUMN
 number_reviews_Indian <- indian %>% 
@@ -332,6 +334,7 @@ mean(number_reviews_Indian$___)
 
 *** =solution
 ```{r,eval=FALSE}
+# The package dplyr is available ot use
 # Generate a summary of # of reviews of that cuisine done by each reviewer
 number_reviews_Indian <- indian %>% 
   select(user_id, user_name, is_indian) %>%
@@ -443,6 +446,7 @@ Weighted star reviews for each restaurant is created by taking to sum of the wei
 *** =pre_exercise_code
 ```{r,eval=FALSE}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian_plus_number.Rdata"))
+library(dplyr)
 ```
 
 *** =sample_code
@@ -450,7 +454,7 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/dat
 # Generate "weighted_stars" 
 indian_plus_number$weighted_stars <- indian_plus_number$stars * indian_plus_number$total_reviews
 
-# Create a new weighted rating for each restaurant
+# Create a new weighted rating for each restaurant (Note: package dplyr is available to use)
 new_rating_Indian <- indian_plus_number %>% 
   select(city, business_name, avg_stars, stars, total_reviews, weighted_stars) %>%
   group_by(city, business_name, avg_stars) %>%
