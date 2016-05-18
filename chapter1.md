@@ -370,7 +370,7 @@ success_msg("Good job! We've created a data frame with the number of reviews per
 --- type:NormalExercise xp:100 skills:1 key:30db019cde
 ## Review Modification Method I Cont.
 
-Before you create the weighted star rating, add the new column with the numer of reviews per user to the larger data frame `indian`. 
+Before you create the weighted star rating, add the `number_reviews_indian` to the larger data frame `indian`. 
 
 Just like an earlier exercise, we don't want any missing data within our data set, so we will use the `inner_join` function to merge all the rows that are in both the `number_reviews_Indian` and `indian` data frames.
 
