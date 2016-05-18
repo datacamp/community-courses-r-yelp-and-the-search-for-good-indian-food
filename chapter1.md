@@ -573,7 +573,7 @@ test_function_v2("summary", "object", index = 1,
 
 # General
 test_error()
-success_msg("Good job! We've modified the Yelp star reviews with on method continue to the next chapter for the second method!")
+success_msg("Good job! We've modified the Yelp star reviews with one method. Continue to the next chapter for the second method!")
 
 
 ```
