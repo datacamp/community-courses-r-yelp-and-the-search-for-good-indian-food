@@ -393,7 +393,7 @@ Ended SCTs here
 *** =sample_code
 ```{r,eval=FALSE}
 # The package dplyr is available to use
-# Combine num_reviews information with original data frame of indian restaurant reviews
+# Combine number of Indian reviews with original data frame of indian restaurant reviews
 indian_plus_number <- inner_join(___,number_reviews_Indian)
 
 # Display column names for the new data frame
@@ -402,9 +402,9 @@ indian_plus_number
 
 *** =solution
 ```{r,eval=FALSE}
+```{r,eval=FALSE}
 # The package dplyr is available to use
-# Combine num_reviews information with original data frame of indian restaurant reviews
-# Should we left join rather than inner_join
+# Combine number of Indian reviews with original data frame of indian restaurant reviews
 indian_plus_number <- inner_join(indian, number_reviews_Indian)
 
 # Display column names for the new data frame
