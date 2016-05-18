@@ -356,7 +356,7 @@ mean(number_reviews_Indian$total_reviews)
 test_data_frame("number_reviews_Indian", incorrect_msg = "Although this is not the only way to accomplish this task, using the dplry package is very efficient. If you are having trouble type ?dplyr in the console for more information.")
 
 # second instruction
-test_function("table", args = c("object"), index = 1, incorrect_msg = "Something is wrong with your table. Check your code and type ?table into the console for more information")
+test_function("table", index = 1, incorrect_msg = "Something is wrong with your table. Check your code and type ?table into the console for more information")
 
 # third instruction
 test_function("mean", args = c("x"), index = 1, incorrect_msg = "Something is wrong with your mean calculation. Check your code and type ?mean into the console for more information")
