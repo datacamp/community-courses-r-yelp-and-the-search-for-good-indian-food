@@ -559,8 +559,7 @@ summary(new_rating_Indian)
 ```{r,eval=FALSE}
 test_output_contains("library(ggplot2)", incorrect_msg = "Don't forget to run this code to be able to use the qplot funciton")
 
-test_output_contains("hist(new_rating_Indian$dif, main = "Changes in Star Ratings", xlab = "Change")
-", incorrect_msg = "Something isn't right with your histogram plot. Check your code and type ?hist if you need additional information type ?hist into the console.")
+test_output_contains("hist(new_rating_Indian$dif, main = "Changes in Star Ratings", xlab = "Change")", incorrect_msg = "Something isn't right with your histogram plot. Check your code and type ?hist if you need additional information type ?hist into the console.")
 test_function("hist")
 
 test_output_contains("qplot(reorder(new_rating_Indian$business_name,new_rating_Indian$dif),new_rating_Indian$dif, xlab = "", ylab = "Changes in Star Rating")", incorrect_msg = "Something isn't right with your qplot plot. Check your code and type ?qplot into your console if you need additionl information.")
