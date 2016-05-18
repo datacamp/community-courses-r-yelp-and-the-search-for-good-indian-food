@@ -431,9 +431,9 @@ success_msg("Good job! We've added a new coloumn to the data. Let's use it in th
 
 With the combined data set we can now create weighted star reviews. To do this we will simply multiply the unweighted restaurant rating by the total number of reviews that particular user has given for that genre of cuisine. 
 
-This weighted star variable will allow us to generate wieghted star reviews. 
+This weighted star variable will allow us to generate weighted star reviews. 
 
-Weighted star reviews for each restaurant is created by taking to sum of the weighted star variables and dividing htem by the sum of the total_reviews variable for each restuarant. This is accomplished using the the `select()`, `group_by()`, `%>%` and `summarize()` functions of the `dplyr` package. 
+Weighted star reviews for each restaurant is created by taking to sum of the `weighted_stars` variables and dividing them by the sum of the `total_reviews` variable for each restuarant. This is accomplished using the the `select()`, `group_by()`, `%>%` and `summarize()` functions of the `dplyr` package. 
 
 
 *** =instructions
@@ -484,7 +484,7 @@ new_rating_Indian <- indian_plus_number %>%
 
 *** =sct
 ```{r,eval=FALSE}
-test_output_contains("indian_plus_number$weighted_stars <- indian_plus_number$stars * indian_plus_number$tot_rev", incorrect_msg = "There are some issues with how you generated the weighted stars, check your code.")
+test_output_contains("indian_plus_number$weighted_stars <- indian_plus_number$stars * indian_plus_number$total_reviews", incorrect_msg = "There are some issues with how you generated the weighted stars, check your code.")
 
 # second instruction
 test_output_contains("new_rating_Indian <- indian_plus_number %>% 
