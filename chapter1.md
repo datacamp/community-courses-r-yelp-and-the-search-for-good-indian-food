@@ -447,7 +447,7 @@ Weighted star reviews for each restaurant is created by taking to sum of the wei
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian_plus_number.RData"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_plus_number.RData"))
 library(dplyr)
 ```
 
