@@ -484,18 +484,13 @@ new_rating_Indian <- indian_plus_number %>%
 
 *** =sct
 ```{r,eval=FALSE}
-test_output_contains("indian_plus_number$weighted_stars <- indian_plus_number$stars * indian_plus_number$total_reviews", incorrect_msg = "There are some issues with how you generated the weighted stars, check your code.")
+#first instruction
+test_data_frame("indian_plus_number", incorrect_msg = "There are some issues with how you generated the weighted stars, check your code.")
 
 # second instruction
-test_output_contains("new_rating_Indian <- indian_plus_number %>% 
-  select(city, business_name, avg_stars, stars, total_reviews, weighted_stars) %>%
-  group_by(city, business_name, avg_stars) %>%
-  summarise(cnt = n(),
-            avg = sum(stars) / cnt,
-            new = sum(weighted_stars) / sum(total_reviews),
-            dif = new - avg)", 
-incorrect_msg = "We know there are other ways to do this too, but group_by, select and summarize can be quick and straight forward. If you are having trouble type ?dplyr in the console for more information.")
-test_function("group_by")
+test_data_frame("new_rating_Indian", incorrect_msg = "Although this is not the only way to accomplish this task, using the dplry package is very efficient. If you are having trouble type ?dplyr in the console for more information.")
+
+test_function("group_by",args = c(".data"), index = 1, incorrect_msg = "Did you group the correct variable?. Check your code and type ?group_by into the console for more information")
 
 # General
 test_error()
