@@ -223,7 +223,7 @@ With that said, we need to filter out all of the non-Indian reviews. To do this 
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course1073/datasets/rub.Rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/rub.Rdata"))
 ```
 
 *** =sample_code
