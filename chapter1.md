@@ -212,7 +212,7 @@ success_msg("Awesome! We've combined the data set, but let's keep moving.")
 --- type:NormalExercise xp:100 skills:1 key:6a66494184
 ## Isolate Indian restaurants 
 
-As you noticed with the summary of `rub` from the previous exerceise, the data set is large and convers many genres of cuisine. It makes sense to compare restaurants of similar cuisine for obvious reasons, so in order to simplify the task of adapting Yelp reviews you will only look at reviews for Indian restaurants. This modifications here will serve as a case study of how you could adapt other reviews from the various types of food that also exist o Yelp.      
+As you noticed with the summary of `rub` from the previous exerceise, the data set is large and convers many genres of cuisine. It makes sense to compare restaurants of similar cuisine for obvious reasons, so in order to simplify the task of adapting Yelp reviews you will only look at reviews for Indian restaurants. This modifications in this course will serve as a case study of how you could adapt other reviews from the various types of food that also exist on Yelp.      
 
 With that said, you need to filter out all of the non-Indian reviews. To do this you will use a combination of `grepl()` and `subset()` to create a binary true/false column indicating whether that review was for an Indian restaurant. This column will allow you to filter out all reviews that are not for Indian restaurants.
 
