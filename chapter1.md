@@ -563,7 +563,7 @@ test_function_v2("hist", "x", eval = FALSE, index = 1,
 
 # third instruction
 msg3 <- "Fill in the varaible that is the change in star rating."
-test_function_v2("qplot", "x", eval = FALSE, index = 1, 
+test_function_v2("qplot", args = c("x","y"), eval = FALSE, index = 1, 
                  incorrect_msg = msg3)
 
 # fourth instruction
