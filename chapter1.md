@@ -78,7 +78,7 @@ For this course the data comes in three separate data sets.They have been loaded
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course1073/datasets/Springboard_Yelp_ch1ex1.Rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/Springboard_Yelp_ch1ex1.Rdata"))
 ```
 
 *** =sample_code
@@ -152,7 +152,7 @@ Once the data sets have been combined it can be helpful to explore the data some
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course1073/datasets/Springboard_Yelp_ch1ex1.Rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/Springboard_Yelp_ch1ex1.Rdata"))
 ```
 
 *** =sample_code
@@ -311,7 +311,7 @@ After making the data frame, explore it! Check out the range in numbers of revie
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course1073/datasets/indian.Rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian.Rdata"))
 ```
 
 *** =sample_code
@@ -378,8 +378,8 @@ As before, we don't want any missing data within our data set, so we will use th
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course1073/datasets/indian.Rdata"))
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course1073/datasets/number_reviews_Indiam.Rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian.Rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/number_reviews_Indiam.Rdata"))
 ```
 
 Ended SCTs here
@@ -440,7 +440,7 @@ Weighted star reviews for each restaurant is created by taking to sum of the wei
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course1073/datasets/indian_plus_number.Rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian_plus_number.Rdata"))
 ```
 
 *** =sample_code
@@ -504,7 +504,7 @@ Plot the distribution of the changes in the ratings.
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course1073/datasets/new_rating_Indian.Rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/new_rating_Indian.Rdata"))
 ```
 
 *** =sample_code
