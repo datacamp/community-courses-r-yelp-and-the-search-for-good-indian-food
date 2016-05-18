@@ -385,12 +385,14 @@ As before, we don't want any missing data within our data set, so we will use th
 ```{r,eval=FALSE}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian.RData"))
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/number_reviews_Indian.RData"))
+library(dplyr)
 ```
 
 Ended SCTs here
 
 *** =sample_code
 ```{r,eval=FALSE}
+# The package dplyr is available to use
 # Combine num_reviews information with original data frame of indian restaurant reviews
 indian_plus_number <- inner_join(___,number_reviews_Indian)
 
@@ -400,6 +402,7 @@ indian_plus_number
 
 *** =solution
 ```{r,eval=FALSE}
+# The package dplyr is available to use
 # Combine num_reviews information with original data frame of indian restaurant reviews
 # Should we left join rather than inner_join
 indian_plus_number <- inner_join(indian, number_reviews_Indian)
