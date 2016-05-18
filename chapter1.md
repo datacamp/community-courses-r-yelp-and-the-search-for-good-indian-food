@@ -251,7 +251,7 @@ test_output_contains("rub$is_indian <- grepl('Indian', rub$categories) == TRUE",
 test_function("grepl")
 
 # second instruction
-test_output_contains("indian <- subset(rub, is_indian == TRUE)", incorrect_msg = "We know there are other ways to do this too, but subset can be quick and straight forward. If you are having trouble typle ?subset in the console for more information.")
+test_output_contains("indian <- subset(rub, is_indian == TRUE)", incorrect_msg = "We know there are other ways to do this too, but subset can be quick and straight forward. If you are having trouble type ?subset in the console for more information.")
 test_function("subset")
 
 # General
@@ -412,12 +412,12 @@ names(indian_plus_number)
 *** =sct
 ```{r,eval=FALSE}
 # first instruction
-test_output_contains("rub$is_indian <- grepl("Indian", rub$categories) == TRUE", incorrect_msg = "Although there are many ways to achieve this, try using grepl and if you are having trouble type ?grepl in the console for more information.")
-test_function("grepl")
+test_output_contains("indian_plus_number <- inner_join(___,number_reviews_Indian)", incorrect_msg = "Although there are many ways to achieve this, try using grepl and if you are having trouble type ?inner_join in the console for more information.")
+test_function("inner_join")
 
 # second instruction
-test_output_contains("indian <- subset(rub, is_indian == TRUE)", incorrect_msg = "We know there are other ways to do this too, but subset can be quick and straight forward. If you are having trouble typle ?subset in the console for more information.")
-test_function("subset")
+test_output_contains("names(indian_plus_number)", incorrect_msg = "We know there are other ways to do this too, but names() can be quick and straight forward. If you are having trouble type ?names in the console for more information.")
+test_function("names")
 
 # General
 test_error()
