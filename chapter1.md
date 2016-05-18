@@ -6,7 +6,7 @@ description : "Springboard Yelp Analysis"
 --- type:NormalExercise xp:100 skills:1 key:70e19e0e7d
 ## Quick intro to DataCamp
 
-Welcome to COURSE NAME
+Welcome to Springboard Yelp Analysis
 
 Welcome to our tutorial based on the popular Springboard blog post [Blog post link] about Yelp Review Modifications. Here you will learn how the author tailored the Yelp star reviews for restaurants to provide more useful information when deciding where to eat. In case you're new to R, it's recommended that you first take our free [Introduction to R Tutorial](https://www.datacamp.com/courses/free-introduction-to-r).
 
@@ -559,7 +559,7 @@ summary(new_rating_Indian)
 ```{r,eval=FALSE}
 test_output_contains("library(ggplot2)", incorrect_msg = "Don't forget to run this code to be able to use the qplot funciton")
 
-test_output_contains("hist(new_rating_Indian$dif, main = "Changes in Star Ratings", xlab = "Change")", incorrect_msg = "Something isn't right with your histogram plot. Check your code and type ?hist if you need additional information type ?hist into the console.")
+test_output_contains("hist(new_rating_Indian$dif, main = 'Changes in Star Ratings', xlab = 'Change')", incorrect_msg = "Something isn't right with your histogram plot. Check your code and type ?hist if you need additional information type ?hist into the console.")
 test_function("hist")
 
 test_output_contains("qplot(reorder(new_rating_Indian$business_name,new_rating_Indian$dif),new_rating_Indian$dif, xlab = "", ylab = "Changes in Star Rating")", incorrect_msg = "Something isn't right with your qplot plot. Check your code and type ?qplot into your console if you need additionl information.")
