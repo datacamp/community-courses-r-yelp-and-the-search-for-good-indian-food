@@ -2,7 +2,7 @@
 title_meta  : Chapter 2
 title       : Springboard Yelp Analysis
 description : "Springboard Yelp Analysis"
----
+
 --- type:NormalExercise xp:100 skills:1,3  key:0d1199072c
 ## Exploring the Data
 
@@ -19,10 +19,10 @@ You will load in a list of native Indians names that can be used to sort the nam
 - Use `scan()` to load in the `indian_names.txt` file
 
 *** =hint
-- Don't forget to look at all three data sets
+Don't forget to look at all three data sets
 
 *** =pre_exercise_code
-```{r, eval = FALSE)
+```{r,eval=FALSE}
 # no pec
 ```
 
