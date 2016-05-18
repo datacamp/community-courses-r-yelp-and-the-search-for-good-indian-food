@@ -36,14 +36,16 @@ in_names_url = url("http://s3.amazonaws.com/assets.datacamp.com/production/cours
 #indian_names <- scan(in_names_url, what = character())
 
 # Show the first 10 names from the indian_names list
-head(indian_names,__)
+head(indian_names,___)
 
 ```
 
 *** =solution
 ```{r,eval=FALSE}
-# Read Indian names into a list
+# This url contains the .txt file with Indian names. (Note: Don't change this code)
 in_names_url = url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt")
+
+# Read Indian names into a list
 indian_names <- scan(in_names_url, what = character())
 
 # Show the first 10 names from the indian_names list
