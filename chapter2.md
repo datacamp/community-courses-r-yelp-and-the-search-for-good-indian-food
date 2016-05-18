@@ -14,7 +14,6 @@ This means that you need a way to select just the users with native Indian names
 
 You will load in a list of native Indians names that can be used to sort the names of the users 
 
-```   
 
 *** =instructions
 - Use `scan()` to load in the `indian_names.txt` file
