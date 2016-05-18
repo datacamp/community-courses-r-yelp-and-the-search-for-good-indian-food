@@ -266,7 +266,7 @@ success_msg("Good job! We've selected jus the reviews for Indian restaurants so 
 --- type:MultipleChoiceExercise xp:50 skills:1,3  key:f48b5ed8a3
 ## How Many Reviews?
 
-Now that we have created a simplified data set and are almost ready to begin manipulating the reviews lets take a moment to explore the new data set and answer the following question.
+Now that you have created a simplified data set and are almost ready to begin manipulating the reviews take a moment to explore the new data set and answer the following question.
 
 Take a look at the data set `indians` with `summary()` and see how many reviews does our data set contain?
 
@@ -289,7 +289,7 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/dat
 msg1 <- "Try again!"
 msg2 <- "Not so good... Maybe have a look at the hint."
 msg3 <- "Incorrect. Maybe have a look at the hint."
-msg4 <- "Very good! You found the total ."
+msg4 <- "Very good! You found the total. Let's Start manipulating the star reviews!"
 test_mc(correct =4, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```
 
