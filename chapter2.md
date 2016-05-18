@@ -54,7 +54,7 @@ head(indian_names,10)
 test_object("indian_names", incorrect_msg = "Something went wrong with loading the `indian_names`. Don't change the `sample_code` just remove the `#`.")
 
 # Second instruction
-test_function("head", args = c("x","n"), incorrect_msg  = "Did you include the number of names you wanted to display?")
+test_function("head", args = c("x","n"), index = 1, incorrect_msg  = "Did you include the number of names you wanted to display?")
 
 # General
 test_error()
