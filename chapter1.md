@@ -402,7 +402,6 @@ indian_plus_number
 
 *** =solution
 ```{r,eval=FALSE}
-```{r,eval=FALSE}
 # The package dplyr is available to use
 # Combine number of Indian reviews with original data frame of indian restaurant reviews
 indian_plus_number <- inner_join(indian, number_reviews_Indian)
