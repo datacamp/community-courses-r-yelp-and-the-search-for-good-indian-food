@@ -133,7 +133,7 @@ success_msg("Good job! We've seen a little more about the data so now let's move
 
 Before we start manipulating Yelp ratings, we first need to combine the three data sets we just explored so we can understand and adapt the data more effectively. 
 
-The data sets form the previous exercise, `reviews`, `users`, and `businesses`, are data frames, R's way of representing a dataset. We can combine a data frame in many ways, but for this exercise we don't want any missing data, let's say a business without a review. So we will use the `inner_join()` function from the 'dplyr' package to combine the three data sets. The function `inner_join()` combines two data sets by finding columns with identical labels and then only combining the rows that are in both independent data sets. 
+The data sets form the previous exercise, `reviews`, `users`, and `businesses`, are data frames, R's way of representing a dataset. We can combine a data frame in many ways, but for this exercise we don't want any missing data, let's say a business without a review. So we will use the `inner_join()` function from the `dplyr` package to combine the three data sets. The function `inner_join()` combines two data sets by finding columns with identical labels and then only combining the rows that are in both independent data sets. 
 
 Let's see how it works!
 
@@ -143,11 +143,9 @@ Once the data sets have been combined it can be helpful to explore the data some
 
 
 *** =instructions
-- Load `dplyr` to the enironment
-- Use `inner_join()` combine the `reviews` and `users` data set.
-- Assign new data frame to `ru`.
-- Use `inner_join()` combine the newly created `ru` and `businesses` data set
-- Assign new data frame to `rub`. 
+- The code provided uses `library()` to load `dplyr` to the enironment
+- Use `inner_join()` combine the `reviews` and `users` data sets and assign to `ru`.
+- Use `inner_join()` combine the newly created `ru` and `businesses` data sets and assign new data frame to `rub`. 
 - Inspect new data frame `rub`, take note of the variables and types of data.
   
 *** =hint
@@ -191,16 +189,19 @@ summary(rub)
 *** =sct
 ```{r,eval=FALSE}
 # first instruction
-test_output_contains("ru  <- inner_join(reviews,users)", incorrect_msg = "Make sure you combine the reviews and the users data sets first")
-test_function("inner_join")
+msg1 = "Make sure you combine the `reviews` and the `users` data sets first"
+#test_output_contains("ru  <- inner_join(reviews,users)", incorrect_msg = msg1)
+test_function("inner_join",args = c("object"), index = 1, incorrect_msg = msg1))
 
 # second instruction
-test_output_contains("rub  <- inner_join(ru,businesses)", incorrect_msg = "Make sure you combine the reviews and the users data sets first")
-test_function("inner_join")
+msg2 = "Make sure you combine the `ru` and `businesses` data sets"
+#test_output_contains("rub  <- inner_join(ru,businesses)", incorrect_msg = msg2)
+test_function("inner_join",args = c("object"), index = 2, incorrect_msg = msg2))
 
 # third instruction
-test_output_contains("summary(rub)", incorrect_msg = "Somethings not right. Check your summary() code")
-test_function("summary")
+msg3 = "Somethings not right. Check your `summary()` code"
+#test_output_contains("summary(rub)", incorrect_msg = msg3)
+test_function("summary",args = c("object"), index = 3, incorrect_msg = msg3))
 
 # General
 test_error()
