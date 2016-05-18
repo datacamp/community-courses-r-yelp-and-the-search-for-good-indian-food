@@ -22,20 +22,18 @@ You will load in a list of native Indians names that can be used to sort the nam
 - Don't forget to look at all three data sets
 
 *** =pre_exercise_code
-```{r, eval = FALSE}
-# no pec
-```
+no pec
 
 *** =sample_code
 ```{r, eval = FALSE}
 # Read Indian names into a list
-indian_names <- load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt"))
+indian_names <- scan(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt"), what = character())
 ```
 
 *** =solution
 ```{r,eval=FALSE}
 # Read Indian names into a list
-indian_names <- scan("indian_names.txt", what = character())
+indian_names <- scan(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt"), what = character())
 ```
 
 *** =sct
@@ -80,7 +78,7 @@ Take a look at the data set `indian` with `str()` and see how many reviews does 
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian.RData"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.RData"))
 ```
 
 *** =sct
