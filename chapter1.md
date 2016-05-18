@@ -110,17 +110,17 @@ summary(businesses)
 # first instruction
 msg1 = "Did you remember to take a look at the `reviews` data set?"
 #test_output_contains("summary(reviews)", incorrect_msg = msg1)
-test_function("summary",index = 1, incorrect_msg = msg1)
+test_function("summary",args = c("object"), index = 1, incorrect_msg = msg1)
 
 # second instruction
 msg2 = "Did you remember to take a look at the `users` data set?"
 #test_output_contains("summary(users)", incorrect_msg = msg2)
-test_function("summary",index = 2, incorrect_msg = msg2)
+test_function("summary",args = c("object"),index = 2, incorrect_msg = msg2)
 
 # third instruction
 msg3 = "Did you remember to take a look at the `businesses` data set?"
 #test_output_contains("summary(businesses)", incorrect_msg = msg3)
-test_function("summary", index = 3, incorrect_msg = msg3)
+test_function("summary",args = c("object"), index = 3, incorrect_msg = msg3)
 
 # General
 test_error()
