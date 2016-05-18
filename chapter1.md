@@ -6,8 +6,6 @@ description : "Springboard Yelp Analysis"
 --- type:NormalExercise xp:100 skills:1 key:70e19e0e7d
 ## Quick intro to DataCamp
 
-Welcome to Springboard Yelp Analysis
-
 Welcome to our tutorial based on the popular Springboard blog post [Blog post link] about Yelp Review Modifications. Here you will learn how the author tailored the Yelp star reviews for restaurants to provide more useful information when deciding where to eat. In case you're new to R, it's recommended that you first take our free [Introduction to R Tutorial](https://www.datacamp.com/courses/free-introduction-to-r).
 
 In the editor on the right, you should type R code to solve the exercises. When you hit the 'Submit Answer' button, every line of code is interpreted and executed by R and you get a message whether or not your code was correct. The output of your R code is shown in the console in the lower right corner. R makes use of the `#` sign to add comments; these lines are not run as R code, so they will not influence your result.
