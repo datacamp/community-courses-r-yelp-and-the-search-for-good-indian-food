@@ -562,7 +562,7 @@ test_output_contains("library(ggplot2)", incorrect_msg = "Don't forget to run th
 test_output_contains("hist(new_rating_Indian$dif, main = 'Changes in Star Ratings', xlab = 'Change')", incorrect_msg = "Something isn't right with your histogram plot. Check your code and type ?hist if you need additional information type ?hist into the console.")
 test_function("hist")
 
-test_output_contains("qplot(reorder(new_rating_Indian$business_name,new_rating_Indian$dif),new_rating_Indian$dif, xlab = "", ylab = "Changes in Star Rating")", incorrect_msg = "Something isn't right with your qplot plot. Check your code and type ?qplot into your console if you need additionl information.")
+test_output_contains("qplot(reorder(new_rating_Indian$business_name,new_rating_Indian$dif),new_rating_Indian$dif, xlab = '', ylab = 'Changes in Star Rating')", incorrect_msg = "Something isn't right with your qplot plot. Check your code and type ?qplot into your console if you need additionl information.")
 test_function("qplot")
 
 test_output_contains("summary(new_rating_Indian)", incorrect_msg = "Did you remember to run a summary of the final data frame. If you need help try pping ?summary into the console for more information.")
