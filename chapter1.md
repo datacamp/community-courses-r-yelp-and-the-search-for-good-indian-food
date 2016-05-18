@@ -61,7 +61,7 @@ success_msg("Awesome! See how the console shows the result of the R code you sub
 
 For this course the data comes in three separate data sets. 
 
-- The first is labeled `reviews` and it contains a `user_id`, a `business_id` and a `stars` review.
+- The first is labeled `reviews` and it contains a `user_id`, a `business_id` and a `star` review.
 - The second is labeled `users` and it is a list of `user_id's` and `user_names's`
 - The last is labeled `businesses` and it is a contains information about the businesses on yelp like the business location, category of food, number of reviews and average star review.
 
@@ -108,16 +108,19 @@ summary(businesses)
 *** =sct
 ```{r,eval=FALSE}
 # first instruction
-test_output_contains("summary(reviews)", incorrect_msg = "Did you remember to take a look at the reviews data set?")
-test_function("summary")
+msg1 = "Did you remember to take a look at the reviews data set?"
+test_output_contains("summary(reviews)", incorrect_msg = msg1)
+test_function("summary",1, incorrect_msg = msg1)
 
 # second instruction
-test_output_contains("summary(users)", incorrect_msg = "Did you remember to take a look at the users data set?")
-test_function("summary")
+msg2 = "Did you remember to take a look at the users data set?"
+test_output_contains("summary(users)", incorrect_msg = msg2)
+test_function("summary",2, incorrect_msg = msg2)
 
 # third instruction
-test_output_contains("summary(businesses)", incorrect_msg = "Did you remember to take a look at the businesses data set?")
-test_function("summary")
+msg3 = "Did you remember to take a look at the businesses data set?"
+test_output_contains("summary(businesses)", incorrect_msg = msg3)
+test_function("summary",3, incorrect_msg = msg3)
 
 # General
 test_error()
