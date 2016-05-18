@@ -201,7 +201,7 @@ test_function("inner_join",args = c("object"), index = 2, incorrect_msg = msg2)
 # third instruction
 msg3 = "Somethings not right. Check your `summary()` code"
 #test_output_contains("summary(rub)", incorrect_msg = msg3)
-test_function("summary",args = c("object"), index = 3, incorrect_msg = msg3)
+test_function("summary",args = c("object"), index = 1, incorrect_msg = msg3)
 
 # General
 test_error()
