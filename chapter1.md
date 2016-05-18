@@ -131,15 +131,15 @@ success_msg("Good job! We've seen a little more about the data so now let's move
 --- type:NormalExercise xp:100 skills:1,3  key:a72c7124db
 ## Combining data into one
 
-Before we start manipulating Yelp ratings, we first need to combine the three data sets we just explored so we can understand and adapt the data more effectively. 
+Before manipulating the Yelp ratings, you first need to combine the three data sets that were just explored so you can understand and adapt the data more effectively. 
 
-The data sets form the previous exercise, `reviews`, `users`, and `businesses`, are data frames, R's way of representing a dataset. We can combine a data frame in many ways, but for this exercise we don't want any missing data, let's say a business without a review. So we will use the `inner_join()` function from the `dplyr` package to combine the three data sets. The function `inner_join()` combines two data sets by finding columns with identical labels and then only combining the rows that are in both independent data sets. 
+The data sets form the previous exercise, `reviews`, `users`, and `businesses`, are data frames, R's way of representing a dataset. You can combine a data frame in many ways, but for this exercise you don't want any missing data, let's say a business without a review. So you will use the `inner_join()` function from the `dplyr` package to combine the three data sets. The function `inner_join()` combines two data sets by finding columns with identical labels and then only combining the rows that are in both independent data sets. 
 
 Let's see how it works!
 
 The 3 data frames are already loaded into your workspace. Apply `inner_join()` to the `reviews` and the `users` data sets first. Don't forget to name that newly combined data set. Next apply `inner_join()` again but with the newly created data set and the final data set from the previous exercise `businesses`.
 
-Once the data sets have been combined it can be helpful to explore the data some. Using `summary` we can get a better feel for the variables that are in out data and the types data we have to use. 
+Once the data sets have been combined it can be helpful to explore the data some. Using `summary` you can get a better feel for the variables that are in out data and the types data you have to use. 
 
 
 *** =instructions
@@ -212,9 +212,9 @@ success_msg("Awesome! We've combined the data set, but let's keep moving.")
 --- type:NormalExercise xp:100 skills:1 key:6a66494184
 ## Isolate Indian restaurants 
 
-Following the direction of the Springboard blog post [Blog post link], we will simplify the task of adapting Yelp reviews by looking only at Indian restaurants. It makes sense to compare restaurants of similar cuisine for obvious reasons and we will stick with Indian food to follow the authors original work. 
+As you noticed with the summary of `rub`, the data set is large and convers many genres of cuisine. It makes sense to compare restaurants of similar cuisine for obvious reasons, so in order to simplify the task of adapting Yelp reviews you will only look at Indian restaurants. This modifications here will serve as a case study of how you could adapt other reviews from the various types of food that also exist o Yelp.      
 
-With that said, we need to filter out all of the non-Indian reviews. To do this we will use a combination of `grepl()` and `subset()` to create a binary true/false column indicating whether that review was for an Indian restaurant. This column will allow us to filter out all reviews that are not for Indian restaurants.
+With that said, you need to filter out all of the non-Indian reviews. To do this you will use a combination of `grepl()` and `subset()` to create a binary true/false column indicating whether that review was for an Indian restaurant. This column will allow you to filter out all reviews that are not for Indian restaurants.
 
 *** =instructions
 - Create binary true/false column `is_indian` for Indian-only restaurant reviews using `grepl()`.
@@ -372,7 +372,7 @@ success_msg("Good job! We've added a new coloumn to the data. Let's use it in th
 
 --- type:NormalExercise xp:100 skills:1 key:30db019cde
 ## Review Modification Method I Cont.
-We can use the new data frame to create a weighted star rating. To do so we need to combine the `number_reviews_Indian` data frame with the `indian` data frame.
+You can use the new data frame to create a weighted star rating. To do so we need to combine the `number_reviews_Indian` data frame with the `indian` data frame.
 
 As before, we don't want any missing data within our data set, so we will use the `inner_join` function to merge all the rows that are in both the `number_reviews_Indian` and `indian` data frames.
 
@@ -508,8 +508,9 @@ success_msg("Good job! We've created weighted reveiws. Let's check them out in t
 --- type:NormalExercise xp:100 skills:1 key:4ad4885c8d
 ## Review Modification Method I Cont. 3
 
-Now that we have new weighted star reviews for our restaurants, let's see if we can detect the effects of the modifications. 
-To do so we will make use of some a general histogram plot and a `qplot` from the `ggplot2` package. These graphs will help us visualize the effect of our modification. Take note of the magnitudes of the changes and if there were any patterns in the distribution of the difference in star ratings.
+Now that we have new weighted star reviews for our restaurants, let's see if you can detect the effects of the modifications. 
+
+To do so you will make use of some a general histogram plot and a `qplot` from the `ggplot2` package. These graphs will help us visualize the effect of your modification. Take note of the magnitudes of the changes and if there were any patterns in the distribution of the difference in star ratings.
 
 *** =instructions
 - Make `ggplot2` available in the environment 
