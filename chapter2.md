@@ -17,9 +17,10 @@ You will load in a list of native Indians names that can be used to sort the nam
 
 *** =instructions
 - Use `scan()` to load in the `indian_names.txt` file
+- Display the first 10 names with `head()`
 
 *** =hint
-Don't forget to look at all three data sets
+When loading the names don't change the sample_code! Just remove the `#`
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -29,16 +30,33 @@ Don't forget to look at all three data sets
 *** =sample_code
 ```{r, eval = FALSE}
 # Read Indian names into a list
-indian_names <- scan(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt"), what = character())
+#in_names_url = url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt")
+#indian_names <- scan(in_names_url, what = character())
+
+# Show the first 10 names from the indian_names list
+head(indian_names,__)
+
 ```
 
 *** =solution
 ```{r,eval=FALSE}
 # Read Indian names into a list
-indian_names <- scan(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt"), what = character())
+in_names_url = url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt")
+indian_names <- scan(in_names_url, what = character())
+
+# Show the first 10 names from the indian_names list
+head(indian_names,10)
 ```
 
 *** =sct
 ```{r,eval=FALSE}
+# Fist instruction
+test_object("indian_names", incorrect_msg = "Something went wrong with loading the `indian_names`. Don't change the `sample_code` just remove the `#`.")
 
+# Second instruction
+test_function("head", args = c("x","n"), incorrect_msg  = "Did you include the number of names you wanted to display?")
+
+# General
+test_error()
+success_msg("Well done! Now that your data is loaded in, you can start exploring it!")
 ```
