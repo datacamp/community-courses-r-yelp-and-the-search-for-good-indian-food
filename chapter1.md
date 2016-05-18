@@ -109,11 +109,11 @@ test_output_contains("summary(reviews)", incorrect_msg = "Did you remember to ta
 test_function("summary")
 
 # second instruction
-test_output_contains("summary(users)", incorrect_msg = "Did you remember to take a look at the reviews data set?")
+test_output_contains("summary(users)", incorrect_msg = "Did you remember to take a look at the users data set?")
 test_function("summary")
 
 # third instruction
-test_output_contains("summary(businesses)", incorrect_msg = "Did you remember to take a look at the reviews data set?")
+test_output_contains("summary(businesses)", incorrect_msg = "Did you remember to take a look at the businesses data set?")
 test_function("summary")
 
 # General
