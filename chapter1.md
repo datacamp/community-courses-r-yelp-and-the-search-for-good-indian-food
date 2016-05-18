@@ -415,7 +415,7 @@ names(indian_plus_number)
 *** =sct
 ```{r,eval=FALSE}
 # first instruction
-test_output_contains("indian_plus_number <- inner_join(___,number_reviews_Indian)", incorrect_msg = "Although there are many ways to achieve this, try using grepl and if you are having trouble type ?inner_join in the console for more information.")
+test_output_contains("indian_plus_number <- inner_join(indian,number_reviews_Indian)", incorrect_msg = "Although there are many ways to achieve this, try using inner_join and if you are having trouble type ?inner_join in the console for more information.")
 test_function("inner_join")
 
 # second instruction
