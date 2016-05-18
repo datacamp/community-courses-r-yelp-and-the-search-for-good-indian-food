@@ -513,6 +513,7 @@ Plot the distribution of the changes in the ratings.
 
 
 *** =instructions
+- Make `ggplot2` available in the environment 
 - Use `hist()` function and the `new_rating_Indian$dif` column to create the plot of the distribution.
 - Use `qplot()`, `new_rating_Indian$business_name` and `new_rating_Indian$dif` for the plot of the difference in star rating per restaurant. To create a more appealing graph use `reorder()` to order of changes from least to greatest. 
 - Display the summary of the `new_rating_Indian` data frame 
@@ -527,6 +528,9 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/dat
 
 *** =sample_code
 ```{r,eval=FALSE}
+# Load the ggplot2 package into the environment
+library(ggplot2)
+
 # Plot the distribution of changes to ratings 
 hist(new_rating_Indian$___, main = "Changes in Star Ratings", xlab = "Change")
 
@@ -542,6 +546,9 @@ summary(new_rating_Indian)
 
 *** =solution
 ```{r,eval=FALSE}
+# Load the ggplot2 package into the environment
+library(ggplot2)
+
 # Plot the distribution of changes to ratings 
 hist(new_rating_Indian$dif, main = "Changes in Star Ratings", xlab = "Change")
 
