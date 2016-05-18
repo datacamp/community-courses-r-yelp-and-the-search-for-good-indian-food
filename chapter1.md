@@ -469,10 +469,6 @@ new_rating_Indian <- indian_plus_number %>%
 *** =solution
 ```{r,eval=FALSE}
 # Generate "weighted_stars" for later calculation
-indian_plus_number$weighted_stars <- indian_plus_number$stars * indian_plus_number$tot_rev
-
-# Use "summarise" to generate a new rating for each restaurant
-# Generate "weighted_stars" 
 indian_plus_number$weighted_stars <- indian_plus_number$stars * indian_plus_number$total_reviews
 
 # Use "summarise" to generate a new rating for each restaurant
