@@ -260,7 +260,7 @@ test_object("indian", incorrect_msg = msg2)
 
 # General
 test_error()
-success_msg("Good job! We've seen a little more about the data so now let's move on!")
+success_msg("Good job! We've selected jus the reviews for Indian restaurants so now let's move on!")
 ```
 
 --- type:MultipleChoiceExercise xp:50 skills:1,3  key:f48b5ed8a3
