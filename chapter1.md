@@ -305,15 +305,12 @@ The new data frame will be created using the `select()`, `group_by()`, `%>%` and
 After making the data frame, explore it! Check out the range in numbers of reviews and also the average number of reviews per user.  
 
 *** =instructions
-- Create a new data frame `number_reviews_Indian`
-- Include columns: `user_id`, `user_name`, `is_indian`
-- Group_by `user_id`
-- Use `summarize()` and `sum()` to create `total_reveiws` column
-- Print the table of total_reviews
-- Show the average number of reviews per users
+- Create a new data frame `number_reviews_Indian` by selecting columns: `user_id`, `user_name`, using `group_by` variable `user_id` and  `summarize()` with `n()` to create `total_reviews` column
+- Print the table of `total_reviews`
+- Show the average number of reviews per users by averaging the `total_reviews`
 
 *** =hint
-- Which column of the `rub` data set should we look for the type of food served at the restaurant
+- Did you `group_by()` the correct vararable? Check the the insturctions again.
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -325,14 +322,15 @@ library(dplyr)
 ```{r,eval=FALSE}
 # The package dplyr is available ot use
 # Generate a new data frame with the number of reviews by each reviewer
-# DO WE NEED THE IS_INDIAN COLUMN
 number_reviews_Indian <- indian %>% 
-  select(user_id, user_name, is_indian) %>%
-  group_by(user_id) %>% 
-  summarise(total_reviews = sum(is_indian))
+  select(___, ___) %>%
+  group_by(___) %>% 
+  summarise(total_reviews = n())
 
-# Print the table and show the average number of reviews per user
+# Print the table of total_reviews
 table(number_reviews_Indian$___)
+
+# Pring the avergare number of reviews per users
 mean(number_reviews_Indian$___)
 ```
 
@@ -341,30 +339,27 @@ mean(number_reviews_Indian$___)
 # The package dplyr is available ot use
 # Generate a summary of # of reviews of that cuisine done by each reviewer
 number_reviews_Indian <- indian %>% 
-  select(user_id, user_name, is_indian) %>%
+  select(user_id, user_name) %>%
   group_by(user_id) %>% 
-  summarise(total_reviews = sum(is_indian))
+  summarise(total_reviews = n())
 
-# Print the table, show the total # of entries, and find the avg # of reviews per user
+# Print the table of total_reviews
 table(number_reviews_Indian$total_reviews)
+
+# Pring the avergare number of reviews per users
 mean(number_reviews_Indian$total_reviews)
 ```
 
 *** =sct
 ```{r,eval=FALSE}
 # first instruction
-test_output_contains("number_reviews_Indian <- indian %>% 
-  select(user_id, user_name, is_indian) %>%
-  group_by(user_id) %>% 
-  summarise(total_reviews = sum(is_indian))", incorrect_msg = "Although this is not the only way to accomplish this task, using the dplry package is very efficient. If you are having trouble type ?dplyr in the console for more information.")
+test_data_frame("number_reviews_Indian", incorrect_msg = "Although this is not the only way to accomplish this task, using the dplry package is very efficient. If you are having trouble type ?dplyr in the console for more information.")
 
 # second instruction
-test_output_contains("table(number_reviews_Indian$total_reviews)", incorrect_msg = "Something is wrong with your table. Check your code and type ?table into the console for more information")
-test_function("table")
+test_function("table", args = c("object"), index = 1, incorrect_msg = "Something is wrong with your table. Check your code and type ?table into the console for more information")
 
 # third instruction
-test_output_contains("mean(number_reviews_Indian$total_reviews)", incorrect_msg = "Something is wrong with your calculations with te mean. Check your code and type ?mean into the console for more information")
-test_function("mean")
+test_function("mean", args = c("x"), index = 1, incorrect_msg = "Something is wrong with your mean calculation. Check your code and type ?mean into the console for more information")
 
 # General
 test_error()
