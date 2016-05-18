@@ -296,9 +296,9 @@ test_mc(correct = 4, feedback_msgs = c(msg1, msg2, msg3, msg4))
 --- type:NormalExercise xp:100 skills:1 key:1b2e20ac0a
 ## Review Modification Method I
 
-Now that we have a manageable data set with just one type of cuisine we can begin to adapt the Yelp star ratings to see if we can make them more meaningful. In this course we will look into just two of the almost infinite ways one can scale and manipulate ratings. The first method is to create a new rating that gives more weight to those who have reviewed more restaurants of the same cuisine. 
+Now that you have a manageable data set with just one type of cuisine it's time to begin adapting the Yelp star ratings to see if you can make them more meaningful. In this course you will look into just two of the almost infinite ways one can scale and manipulate ratings. The first method is to create a new rating that gives more weight to those who have reviewed more restaurants of the same cuisine. 
 
-To do this we will start by creating a new data frame with the number of reviews each reviewer has made for the collection of Indian restaurants in the original data set.  
+To do this start by creating a new data frame with the number of reviews each reviewer has made for the collection of Indian restaurants in the original data set.  
 
 The new data frame will be created using the `select()`, `group_by()`, `%>%` and `summarize()` functions of the `dplyr` package. The `select()` function determines the columns that will be included in the new data frame. The `group_by()`, `%<%` and `summarized()` functions allow for separate summaries to be performed within the unique values of the variable being grouped.  
 
