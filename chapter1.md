@@ -268,7 +268,7 @@ success_msg("Good job! We've selected jus the reviews for Indian restaurants so 
 
 Now that you have created a simplified data set and are almost ready to begin manipulating the reviews take a moment to explore the new data set and answer the following question.
 
-Take a look at the data set `indian` with `summary()` and see how many reviews does our data set contain?
+Take a look at the data set `indian` with `str()` and see how many reviews does our data set contain?
 
 *** =instructions
 - 1456
@@ -277,7 +277,7 @@ Take a look at the data set `indian` with `summary()` and see how many reviews d
 - 1563
   
 *** =hint
-- There are two outputs form the summary that indicate how many reviews are in this data set.  
+- There first row form the `str()` output indicates how many rows are in this data set. There is one review per row!  
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -290,7 +290,7 @@ msg1 <- "Try again!"
 msg2 <- "Not so good... Maybe have a look at the hint."
 msg3 <- "Incorrect. Maybe have a look at the hint."
 msg4 <- "Very good! You found the total. Let's Start manipulating the star reviews!"
-test_mc(correct =4, feedback_msgs = c(msg1, msg2, msg3, msg4))
+test_mc(correct = 4, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```
 
 --- type:NormalExercise xp:100 skills:1 key:1b2e20ac0a
