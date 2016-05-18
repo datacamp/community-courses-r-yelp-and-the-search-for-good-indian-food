@@ -507,7 +507,6 @@ success_msg("Good job! We've created weighted reveiws. Let's check them out in t
 ## Review Modification Method I Cont. 3
 
 Now that we have new weighted star reviews for our restaurants, let's see if we can detect the effects of the modifications. 
-
 Plot the distribution of the changes in the ratings. 
 
 
@@ -523,7 +522,7 @@ Plot the distribution of the changes in the ratings.
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/new_rating_Indian.Rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/new_rating_Indian.Rdata"))
 ```
 
 *** =sample_code
