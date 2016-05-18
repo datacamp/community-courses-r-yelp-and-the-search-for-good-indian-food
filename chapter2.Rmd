@@ -2,54 +2,39 @@
 title_meta  : Chapter 2
 title       : Springboard Yelp Analysis
 description : "Springboard Yelp Analysis"
-
---- type:NormalExercise xp:100 skills:1 key:70e19e0e7d
+---
+--- type:NormalExercise xp:100 skills:1,3  key:0d1199072c
 ## Exploring the Data
 
-For this course the data comes in three separate data sets. 
+The second chapter of this tutorial will be an alternative method of manipulating the Yelp star reviews. You will be working with the same sample of reviews of Indian restaurants but adapting the star ratings in a different way. 
 
-- The first is labeled `reviews` and it contains a `user_id`, a `business_id` and a `star` review.
-- The second is labeled `users` and it is a list of `user_id's` and `user_names's`
-- The last is labeled `businesses` and it is a contains information about the businesses on yelp like the business location, category of food, number of reviews and average star review.
+This method looks to adapt the star reviews with the perception that Yelp reviewers with Indian heritage would provide more accurate and authentic ratings for Indian cuisine. The strategy for manpulating the star reviews involves selecting only the reviewers with Indian names for the agregate restaurant star rating. 
 
-They have been loaded into the environment already and are ready to be explored!
+This means that you need a way to select just the users with native Indian names and that is where this chapter begins! 
+
+You will load in a list of native Indians names that can be used to sort the names of the users 
+
+```   
 
 *** =instructions
-- Explore the `reviews` data set with `summary()` function.
-- Explore the `users` data set with `summary()` function.
-- Explore the `businesses` data set with `summary()` function.
+- Use `scan()` to load in the `indian_names.txt` file
 
 *** =hint
 - Don't forget to look at all three data sets
 
 *** =pre_exercise_code
-```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/Springboard_Yelp_ch1ex1.Rdata"))
-```
+no pec
 
 *** =sample_code
-```{r,eval=FALSE}
-# Explore the `reviews` data set with `summary()` 
-summary(___)
-
-# Explore the `users` data set with `summary()` 
-summary(___)
-
-# Explore the `businesses` data set with `summary()` 
-summary(___)
+```{r, eval = FALSE}
+# Read Indian names into a list
+indian_names <- load("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt")
 ```
 
 *** =solution
 ```{r,eval=FALSE}
-# Explore the `reviews` data set with `summary()` 
-summary(reviews)
-
-# Explore the `users` data set with `summary()` 
-summary(users)
-
-# Explore the `businesses` data set with `summary()` 
-summary(businesses)
-
+# Read Indian names into a list
+indian_names <- scan("indian_names.txt", what = character())
 ```
 
 *** =sct
