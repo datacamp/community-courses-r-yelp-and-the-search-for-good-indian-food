@@ -249,8 +249,8 @@ indian <- subset(rub, is_indian == TRUE)
 *** =sct
 ```{r,eval=FALSE}
 # first instruction
-msg1 = "Although there are many ways to achieve this, try using grepl and if you are having trouble type ?grepl in the console for more information."
-test_output_contains("rub$is_indian <- grepl('Indian', rub$categories) == TRUE", incorrect_msg = "Although there are many ways to achieve this, try using grepl and if you are having trouble type ?grepl in the console for more information.")
+msg1 = "Although there are many ways to achieve this, try using grepl and if you are having trouble type ?grepl in the console for more information. Remember to search for Indian in the `categories` variable."
+test_output_contains("rub$is_indian <- grepl('Indian', rub$categories) == TRUE", incorrect_msg = msg1)
 test_function("grepl", args = c("pattern","x"), index = 1, incorrect_msg = msg1)
 
 # second instruction
