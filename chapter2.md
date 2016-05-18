@@ -30,7 +30,7 @@ You will load in a list of native Indians names that can be used to sort the nam
 *** =sample_code
 ```{r, eval = FALSE}
 # Read Indian names into a list
-indian_names <- load("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt")
+indian_names <- load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt"))
 ```
 
 *** =solution
