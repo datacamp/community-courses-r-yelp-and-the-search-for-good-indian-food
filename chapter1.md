@@ -77,7 +77,7 @@ They have been loaded into the environment already and are ready to be explored!
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/Springboard_Yelp_ch1ex1.Rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/Springboard.yelp.datasets.Rdata"))
 ```
 
 *** =sample_code
