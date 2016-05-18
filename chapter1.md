@@ -141,6 +141,7 @@ Once the data sets have been combined it can be helpful to explore the data some
 
 
 *** =instructions
+- Load `dplyr` to the enironment
 - Use `inner_join()` combine the `reviews` and `users` data set.
 - Assign new data frame to `ru`.
 - Use `inner_join()` combine the newly created `ru` and `businesses` data set
@@ -157,6 +158,7 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/dat
 
 *** =sample_code
 ```{r,eval=FALSE}
+# Make dplry package avaiable to use
 library(dplyr)
 
 # Combine the reviews and users data sets
