@@ -543,7 +543,7 @@ summary(new_rating_Indian)
 *** =solution
 ```{r,eval=FALSE}
 # Plot the distribution of changes to ratings 
-hist(new_rating_Indian$___, main = "Changes in Star Ratings", xlab = "Change")
+hist(new_rating_Indian$dif, main = "Changes in Star Ratings", xlab = "Change")
 
 # Plot the changes to per restaurant 
 qplot(reorder(new_rating_Indian$business_name,new_rating_Indian$dif),new_rating_Indian$dif, xlab = "", ylab = "Changes in Star Rating")
