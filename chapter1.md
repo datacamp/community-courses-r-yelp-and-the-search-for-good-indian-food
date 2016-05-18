@@ -152,7 +152,7 @@ Once the data sets have been combined it can be helpful to explore the data some
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course__/datasets/Springboard_Yelp_ch1ex1.Rdata.Rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course__/datasets/Springboard_Yelp_ch1ex1.Rdata"))
 ```
 
 *** =sample_code
