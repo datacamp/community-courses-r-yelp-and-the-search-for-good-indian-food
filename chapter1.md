@@ -197,7 +197,7 @@ test_output_contains("rub  <- inner_join(ru,businesses)", incorrect_msg = "Make 
 test_function("inner_join")
 
 # third instruction
-test_output_contains("summary(rub", incorrect_msg = "Somethings not right. Check your summary() code")
+test_output_contains("summary(rub)", incorrect_msg = "Somethings not right. Check your summary() code")
 test_function("summary")
 
 # General
