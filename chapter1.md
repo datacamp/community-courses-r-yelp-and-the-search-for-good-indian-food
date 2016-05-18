@@ -363,15 +363,15 @@ test_function("mean", args = c("x"), index = 1, incorrect_msg = "Something is wr
 
 # General
 test_error()
-success_msg("Good job! We've added a new coloumn to the data. Let's use it in the next exercise!")
+success_msg("Good job! We've created a data frame with the number of reviews per user. Let's use it in the next exercise!")
 
 ```
 
 --- type:NormalExercise xp:100 skills:1 key:30db019cde
 ## Review Modification Method I Cont.
-You can use the new data frame to create a weighted star rating. To do so we need to combine the `number_reviews_Indian` data frame with the `indian` data frame.
+Before you create the weighted star rating, add the new column with the numer of reviews per user to the larger data frame `indian` . 
 
-As before, we don't want any missing data within our data set, so we will use the `inner_join` function to merge all the rows that are in both the `number_reviews_Indian` and `indian` data frames.
+Just like an earlier exercise, we don't want any missing data within our data set, so we will use the `inner_join` function to merge all the rows that are in both the `number_reviews_Indian` and `indian` data frames.
 
 *** =instructions
 - Create a new data frame `indian_plus_number`
@@ -412,12 +412,13 @@ names(indian_plus_number)
 *** =sct
 ```{r,eval=FALSE}
 # first instruction
-test_output_contains("indian_plus_number <- inner_join(indian,number_reviews_Indian)", incorrect_msg = "Although there are many ways to achieve this, try using inner_join and if you are having trouble type ?inner_join in the console for more information.")
-test_function("inner_join")
+msg1 = "Although there are many ways to achieve this, try using inner_join and if you are having trouble type ?inner_join in the console for more information."
+test_function("inner_join",args = c("x","y"), index = 1, incorrect_msg = msg1)
+test_data_frame("indian_plus_number", incorrect_msg = "Your newly created data frame seems off. Reread the instructions and try again.")
 
 # second instruction
-test_output_contains("names(indian_plus_number)", incorrect_msg = "We know there are other ways to do this too, but names() can be quick and straight forward. If you are having trouble type ?names in the console for more information.")
-test_function("names")
+msg2 = "We know there are other ways to do this too, but names() can be quick and straight forward. If you are having trouble type ?names in the console for more information."
+test_function("names",args = c("x"), index = 1, incorrect_msg = msg2)
 
 # General
 test_error()
@@ -428,7 +429,7 @@ success_msg("Good job! We've added a new coloumn to the data. Let's use it in th
 --- type:NormalExercise xp:100 skills:1 key:3981380079
 ## Review Modification Method I Cont. 2
 
-With the combined data set we can now create weighted star reviews. To do this we will simply multiply the unweighted restaurant rating by the total number of reviews that particular user has given for that genre of cuisine. 
+Use the combined data set to create weighted star reviews for each user. To do this you will simply multiply the unweighted restaurant rating variable `stars` by the total number of reviews variable `total_reviews` for each user.
 
 This weighted star variable will allow us to generate weighted star reviews. 
 
@@ -437,8 +438,7 @@ Weighted star reviews for each restaurant is created by taking to sum of the `we
 
 *** =instructions
 - Create a new column `weighted_stars` in the `indian_plus_number` data frame
-- Use `select()`, `group_by()`, `%>%` and `summarize()` to generate new weighted ratings for each restaurant
-- Also create columns: `cnt = n()`, `avg = sum(stars) / cnt`, `dif = new - avg`
+- Use `select()`, `group_by()`, `%>%` and `summarize()` to generate new weighted ratings for each restaurant while also creatng columns: `cnt = n()`, `avg = sum(stars) / cnt`, `dif = new - avg`
 
 *** =hint
 - 
@@ -451,7 +451,7 @@ library(dplyr)
 
 *** =sample_code
 ```{r,eval=FALSE}
-# Generate "weighted_stars" 
+# Generate "weighted_stars" variable 
 indian_plus_number$___ <- indian_plus_number$stars * indian_plus_number$total_reviews
 
 # Create a new weighted rating for each restaurant (Note: package dplyr is available to use)
