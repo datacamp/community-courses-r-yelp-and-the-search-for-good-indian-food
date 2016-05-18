@@ -49,15 +49,11 @@ Just add a line of R code that calculates the sum of 8 and 15, just like the exa
 ```{r eval=FALSE}
 test_output_contains("12", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, just add another line that calculates the sum of 8 and 15.")
 
-#test_student_typed("3", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, #just add another line that calculates the sum of 8 and 15.")
-#test_student_typed("*", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, #just add another line that calculates the sum of 8 and 15.")
-#test_student_typed("4", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, #just add another line that calculates the sum of 8 and 15.")
+test_output_contains("3 * 4", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, just add another line that calculates the sum of 8 and 15.")
 
 test_output_contains("23", incorrect_msg = "Make sure to add a line of R code, that calculates the sum of 8 and 15. Do not start the line with a `#`, otherwise, your R code will not be executed!")
 
-#test_student_typed("8", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, #just add another line that calculates the sum of 8 and 15.")
-#test_student_typed("+", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, #just add another line that calculates the sum of 8 and 15.")
-#test_student_typed("15", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, #just add another line that calculates the sum of 8 and 15.")
+test_output_contains("8 + 15", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, just add another line that calculates the sum of 8 and 15.")
 
 success_msg("Awesome! See how the console shows the result of the R code you submitted? Now that you're familiar with the interface, let's get down to R business!")
 ```
@@ -507,10 +503,7 @@ success_msg("Good job! We've created weighted reveiws. Let's check them out in t
 ## Review Modification Method I Cont. 3
 
 Now that we have new weighted star reviews for our restaurants, let's see if we can detect the effects of the modifications. 
-Plot the distribution of the changes in the ratings. 
-
-
-
+To do so we will make use of some a general histogram plot and a `qplot` from the `ggplot2` package. These graphs will help us visualize the effect of our modification. Take note of the magnitudes of the changes and if there were any patterns in the distribution of the difference in star ratings.
 
 *** =instructions
 - Make `ggplot2` available in the environment 
@@ -519,7 +512,7 @@ Plot the distribution of the changes in the ratings.
 - Display the summary of the `new_rating_Indian` data frame 
 
 *** =hint
-- 
+- The `reorder()` function makes the graph a bit more appealing. If you need assistance type ?reorder into the console.
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -564,5 +557,21 @@ summary(new_rating_Indian)
 
 *** =sct
 ```{r,eval=FALSE}
+test_output_contains("library(ggplot2)", incorrect_msg = "Don't forget to run this code to be able to use the qplot funciton")
+
+test_output_contains("hist(new_rating_Indian$dif, main = "Changes in Star Ratings", xlab = "Change")
+", incorrect_msg = "Something isn't right with your histogram plot. Check your code and type ?hist if you need additional information type ?hist into the console.")
+test_function("hist")
+
+test_output_contains("qplot(reorder(new_rating_Indian$business_name,new_rating_Indian$dif),new_rating_Indian$dif, xlab = "", ylab = "Changes in Star Rating")", incorrect_msg = "Something isn't right with your qplot plot. Check your code and type ?qplot into your console if you need additionl information.")
+test_function("qplot")
+
+test_output_contains("summary(new_rating_Indian)", incorrect_msg = "Did you remember to run a summary of the final data frame. If you need help try pping ?summary into the console for more information.")
+test_function("summary")
+
+# General
+test_error()
+success_msg("Good job! We've modified the Yelp star reviews with on method continue to the next chapter for the second method!")
+
 
 ```
