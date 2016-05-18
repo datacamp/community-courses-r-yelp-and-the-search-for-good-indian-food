@@ -388,7 +388,6 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/dat
 library(dplyr)
 ```
 
-Ended SCTs here
 
 *** =sample_code
 ```{r,eval=FALSE}
@@ -454,7 +453,7 @@ library(dplyr)
 *** =sample_code
 ```{r,eval=FALSE}
 # Generate "weighted_stars" 
-indian_plus_number$weighted_stars <- indian_plus_number$stars * indian_plus_number$total_reviews
+indian_plus_number$___ <- indian_plus_number$stars * indian_plus_number$total_reviews
 
 # Create a new weighted rating for each restaurant (Note: package dplyr is available to use)
 new_rating_Indian <- indian_plus_number %>% 
@@ -462,7 +461,7 @@ new_rating_Indian <- indian_plus_number %>%
   group_by(city, business_name, avg_stars) %>%
   summarise(cnt = n(),
             avg = sum(stars) / cnt,
-            new = sum(weighted_stars) / sum(total_reviews),
+            new = sum(___) / sum(___),
             dif = new - avg)
 
 ```
@@ -489,6 +488,22 @@ new_rating_Indian <- indian_plus_number %>%
 
 *** =sct
 ```{r,eval=FALSE}
+test_output_contains("indian_plus_number$weighted_stars <- indian_plus_number$stars * indian_plus_number$tot_rev", incorrect_msg = "There are some issues with how you generated the weighted stars, check your code.")
+
+# second instruction
+test_output_contains("new_rating_Indian <- indian_plus_number %>% 
+  select(city, business_name, avg_stars, stars, total_reviews, weighted_stars) %>%
+  group_by(city, business_name, avg_stars) %>%
+  summarise(cnt = n(),
+            avg = sum(stars) / cnt,
+            new = sum(weighted_stars) / sum(total_reviews),
+            dif = new - avg)", 
+incorrect_msg = "We know there are other ways to do this too, but group_by, select and summarize can be quick and straight forward. If you are having trouble type ?dplyr in the console for more information.")
+test_function("group_by")
+
+# General
+test_error()
+success_msg("Good job! We've created weighted reveiws. Let's check them out in the next exercise!")
 
 ```
 
