@@ -264,7 +264,7 @@ success_msg("Good job! We've seen a little more about the data so now let's move
 
 Now that we have created a simplified data set and are almost ready to begin manipulating the reviews lets take a moment to explore the new data set and answer the following question.
 
-Take a look at the data set with `summary()` and see how many reviews does our data set contain?
+Take a look at the data set `indians` with `summary()` and see how many reviews does our data set contain?
 
 *** =instructions
 - 1456
