@@ -55,7 +55,7 @@ head(indian_names,10)
 *** =sct
 ```{r,eval=FALSE}
 # Fist instruction
-test_object("indian_names", incorrect_msg = "Something went wrong with loading the `indian_names`. Don't change the `sample_code` just remove the `#`.")
+test_object("indian_names", undefined_msg = "Something went wrong with loading the `indian_names`. Don't change the `sample_code` just remove the `#`.")
 
 # Second instruction
 test_function("head", args = c("x","n"), index = 1, incorrect_msg  = "Did you include the number of names you wanted to display?")
@@ -151,7 +151,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:b5f4ceb96c
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. The `subset` fuction will make this task simple, so subset the `indian` data set by defining the `select` argument within the `subset` function. You define the column to select from and with the `%in%` operator you can define what to look for.
