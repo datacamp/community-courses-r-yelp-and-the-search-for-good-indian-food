@@ -36,7 +36,7 @@ indian_names_url = url("http://s3.amazonaws.com/assets.datacamp.com/production/c
 #indian_names <- scan(indian_names_url, what = character())
 
 # Show the first 10 names from the indian_names list
-head(indian_names,___)
+head(indian_names, ___)
 
 ```
 
@@ -67,8 +67,80 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 
 --- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
+ 
+Now that you have a list of native Indian names, make sure that the list will do what you need it to. The list was taken from an online resouce and may contain names that don't make sense or aren't useful. 
+
+Take a look at the list and see if any names don't fit. 
+
+Looks like there are a few names that could select users that would be hard to tell whether they were native Indian or not. 
+
+The single character names like `A.`, `C.` or `K.` may select users that we don't want. You should remove those names from the list before using it to select the native Indian users.
+
+You can do this by finding a regular expression that will find all the names with a single character followed by a `.`. The regular expression `[A-z]\\.` should do the trick. Combine the regular expression with the `grep` function to locate the names that you want to eliminate. These locations can be used to eliminate just the names you don't want.
 
 
+*** =instructions
+- Use `grep` and the regular expression `[A-z]\\.` to locate the names you want to eliminate
+- Double check that those are the right names
+- Remove the unwanted names from the `indain_names` list
+- Display a table of the cleaned names list
+
+*** =hint
+When loading the names don't change the sample_code! Just remove the `#`
+
+*** =pre_exercise_code
+```{r,eval=FALSE}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.RData"))
+```
+
+*** =sample_code
+```{r, eval = FALSE}
+# Locate the names that you want to eliminate
+indian_names_remove = grep("[A-z]\\.",indian_names, perl = TRUE)
+
+# Check to make sure they are the correct names
+indian_names[indian_names_remove]
+
+# Eliminate them from the indian_names list
+indian_names_clean <- indian_names[-indian_names_remove]
+
+# Table
+table(indian_names_clean)
+
+#indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
+
+```
+
+*** =solution
+```{r,eval=FALSE}
+# Locate the names that you want to eliminate
+indian_names_remove = grep("[A-z]\\.",indian_names, perl = TRUE)
+
+# Check to make sure they are the correct names
+indian_names[indian_names_remove]
+
+# Eliminate them from the indian_names list
+indian_names_clean <- indian_names[-indian_names_remove]
+
+# Table
+table(indian_names_clean)
+
+#indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
+
+```
+
+*** =sct
+```{r,eval=FALSE}
+# Fist instruction
+
+# General
+test_error()
+success_msg("Well done! Now that your data is loaded in, you can start exploring it!")
+```
+
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
+## Finding Authentic Users
+ 
 
 *** =instructions
 - Use `scan()` to load in the `indian_names.txt` file
@@ -81,23 +153,25 @@ When loading the names don't change the sample_code! Just remove the `#`
 ```{r,eval=FALSE}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian.RData"))
 
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.RData"))
-```
 
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.RData"))
+
+
+indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
+```
 *** =sample_code
 ```{r, eval = FALSE}
 # Subset the `indian` data set to just the users with native Indian names
-authentic_users = subset(indian,indian$user_name %in% indian_names)
+authentic_users = subset(indian,indian$user_name %in% indian_names_clean)
 
 # Table
 table(authentic_users$user_name)
-
 ```
 
 *** =solution
 ```{r,eval=FALSE}
 # Subset the `indian` data set to just the users with native Indian names
-authentic_users = subset(indian,indian$user_name %in% indian_names)
+authentic_users = subset(indian,indian$user_name %in% indian_names_clean)
 
 # Table
 table(authentic_users$user_name)
@@ -111,6 +185,8 @@ table(authentic_users$user_name)
 test_error()
 success_msg("Well done! Now that your data is loaded in, you can start exploring it!")
 ```
+
+
 
 --- type:MultipleChoiceExercise xp:50 skills:1,3  key:f48b5ed8a3
 ## How Many Indian names?
