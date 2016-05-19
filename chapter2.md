@@ -80,6 +80,8 @@ When loading the names don't change the sample_code! Just remove the `#`
 *** =pre_exercise_code
 ```{r,eval=FALSE}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian.RData"))
+
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.RData"))
 ```
 
 *** =sample_code
@@ -141,7 +143,7 @@ test_mc(correct = 2, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:95913c1f43
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Creat Authentic Star Review
 
 
@@ -154,6 +156,8 @@ test_mc(correct = 2, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```{r,eval=FALSE}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian.RData"))
 
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.RData"))
+
 indian$reviewer_indian_name <- indian$user_name %in% indian_names
 ```
 
@@ -180,7 +184,7 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:b083a88989
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Generating Average Authenic User Star Review
 
 
@@ -193,6 +197,8 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 ```{r,eval=FALSE}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian.RData"))
 
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.RData"))
+
 indian$reviewer_indian_name <- indian$user_name %in% indian_names
 
 indian$istars <- indian$stars * indian$reviewer_indian_name
@@ -241,7 +247,7 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:8bed94f878
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Detecting Manipulation Effect 
 
 
@@ -286,3 +292,6 @@ summary(avg_review_indian$dif)
 test_error()
 success_msg("Well done! Now that your data is loaded in, you can start exploring it!")
 ```
+
+
+
