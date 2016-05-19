@@ -65,6 +65,7 @@ test_error()
 success_msg("Well done! Now that your data is loaded in, you can start exploring it!")
 ```
 
+
 --- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Cleaning the Names list
  
@@ -133,19 +134,30 @@ table(indian_names_clean)
 ```{r,eval=FALSE}
 # Fist instruction
 
+
+
+
+
+
 # General
 test_error()
 success_msg("Well done! Now that your data is loaded in, you can start exploring it!")
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:69423673cb
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
+You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. The `subset` fuction will make this task simple, so subset the `indian` data set by defining the `select` argument within the `subset` function. You define the column to select from and with the `%in%` operator you can define what to look for.
 
+After successfully subsetting the data, generate a table of the authentic Indian users to get a sense of the size of the data.
+
+Take a look at the number of users in each city. The `select`, `group_by`, `summarise` and `n()` functions of the `dplyr` package are great tools for quickly calculating the users in each city.  
+ 
 *** =instructions
-- Use `scan()` to load in the `indian_names.txt` file
-- Display the first 10 names with `head()`
+- Subset the `indian` data set to just the users with native Indian names. Use the operator `%in%` with the `indian_names_clean` data set as the sebset terms.
+- Generate a table of the `authentic_users`.
+- Display the total number of authentic users in each city. Use `select`, `group_by`, `summarise` and `n()`.
 
 *** =hint
 When loading the names don't change the sample_code! Just remove the `#`
@@ -166,6 +178,12 @@ authentic_users = subset(indian,indian$user_name %in% indian_names_clean)
 
 # Table
 table(authentic_users$user_name)
+
+# Find the number of users in each city
+number_authentic_city = authentic_users %>%
+  select(city,user_name) %>%
+  group_by(city) %>%
+  summarise(users = n())
 ```
 
 *** =solution
@@ -176,7 +194,7 @@ authentic_users = subset(indian,indian$user_name %in% indian_names_clean)
 # Table
 table(authentic_users$user_name)
 
-# Find the number of users
+# Find the number of users in each city
 number_authentic_city = authentic_users %>%
   select(city,user_name) %>%
   group_by(city) %>%
@@ -187,6 +205,10 @@ number_authentic_city = authentic_users %>%
 *** =sct
 ```{r,eval=FALSE}
 # Fist instruction
+
+
+
+
 
 # General
 test_error()
@@ -244,6 +266,11 @@ test_mc(correct = 2, feedback_msgs = c(msg1, msg2, msg3, msg4))
 
 
 
+
+
+
+
+
 *** =instructions
 
 *** =hint
@@ -257,7 +284,6 @@ names(authentic_users)
 
 *** =sample_code
 ```{r, eval = FALSE}
-names(authentic_users)
 # Generate new "immigrant" rating
 avg_review_indian <- authentic_users %>% 
     select(business_id, business_name, city, stars,
@@ -272,7 +298,6 @@ avg_review_indian <- authentic_users %>%
 *** =solution
 ```{r,eval=FALSE}
 # Generate new "immigrant" rating
-# Generate new "immigrant" rating
 avg_review_indian <- authentic_users %>% 
     select(business_id, business_name, city, stars,
          avg_stars, is_indian, user_name) %>%
@@ -280,13 +305,16 @@ avg_review_indian <- authentic_users %>%
     summarise(count = n(),
     new_stars = sum(stars) / count) %>%
     mutate(dif = new_stars - avg_stars)
-
-
 ```
 
 *** =sct
 ```{r,eval=FALSE}
 # Fist instruction
+
+
+
+
+
 
 # General
 test_error()
@@ -296,6 +324,9 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 
 --- type:NormalExercise xp:100 skills:1,3  key:03314d8871
 ## Detecting Manipulation Effect 
+
+
+
 
 
 
@@ -313,11 +344,9 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/dat
 *** =sample_code
 ```{r, eval = FALSE}
 # Plots
-#save(avg_review_indian, file = "avg_review_indian.RData")
-
-
 hist(avg_review_indian$avg_stars)
 hist(avg_review_indian$new_stars)
+
 # Find out extent of effect of new rating
 summary(avg_review_indian$dif)
 
@@ -329,23 +358,36 @@ qplot(reorder(avg_review_indian$business_name,avg_review_indian$dif),avg_review_
 
 # Display a summary of the 
 summary(avg_review_indian)
-
-
 ```
 
 *** =solution
 ```{r,eval=FALSE}
 # Plots
-hist(avg_review_indian$ias)
-hist(avg_review_indian$avg)
+hist(avg_review_indian$avg_stars)
+hist(avg_review_indian$new_stars)
 
 # Find out extent of effect of new rating
 summary(avg_review_indian$dif)
+
+# Plot the distribution of changes to ratings 
+hist(avg_review_indian$dif, main = "Changes in Star Ratings", xlab = "Change")
+
+# Plot the changes to per restaurant 
+qplot(reorder(avg_review_indian$business_name,avg_review_indian$dif),avg_review_indian$dif, xlab = "", ylab = "Changes in Star Rating")
+
+# Display a summary of the 
+summary(avg_review_indian)
 ```
 
 *** =sct
 ```{r,eval=FALSE}
 # Fist instruction
+
+
+
+
+
+
 
 # General
 test_error()
