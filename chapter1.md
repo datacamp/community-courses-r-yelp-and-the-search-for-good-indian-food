@@ -197,7 +197,7 @@ test_function("inner_join",args = c("x","y"), index = 1, incorrect_msg = msg1)
 msg2 <- "Make sure you combine the `ru` and `businesses` data sets"
 #test_output_contains("rub  <- inner_join(ru,businesses)", incorrect_msg = msg2)
 #test_function("inner_join",args = c("x","y"), index = 2, incorrect_msg = msg2)
-test_data_frame("ru", incorrect_msg = msg2)
+test_data_frame("ru", eq_condition = "equivalent",incorrect_msg = msg2)
 
 # third instruction
 msg3 <- "Somethings not right. Check your `summary()` code"
