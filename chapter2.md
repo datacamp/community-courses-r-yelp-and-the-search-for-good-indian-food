@@ -158,7 +158,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:f0146dd354
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. The `subset` fuction will make this task simple, so subset the `indian` data set by defining the `subset` argument within the `subset` function. You define the column to subset from witht the `subset` arguement and with the `%in%` operator you can define what to look for.
@@ -366,6 +366,8 @@ success_msg("Good job! We've created weighted reveiws. Let's check them out in t
 Now that you have created new average star reviews for our the authentic Indian users, let's see if you can detect the effects of the modifications. 
 
 To do so you will make use of some the `hist` plot and a `geom_bar()` from the `ggplot2` package. These graphs will help us visualize the effect of your modification. Take note of the magnitudes of the changes and if there were any patterns in the distribution of the difference in star ratings.
+
+The graphs will be rendered from the `avg_review_indian` data frame containing the `new_stars` and the `avg_stars` reviews.
 
 *** =instructions
 - Create a histogram of the `avg_stars` using the `hist()` function
