@@ -215,7 +215,7 @@ As you noticed with the summary of `rub` from the previous exerceise, the data s
 With that said, you need to filter out all of the non-Indian reviews. To do this you will use a combination of `grepl()` and `subset()` to create a binary true/false column indicating whether that review was for an Indian restaurant. This column will allow you to filter out all reviews that are not for Indian restaurants.
 
 *** =instructions
-- Create binary true/false column `is_indian` for Indian-only restaurant reviews using `grepl()`.
+- Create binary true/false column `is_indian` for Indian-only restaurant reviews using `grepl()` and the `categories` column.
 - Use `subset()` to filter out all non-Indian reviews and assign the remiaing reviews to data frame `indian`.
 
 *** =hint
