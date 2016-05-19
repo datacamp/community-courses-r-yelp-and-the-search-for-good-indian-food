@@ -158,7 +158,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:a1e47857b4
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. The `subset` fuction will make this task simple, so subset the `indian` data set by defining the `subset` argument within the `subset` function. You define the column to subset from witht the `subset` arguement and with the `%in%` operator you can define what to look for.
@@ -229,7 +229,7 @@ number_authentic_city
 test_function("subset", args = c("x","subset"),incorrect_msg = "Some thing went wrong with your `subset()`. Did you remember to add the data frame that the subset is coming from. The data frame `indians` should be included the first arguemnt.")
 
 # Second instruction
-test_output_contains("table(authentic_users$user_name)", not_called_msg = "Don't forget to remove the # before the sample_code." )
+test_output_contains("table(authentic_users$user_name)", incorrect_msg = "Don't forget to remove the # before the sample_code." )
 
 # Third instruction
 test_data_frame("number_authentic_city", undefined_msg = NULL, incorrect_msg = "Some thing went wrong with your `number_authentic_city` data frame. Look at the `sample_code` that was given. Hit the refresh button to see it again.")
