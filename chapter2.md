@@ -145,7 +145,7 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:d9aaade010
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. The `subset` fuction will make this task simple, so subset the `indian` data set by defining the `select` argument within the `subset` function. You define the column to select from and with the `%in%` operator you can define what to look for.
@@ -267,22 +267,19 @@ test_mc(correct = 2, feedback_msgs = c(msg1, msg2, msg3, msg4))
 --- type:NormalExercise xp:100 skills:1,3  key:50ac99f74a
 ## Generating Average Authenic User Star Review
 
+You've now selected your authentic Indian users and can use their reviews to generate average authentic star reviews! 
 
+There are many ways to do this but the `dplyr` package, as you have seen, has many great tools to quickly group data, add new columns and calculate new values. You will use the `select`, `group_by`, `summarise` and `mutate` to add new variables to larger data set. 
 
-
-
-
-
+You can use the `select` to choose the varibales you want in choose from to create the new variables. The `group_by()`, `%<%` and `summarized()` functions allow for separate calcualtions to be performed within the unique values of the variable being grouped. 
 
 *** =instructions
-avg_review_indian <- authentic_users %>% 
-    select(business_id, business_name, city, stars,
-         avg_stars, is_indian, user_name) %>%
-    group_by(city, business_name, avg_stars) %>%
-    summarise(count = n(),
-    new_stars = sum(stars) / count) %>%
-    mutate(dif = new_stars - avg_stars)
+- `group_by` the variables `city`, `business_name`, and `avg_stars`
+- Use the `count` fucntion to tally the number of reviews for that restaurant
+- Create a `new_stars` column using a `sum` of the `star` column
+- Using the `mutate` fuction add a `diff` variable by subtracting the `new_stars` column by the `avg_stars` column
 *** =hint
+- Don't remove any of the `%>%` operators and make sure you have one after each function
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -295,11 +292,18 @@ names(authentic_users)
 ```{r, eval = FALSE}
 # Generate new "immigrant" rating
 avg_review_indian <- authentic_users %>% 
-    select(business_id, business_name, city, stars,
-         avg_stars, is_indian, user_name) %>%
+    select(business_id, business_name, city, stars, avg_stars, is_indian, user_name) %>%
+
+# Group by the `city`, `Business_name` and `avg_stars` variables  
     group_by(city, business_name, avg_stars) %>%
+  
+# Tally the number of restaurants
     summarise(count = n(),
+              
+# Create a `new_stars` column
     new_stars = sum(stars) / count) %>%
+  
+# Mutate a column `dif` between the new authentic star rating and the overall average rating
     mutate(dif = new_stars - avg_stars)
 
 ```
