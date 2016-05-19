@@ -191,13 +191,12 @@ summary(rub)
 # first instruction
 msg1 <- "Make sure you combine the `reviews` and the `users` data sets first"
 #test_output_contains("ru  <- inner_join(reviews,users)", incorrect_msg = msg1)
-test_function("inner_join",args = c("x","y"), index = 1, incorrect_msg = msg1)
+#test_function("inner_join",args = c("x","y"), index = 1, incorrect_msg = msg1)
+test_data_frame("ru", eq_condition = "equal",incorrect_msg = msg1)
 
 # second instruction
-msg2 <- "Make sure you combine the `ru` and `businesses` data sets"
-#test_output_contains("rub  <- inner_join(ru,businesses)", incorrect_msg = msg2)
-#test_function("inner_join",args = c("x","y"), index = 2, incorrect_msg = msg2)
-test_data_frame("ru", eq_condition = "equals",incorrect_msg = msg2)
+msg2 <- "Make sure you combine the `ru` and `businesses` data sets in the correct order."
+test_data_frame("rub", eq_condition = "equal",incorrect_msg = msg2)
 
 # third instruction
 msg3 <- "Somethings not right. Check your `summary()` code"
