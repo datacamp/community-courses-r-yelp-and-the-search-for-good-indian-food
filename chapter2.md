@@ -166,12 +166,20 @@ indian$reviewer_indian_name <- indian$user_name %in% indian_names
 # Add field "reviewer_indian_name" to indian reviews if user name is in the list
 indian$istars <- indian$stars * indian$reviewer_indian_name
 
+# Table
+table(indian$reviewer_indian_name)
+
+
 ```
 
 *** =solution
 ```{r,eval=FALSE}
 # Add field "reviewer_indian_name" to indian reviews if user name is in the list
 indian$istars <- indian$stars * indian$reviewer_indian_name
+
+# Table
+table(indian$reviewer_indian_name)
+
 ```
 
 *** =sct
@@ -218,6 +226,10 @@ avg_review_indian <- indian %>%
             avg = sum(stars) / count,
             ias = sum(istars) / nin,
             dif = ias - avg)
+            
+# Table
+table(avg_review_indian$new)
+
 
 ```
 
@@ -234,6 +246,9 @@ avg_review_indian <- indian %>%
             avg = sum(stars) / count,
             ias = sum(istars) / nin,
             dif = ias - avg)
+            
+# Table
+table(avg_review_indian$new)
 
 ```
 
