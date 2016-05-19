@@ -383,8 +383,14 @@ Just like an earlier exercise, you don't want any missing data within our data s
 *** =pre_exercise_code
 ```{r,eval=FALSE}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian.RData"))
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/number_reviews_indian.RData"))
+
 library(dplyr)
+
+number_reviews_indian <- indian %>% 
+  select(user_id, user_name) %>%
+  group_by(user_id) %>% 
+  summarise(total_reviews = n())
+
 ```
 
 
@@ -469,10 +475,10 @@ new_review_indian <- indian_plus_number %>%
 
 *** =solution
 ```{r,eval=FALSE}
-# Generate "weighted_stars" for later calculation
+# Generate "weighted_stars" variable
 indian_plus_number$weighted_stars <- indian_plus_number$stars * indian_plus_number$total_reviews
 
-# Use "summarise" to generate a new rating for each restaurant
+# Create a new weighted rating for each restaurant (Note: package dplyr is available to use)
 new_review_indian <- indian_plus_number %>% 
   select(city, business_name, avg_stars, stars, total_reviews, weighted_stars) %>%
   group_by(city, business_name, avg_stars) %>%
