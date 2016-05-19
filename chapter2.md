@@ -158,7 +158,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:43f323329a
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. The `subset` fuction will make this task simple, so subset the `indian` data set by defining the `subset` argument within the `subset` function. You define the column to subset from witht the `subset` arguement and with the `%in%` operator you can define what to look for.
@@ -365,16 +365,16 @@ success_msg("Good job! We've created weighted reveiws. Let's check them out in t
 
 Now that you have created new average star reviews for our the authentic Indian users, let's see if you can detect the effects of the modifications. 
 
-To do so you will make use of some the `hist` plot and a `qplot` from the `ggplot2` package. These graphs will help us visualize the effect of your modification. Take note of the magnitudes of the changes and if there were any patterns in the distribution of the difference in star ratings.
+To do so you will make use of some the `hist` plot and a `geom_bar()` from the `ggplot2` package. These graphs will help us visualize the effect of your modification. Take note of the magnitudes of the changes and if there were any patterns in the distribution of the difference in star ratings.
 
 *** =instructions
 - Create a histogram of the `avg_stars` using the `hist()` function
 - Create a histogram of the `new_stars` using the `hist()` function
 - Plot the distribution of changes to ratings using the `hist()` function 
-- Plot the changes to per restaurant using `qplot()`. Using the `reorder()` function will make the data more astetically pleaseing. Reorder the `business_name`variable by the `dif` variable.
+- Plot the changes to per restaurant using `ggplot()` and `geom_bar()`. 
 
 *** =hint
-- Remember to remove the `#` from the code to run!
+- Remember to remove the `#` from the code to run! Don't change the `ggplot()` sample code.
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -398,7 +398,9 @@ avg_review_indian <- authentic_users %>%
     group_by(city, business_name, avg_stars) %>%
     summarise(count = n(),
     new_stars = sum(stars) / count) %>%
-    mutate(dif = new_stars - avg_stars)
+    mutate(dif = new_stars - avg_stars) %>%
+    ungroup() %>%
+    arrange(dif)
 
 library(ggplot2)
 ```
@@ -416,8 +418,9 @@ hist(avg_review_indian$___)
 hist(avg_review_indian$___, main = "Changes in Star Ratings", xlab = "Change")
 
 # Plot the changes to per restaurant 
-qplot(reorder(avg_review_indian$___,avg_review_indian$dif),avg_review_indian$___, xlab = "", ylab = "Changes in Star Rating")
-
+ggplot(avg_review_indian, aes(x=1:nrow(avg_review_indian), y=dif, fill=city)) +
+    geom_bar(stat="identity", position=position_dodge()) + 
+    theme_classic() + scale_fill_grey() + xlab("Businesses ID") + ylab("Change in Star Rating")
 
 ```
 
@@ -434,7 +437,9 @@ hist(avg_review_indian$new_stars)
 hist(avg_review_indian$dif, main = "Changes in Star Ratings", xlab = "Change")
 
 # Plot the changes to per restaurant 
-qplot(reorder(avg_review_indian$business_name,avg_review_indian$dif),avg_review_indian$dif, xlab = "", ylab = "Changes in Star Rating")
+ggplot(avg_review_indian, aes(x=1:nrow(avg_review_indian), y=dif, fill=city)) +
+    geom_bar(stat="identity", position=position_dodge()) + 
+    theme_classic() + scale_fill_grey() + xlab("Businesses ID") + ylab("Change in Star Rating")
 
 ```
 
