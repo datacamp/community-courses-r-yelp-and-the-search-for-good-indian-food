@@ -30,7 +30,7 @@ When loading the names don't change the sample_code! Just remove the `#`
 *** =sample_code
 ```{r, eval = FALSE}
 # This url contains the .txt file with Indian names. (Note: Don't change this code)
-indian_names_url = url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt")
+indian_names_url <-url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt")
 
 # Read Indian names into a list
 #indian_names <- scan(indian_names_url, what = character())
@@ -43,7 +43,7 @@ head(indian_names, ___)
 *** =solution
 ```{r,eval=FALSE}
 # This url contains the .txt file with Indian names. (Note: Don't change this code)
-indian_names_url = url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt")
+indian_names_url <-url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt")
 
 # Read Indian names into a list
 indian_names <- scan(indian_names_url, what = character())
@@ -87,7 +87,7 @@ You can do this by finding a regular expression that will find all the names wit
 - Display a table of the cleaned names list
 
 *** =hint
-When loading the names don't change the sample_code! Just remove the `#`
+When there is a `#` before the sample_code, don't change it, just remove the `#`
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -97,16 +97,16 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/dat
 *** =sample_code
 ```{r, eval = FALSE}
 # Locate the names that you want to eliminate
-indian_names_remove = grep("[A-z]\\.",indian_names, perl = TRUE)
+indian_names_remove <- grep("___",indian_names, perl = TRUE)
 
 # Check to make sure they are the correct names
-indian_names[indian_names_remove]
+#indian_names[indian_names_remove]
 
 # Eliminate them from the indian_names list
-indian_names_clean <- indian_names[-indian_names_remove]
+indian_names_clean <- indian_names[-____]
 
 # Table
-table(indian_names_clean)
+#table(indian_names_clean)
 
 #indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
 
@@ -115,7 +115,7 @@ table(indian_names_clean)
 *** =solution
 ```{r,eval=FALSE}
 # Locate the names that you want to eliminate
-indian_names_remove = grep("[A-z]\\.",indian_names, perl = TRUE)
+indian_names_remove <- grep("[A-z]\\.",indian_names, perl = TRUE)
 
 # Check to make sure they are the correct names
 indian_names[indian_names_remove]
@@ -133,19 +133,25 @@ table(indian_names_clean)
 *** =sct
 ```{r,eval=FALSE}
 # Fist instruction
+indian_names_remove <- grep("___",indian_names, perl = TRUE)
+test_function(grep, args = c("pattern","x","perl"), incorrect_msg = "Did you include the correct regular expression? Check the instructions for the right pattern.")
 
+# Second instruction
+test_output_contains("indian_names[indian_names_remove]", not_called_msg = "Just remove the # before the sample_code.")
 
+# Third instruction 
+test_output_contains("indian_names_clean <- indian_names[-indian_names_remove]", incorrect_msg = "Did you fill in the black space to remove the unwanted names?")
 
-
-
+# Fourth instruction
+test_function(table, not_called_msg = "Don't forget to remove the # before the sample_code.")
 
 # General
 test_error()
-success_msg("Well done! Now that your data is loaded in, you can start exploring it!")
+success_msg("Well done! You've removed the unwanted names now you can subset the reviews for the authentic users!")
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:7ec99e2225
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. The `subset` fuction will make this task simple, so subset the `indian` data set by defining the `select` argument within the `subset` function. You define the column to select from and with the `%in%` operator you can define what to look for.
@@ -176,13 +182,13 @@ indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
 ```{r, eval = FALSE, warning=FALSE}
 # The package `dplyr` is available to use
 # Subset the `indian` data set to just the users with native Indian names
-authentic_users = subset(indian,indian$user_name %in% indian_names_clean)
+authentic_users <- subset(indian,indian$user_name %in% indian_names_clean)
 
 # Table
 table(authentic_users$user_name)
 
 # Find the number of users in each city
-number_authentic_city = authentic_users %>%
+number_authentic_city <- authentic_users %>%
   select(city,user_name) %>%
   group_by(city) %>%
   summarise(users = n())
@@ -195,13 +201,13 @@ number_authentic_city = authentic_users %>%
 ```{r,eval=FALSE}
 # The package `dplyr` is available to use
 # Subset the `indian` data set to just the users with native Indian names
-authentic_users = subset(indian,indian$user_name %in% indian_names_clean)
+authentic_users <- subset(indian,indian$user_name %in% indian_names_clean)
 
 # Table
 table(authentic_users$user_name)
 
 # Find the number of users in each city
-number_authentic_city = authentic_users %>%
+number_authentic_city <- authentic_users %>%
   select(city,user_name) %>%
   group_by(city) %>%
   summarise(users = n())
@@ -248,11 +254,11 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/dat
 
 
 indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
-authentic_users = subset(indian,indian$user_name %in% indian_names_clean)
+authentic_users <- subset(indian,indian$user_name %in% indian_names_clean)
 
 library(dplyr)
 
-number_authentic_city = authentic_users %>%
+number_authentic_city <- authentic_users %>%
   select(city,user_name) %>%
   group_by(city) %>%
   summarise(users = n())
@@ -307,7 +313,7 @@ avg_review_indian <- authentic_users %>%
     summarise(count = n(),
               
 # Create a `new_stars` column
-    new_stars = sum(stars) / count) %>%
+    new_stars <- sum(stars) / count) %>%
   
 # Mutate a column `dif` between the new authentic star rating and the overall average rating
     mutate(dif = new_stars - avg_stars)
@@ -329,16 +335,15 @@ avg_review_indian <- authentic_users %>%
 
 *** =sct
 ```{r,eval=FALSE}
-# Fist instruction
+#first instruction
+test_data_frame("avg_review_indian", incorrect_msg = "There are some issues with how you generated the avg_review_indian, check your see if you changed any of the sample code.")
 
-
-
-
-
+# second instruction
+test_function("group_by",args = c(".data"), index = 1, incorrect_msg = "Did you group the correct variable?. Check your code and type ?group_by into the console for more information")
 
 # General
 test_error()
-success_msg("Well done! Now that your data is loaded in, you can start exploring it!")
+success_msg("Good job! We've created weighted reveiws. Let's check them out in the next exercise!")
 ```
 
 
@@ -368,16 +373,17 @@ library(ggplot2)
 ```{r, eval = FALSE}
 # The plotting package `ggplot2` is avaibale to use
 # Create a histogram of the avg_stars
-hist(avg_review_indian$avg_stars)
+hist(avg_review_indian$___)
 
 # Create a histogram of the new_stars
-hist(avg_review_indian$new_stars)
+hist(avg_review_indian$___)
 
 # Plot the distribution of changes to ratings 
-hist(avg_review_indian$dif, main = "Changes in Star Ratings", xlab = "Change")
+hist(avg_review_indian$___, main = "Changes in Star Ratings", xlab = "Change")
 
 # Plot the changes to per restaurant 
-qplot(reorder(avg_review_indian$business_name,avg_review_indian$dif),avg_review_indian$dif, xlab = "", ylab = "Changes in Star Rating")
+qplot(reorder(avg_review_indian$___,avg_review_indian$dif),avg_review_indian$___, xlab = "", ylab = "Changes in Star Rating")
+
 
 ```
 
@@ -401,6 +407,28 @@ qplot(reorder(avg_review_indian$business_name,avg_review_indian$dif),avg_review_
 *** =sct
 ```{r,eval=FALSE}
 # Fist instruction
+msg1 <- "Fill in the varaible that is the overall average star rating."
+test_function_v2("hist", "x", eval = FALSE, index = 1, 
+                 incorrect_msg = msg1)
+# second instruction
+msg2 <- "Fill in the varaible that is the new star rating."
+test_function_v2("hist", "x", eval = FALSE, index = 2, 
+                 incorrect_msg = msg2)
+
+# third instruction
+msg3 <- "Fill in the varaible that is the difference in star rating."
+test_function_v2("hist", "x", eval = FALSE, index = 3, 
+                 incorrect_msg = msg3)
+
+# fourth instruction
+msg4 <- "Something went wrong with the `qplot()` function. Did you reorder correctly? If you need assistance type ?reorcer in the console."
+test_function_v2("qplot", args = c("x","y"), eval = FALSE, index = 1, 
+                 incorrect_msg = msg4)
+
+# General
+test_error()
+success_msg("Good job! We've modified the Yelp star reviews with one method. Continue to the next chapter for the second method!")
+
 
 
 
