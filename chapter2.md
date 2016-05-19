@@ -146,7 +146,7 @@ test_mc(correct = 2, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
+--- type:NormalExercise xp:100 skills:1,3  key:50ac99f74a
 ## Generating Average Authenic User Star Review
 
 
@@ -203,7 +203,7 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
+--- type:NormalExercise xp:100 skills:1,3  key:03314d8871
 ## Detecting Manipulation Effect 
 
 
