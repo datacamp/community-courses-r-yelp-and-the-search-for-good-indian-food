@@ -138,7 +138,8 @@ test_error()
 success_msg("Well done! Now that your data is loaded in, you can start exploring it!")
 ```
 
---- type:NormalExercise xp:100 skills:1,3  key:deecf5df36
+
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 
@@ -185,7 +186,6 @@ table(authentic_users$user_name)
 test_error()
 success_msg("Well done! Now that your data is loaded in, you can start exploring it!")
 ```
-
 
 
 --- type:MultipleChoiceExercise xp:50 skills:1,3  key:f48b5ed8a3
