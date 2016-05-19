@@ -108,17 +108,17 @@ summary(businesses)
 *** =sct
 ```{r,eval=FALSE}
 # first instruction
-msg1 = "Did you remember to take a look at the `reviews` data set?"
+msg1 <- "Did you remember to take a look at the `reviews` data set?"
 #test_output_contains("summary(reviews)", incorrect_msg = msg1)
 test_function("summary",args = c("object"), index = 1, incorrect_msg = msg1)
 
 # second instruction
-msg2 = "Did you remember to take a look at the `users` data set?"
+msg2 <- "Did you remember to take a look at the `users` data set?"
 #test_output_contains("summary(users)", incorrect_msg = msg2)
 test_function("summary",args = c("object"),index = 2, incorrect_msg = msg2)
 
 # third instruction
-msg3 = "Did you remember to take a look at the `businesses` data set?"
+msg3 <- "Did you remember to take a look at the `businesses` data set?"
 #test_output_contains("summary(businesses)", incorrect_msg = msg3)
 test_function("summary",args = c("object"), index = 3, incorrect_msg = msg3)
 
@@ -189,17 +189,17 @@ summary(rub)
 *** =sct
 ```{r,eval=FALSE}
 # first instruction
-msg1 = "Make sure you combine the `reviews` and the `users` data sets first"
+msg1 <- "Make sure you combine the `reviews` and the `users` data sets first"
 #test_output_contains("ru  <- inner_join(reviews,users)", incorrect_msg = msg1)
 test_function("inner_join",args = c("x","y"), index = 1, incorrect_msg = msg1)
 
 # second instruction
-msg2 = "Make sure you combine the `ru` and `businesses` data sets"
+msg2 <- "Make sure you combine the `ru` and `businesses` data sets"
 #test_output_contains("rub  <- inner_join(ru,businesses)", incorrect_msg = msg2)
 test_function("inner_join",args = c("x","y"), index = 2, incorrect_msg = msg2)
 
 # third instruction
-msg3 = "Somethings not right. Check your `summary()` code"
+msg3 <- "Somethings not right. Check your `summary()` code"
 #test_output_contains("summary(rub)", incorrect_msg = msg3)
 test_function("summary",args = c("object"), index = 1, incorrect_msg = msg3)
 
@@ -221,7 +221,7 @@ With that said, you need to filter out all of the non-Indian reviews. To do this
 - Use `subset()` to filter out all non-Indian reviews and assign the remiaing reviews to data frame `indian`.
 
 *** =hint
-- Which column of the `rub` data set should we look for the type of food served at the restaurant
+- Which column of the `rub` data set should you look for the type of food served at the restaurant
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -244,17 +244,18 @@ rub$is_indian <- grepl("Indian", rub$categories) == TRUE
 
 # Select only reviews for Indian restaurants
 indian <- subset(rub, is_indian == TRUE)
+
 ```
 
 *** =sct
 ```{r,eval=FALSE}
 # first instruction
-msg1 = "Although there are many ways to achieve this, try using grepl and if you are having trouble type ?grepl in the console for more information. Remember to search for Indian in the `categories` variable."
+msg1 <- "Although there are many ways to achieve this, try using grepl and if you are having trouble type ?grepl in the console for more information. Remember to search for Indian in the `categories` variable."
 # test_output_contains("rub$is_indian <- grepl('Indian', rub$categories) == TRUE", incorrect_msg = msg1)
 test_function("grepl", args = c("pattern","x"), index = 1, incorrect_msg = msg1)
 
 # second instruction
-msg2 = "We know there are other ways to do this too, but subset can be quick and straight forward. If you are having trouble type ?subset in the console for more information."
+msg2 <- "We know there are other ways to do this too, but subset can be quick and straight forward. If you are having trouble type ?subset in the console for more information."
 test_function("subset", args = c("x","subset"), index = 1, incorrect_msg = msg2)
 test_object("indian", incorrect_msg = msg2)
 
@@ -372,14 +373,14 @@ success_msg("Good job! We've created a data frame with the number of reviews per
 
 Before you create the weighted star rating, add the `number_reviews_indian` to the larger data frame `indian`. 
 
-Just like an earlier exercise, we don't want any missing data within our data set, so we will use the `inner_join` function to merge all the rows that are in both the `number_reviews_indian` and `indian` data frames.
+Just like an earlier exercise, you don't want any missing data within our data set, so you will use the `inner_join` function to merge all the rows that are in both the `number_reviews_indian` and `indian` data frames.
 
 *** =instructions
 - Create a new data frame `indian_plus_number`
 - Display column names to ensure that the `total_reviews` column was added
 
 *** =hint
-- Which column of the `rub` data set should we look for the type of food served at the restaurant
+- Which column of the `rub` data set should you look for the type of food served at the restaurant
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -413,12 +414,12 @@ names(indian_plus_number)
 *** =sct
 ```{r,eval=FALSE}
 # first instruction
-msg1 = "Although there are many ways to achieve this, try using inner_join and if you are having trouble type ?inner_join in the console for more information."
+msg1 <- "Although there are many ways to achieve this, try using inner_join and if you are having trouble type ?inner_join in the console for more information."
 test_function("inner_join",args = c("x","y"), index = 1, incorrect_msg = msg1)
 test_data_frame("indian_plus_number", incorrect_msg = "Your newly created data frame seems off. Reread the instructions and try again.")
 
 # second instruction
-msg2 = "We know there are other ways to do this too, but names() can be quick and straight forward. If you are having trouble type ?names in the console for more information."
+msg2 <- "We know there are other ways to do this too, but names() can be quick and straight forward. If you are having trouble type ?names in the console for more information."
 test_function("names",args = c("x"), index = 1, incorrect_msg = msg2)
 
 # General
@@ -503,7 +504,7 @@ success_msg("Good job! We've created weighted reveiws. Let's check them out in t
 --- type:NormalExercise xp:100 skills:1 key:4ad4885c8d
 ## Detecting Modification Effects
 
-Now that we have new weighted star reviews for our restaurants, let's see if you can detect the effects of the modifications. 
+Now that you have new weighted star reviews for our restaurants, let's see if you can detect the effects of the modifications. 
 
 To do so you will make use of some a general `hist` plot and a `qplot` from the `ggplot2` package. These graphs will help us visualize the effect of your modification. Take note of the magnitudes of the changes and if there were any patterns in the distribution of the difference in star ratings.
 
