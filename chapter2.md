@@ -158,7 +158,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:d7a9cc60e7
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. The `subset` fuction will make this task simple, so subset the `indian` data set by defining the `subset` argument within the `subset` function. You define the column to subset from witht the `subset` arguement and with the `%in%` operator you can define what to look for.
@@ -329,16 +329,16 @@ number_authentic_city <- authentic_users %>%
 avg_review_indian <- authentic_users %>% 
     select(business_id, business_name, city, stars, avg_stars, is_indian, user_name) %>%
 
-# Group by the `city`, `Business_name` and `avg_stars` variables  
+    # Group by the `city`, `Business_name` and `avg_stars` variables  
     group_by(city, business_name, avg_stars) %>%
   
-# Tally the number of restaurants
+    # Tally the number of restaurants
     summarise(count = n(),
               
-# Create a `new_stars` column
+    # Create a `new_stars` column
     new_stars <- sum(stars) / count) %>%
   
-# Mutate a column `dif` between the new authentic star rating and the overall average rating
+    # Mutate a column `dif` between the new authentic star rating and the overall average rating
     mutate(dif = new_stars - avg_stars)
 
 ```
