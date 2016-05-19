@@ -158,7 +158,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:0b7021cd20
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. The `subset` fuction will make this task simple, so subset the `indian` data set by defining the `subset` argument within the `subset` function. You define the column to subset from witht the `subset` arguement and with the `%in%` operator you can define what to look for.
@@ -409,13 +409,13 @@ library(ggplot2)
 ```{r, eval = FALSE}
 # The plotting package `ggplot2` is avaibale to use
 # Create a histogram of the avg_stars
-hist(avg_review_indian$___)
+hist()
 
 # Create a histogram of the new_stars
-hist(avg_review_indian$___)
+hist()
 
 # Plot the distribution of changes to ratings 
-hist(avg_review_indian$___, main = "Changes in Star Ratings", xlab = "Change")
+hist(___, main = "Changes in Star Ratings", xlab = "Change")
 
 # Plot the changes to per restaurant 
 ggplot(avg_review_indian, aes(x=1:nrow(avg_review_indian), y=dif, fill=city)) +
