@@ -83,13 +83,13 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/dat
 *** =sample_code
 ```{r,eval=FALSE}
 # Explore the `reviews` data eset with `summary()` 
-summary(___)
+summary()
 
 # Explore the `users` data set with `summary()` 
-summary(___)
+summary()
 
 # Explore the `businesses` data set with `summary()` 
-summary(___)
+summary()
 ```
 
 *** =solution
@@ -110,17 +110,17 @@ summary(businesses)
 # first instruction
 msg1 <- "Did you remember to take a look at the `reviews` data set?"
 #test_output_contains("summary(reviews)", incorrect_msg = msg1)
-test_function("summary",args = c("object"), index = 1, incorrect_msg = msg1)
+test_function("summary",args = c("object"), index = 1, args_not_specified_msg = msg1)
 
 # second instruction
 msg2 <- "Did you remember to take a look at the `users` data set?"
 #test_output_contains("summary(users)", incorrect_msg = msg2)
-test_function("summary",args = c("object"),index = 2, incorrect_msg = msg2)
+test_function("summary",args = c("object"),index = 2, args_not_specified_msg = msg2)
 
 # third instruction
 msg3 <- "Did you remember to take a look at the `businesses` data set?"
 #test_output_contains("summary(businesses)", incorrect_msg = msg3)
-test_function("summary",args = c("object"), index = 3, incorrect_msg = msg3)
+test_function("summary",args = c("object"), index = 3, args_not_specified_msg = msg3)
 
 # General
 test_error()
@@ -424,7 +424,7 @@ test_data_frame("indian_plus_number", incorrect_msg = "Your newly created data f
 
 # second instruction
 msg2 <- "We know there are other ways to do this too, but names() can be quick and straight forward. If you are having trouble type ?names in the console for more information."
-test_function("names",args = c("x"), index = 1, incorrect_msg = msg2)
+test_function("names",args = c("x"), index = 1, not_called_msg = msg2)
 
 # General
 test_error()
