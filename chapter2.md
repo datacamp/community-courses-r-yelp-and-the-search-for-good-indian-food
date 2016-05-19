@@ -139,7 +139,7 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:fa346b3ce6
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 
@@ -219,6 +219,9 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/dat
 
 indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
 authentic_users = subset(indian,indian$user_name %in% indian_names_clean)
+
+library(dplyr)
+
 number_authentic_city = authentic_users %>%
   select(city,user_name) %>%
   group_by(city) %>%
