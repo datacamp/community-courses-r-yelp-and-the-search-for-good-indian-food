@@ -158,7 +158,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:26ec45e0af
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. The `subset` fuction will make this task simple, so subset the `indian` data set by defining the `subset` argument within the `subset` function. You define the column to subset from witht the `subset` arguement and with the `%in%` operator you can define what to look for.
@@ -378,7 +378,20 @@ To do so you will make use of some the `hist` plot and a `qplot` from the `ggplo
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/avg_review_indian.RData"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian.RData"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.RData"))
+
+
+indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
+authentic_users <- subset(indian,indian$user_name %in% indian_names_clean)
+
+library(dplyr)
+
+number_authentic_city <- authentic_users %>%
+  select(city,user_name) %>%
+  group_by(city) %>%
+  summarise(users = n())
+
 library(ggplot2)
 ```
 
