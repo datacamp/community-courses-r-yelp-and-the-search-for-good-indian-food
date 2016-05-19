@@ -87,7 +87,7 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/dat
 *** =sample_code
 ```{r, eval = FALSE}
 # Add field "reviewer_indian_name" to indian reviews if user name is in the list
-indian$reviewer_indian_name <- indian$user_name %in% inames
+indian$reviewer_indian_name <- indian$user_name %in% indian_names
 
 # Table
 table(indian$reviewer_indian_name)
