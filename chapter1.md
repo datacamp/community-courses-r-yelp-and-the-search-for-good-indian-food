@@ -445,10 +445,10 @@ Weighted star reviews for each restaurant is created by taking to sum of the `we
 *** =instructions
 - Create a new column `weighted_stars` in the `indian_plus_number` data frame
 - Use `select()`, `group_by()`, `%>%` and `summarize()` to generate new weighted ratings for each restaurant while also creatng columns: 
-  -`cnt = n()`, 
-  -`avg = sum(stars) / cnt`,  
-  -`new = sum(weighted_stars) / sum(total_reviews)`, 
-  -`dif = new - avg`
+  \n -`cnt = n()`, 
+  \n -`avg = sum(stars) / cnt`,  
+  \n -`new = sum(weighted_stars) / sum(total_reviews)`, 
+  \n -`dif = new - avg`
 
 *** =hint
 - 
