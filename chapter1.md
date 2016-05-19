@@ -469,7 +469,7 @@ new_review_indian <- indian_plus_number %>%
   summarise(cnt = ___,
             avg = sum(___) / ___,
             new = sum(___) / sum(___),
-            dif = (___ - ___)
+            dif = ___ - ___)
 
 
 
