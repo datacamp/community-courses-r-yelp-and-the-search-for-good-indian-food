@@ -86,22 +86,21 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/dat
 
 *** =sample_code
 ```{r, eval = FALSE}
-# Add field "reviewer_indian_name" to indian reviews if user name is in the list
-indian$reviewer_indian_name <- indian$user_name %in% indian_names
+# Subset the `indian` data set to just the users with native Indian names
+authentic_users = subset(indian,indian$user_name %in% indian_names)
 
 # Table
-table(indian$reviewer_indian_name)
+table(authentic_users$user_name)
 
 ```
 
 *** =solution
 ```{r,eval=FALSE}
-# Add field "reviewer_indian_name" to indian reviews if user name is in the list
-indian$reviewer_indian_name <- indian$user_name %in% indian_names
+# Subset the `indian` data set to just the users with native Indian names
+authentic_users = subset(indian,indian$user_name %in% indian_names)
 
 # Table
-table(indian$reviewer_indian_name)
-
+table(authentic_users$user_name)
 ```
 
 *** =sct
@@ -130,7 +129,7 @@ Take a look at the data set `indian` with `str()` and see how many reviews does 
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian.RData"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/authentic_users.RData"))
 ```
 
 *** =sct
@@ -143,56 +142,7 @@ test_mc(correct = 2, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:1def88f1d2
-## Creat Authentic Star Review
-
-
-
-*** =instructions
-
-*** =hint
-
-*** =pre_exercise_code
-```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian.RData"))
-
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.RData"))
-
-indian$reviewer_indian_name <- indian$user_name %in% indian_names
-```
-
-*** =sample_code
-```{r, eval = FALSE}
-# Add field "reviewer_indian_name" to indian reviews if user name is in the list
-indian$istars <- indian$stars * indian$reviewer_indian_name
-
-# Table
-table(indian$reviewer_indian_name)
-
-
-```
-
-*** =solution
-```{r,eval=FALSE}
-# Add field "reviewer_indian_name" to indian reviews if user name is in the list
-indian$istars <- indian$stars * indian$reviewer_indian_name
-
-# Table
-table(indian$reviewer_indian_name)
-
-```
-
-*** =sct
-```{r,eval=FALSE}
-# Fist instruction
-
-# General
-test_error()
-success_msg("Well done! Now that your data is loaded in, you can start exploring it!")
-```
-
-
---- type:NormalExercise xp:100 skills:1,3  key:fb85265752
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Generating Average Authenic User Star Review
 
 
@@ -204,51 +154,39 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 *** =pre_exercise_code
 ```{r,eval=FALSE}
 library(dplyr)
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian.RData"))
-
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.RData"))
-
-indian$reviewer_indian_name <- indian$user_name %in% indian_names
-
-indian$istars <- indian$stars * indian$reviewer_indian_name
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/authentic_users.RData"))
+names(authentic_users)
 ```
 
 *** =sample_code
 ```{r, eval = FALSE}
 # Generate new "immigrant" rating
-avg_review_indian <- indian %>% 
+avg_review_indian <- authentic_users %>% 
   select(business_id, business_name, city, stars, 
-  avg_stars, reviewer_indian_name, is_indian, istars) %>%
+  avg_stars, is_indian, istars) %>%
   group_by(city, business_name, avg_stars) %>%
   summarise(count = n(),
-            nin = sum(reviewer_indian_name),
-            pin = sum(reviewer_indian_name) / n(),
+            nin = sum(user_name),
+            pin = sum(user_name) / n(),
             avg = sum(stars) / count,
             ias = sum(istars) / nin,
             dif = ias - avg)
-            
-# Table
-table(avg_review_indian$new)
-
 
 ```
 
 *** =solution
 ```{r,eval=FALSE}
 # Generate new "immigrant" rating
-avg_review_indian <- indian %>% 
+avg_review_indian <- authentic_users %>% 
   select(business_id, business_name, city, stars, 
-  avg_stars, reviewer_indian_name, is_indian, istars) %>%
+  avg_stars, is_indian, istars) %>%
   group_by(city, business_name, avg_stars) %>%
   summarise(count = n(),
-            nin = sum(reviewer_indian_name),
-            pin = sum(reviewer_indian_name) / n(),
+            nin = sum(user_name),
+            pin = sum(user_name) / n(),
             avg = sum(stars) / count,
             ias = sum(istars) / nin,
             dif = ias - avg)
-            
-# Table
-table(avg_review_indian$new)
 
 ```
 
@@ -262,7 +200,7 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:7be8970762
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Detecting Manipulation Effect 
 
 
