@@ -143,7 +143,7 @@ test_mc(correct = 2, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:c52eb39afa
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Creat Authentic Star Review
 
 
@@ -184,7 +184,7 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:4479e87694
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Generating Average Authenic User Star Review
 
 
@@ -195,6 +195,7 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
+library(dplyr)
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian.RData"))
 
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.RData"))
@@ -247,7 +248,7 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:85e0594514
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Detecting Manipulation Effect 
 
 
