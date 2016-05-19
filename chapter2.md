@@ -66,7 +66,7 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 ```
 
 --- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
-## Finding Authentic Users
+## Cleaning the Names list
  
 Now that you have a list of native Indian names, make sure that the list will do what you need it to. The list was taken from an online resouce and may contain names that don't make sense or aren't useful. 
 
@@ -138,7 +138,7 @@ test_error()
 success_msg("Well done! Now that your data is loaded in, you can start exploring it!")
 ```
 
---- type:NormalExercise xp:100 skills:1,3  key:cec472ee32
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 
