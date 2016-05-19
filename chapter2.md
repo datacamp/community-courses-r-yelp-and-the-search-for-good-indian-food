@@ -158,7 +158,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:cd15cb165b
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. The `subset` fuction will make this task simple, so subset the `indian` data set by defining the `subset` argument within the `subset` function. You define the column to subset from witht the `subset` arguement and with the `%in%` operator you can define what to look for.
@@ -299,7 +299,7 @@ You can use the `select` to choose the varibales you want in choose from to crea
 
 *** =instructions
 - Generate a data frame `avg_review_indian` using tools from `dplyr`
-<p>- `group_by` the variables `city`, `business_name`, and `avg_stars`</p><p>- Use the `count` fucntion to tally the number of reviews for that restaurant</p><p>- Create a `new_stars` column using a `sum` of the `star` column</p><p>- Using the `mutate` fuction add a `diff` variable by subtracting the `new_stars` column by the `avg_stars` column
+<p>- `group_by` the variables `city`, `business_name`, and `avg_stars`</p><p>- Use the `n()` fucntion to tally the number of reviews for that restaurant</p><p>- Create a `new_stars` column using a `sum` of the `star` column</p><p>- Using the `mutate` fuction add a `diff` variable by subtracting the `new_stars` column by the `avg_stars` column
 *** =hint
 - Don't remove any of the `%>%` operators and make sure you have one after each function
 
