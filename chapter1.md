@@ -453,6 +453,8 @@ Weighted star reviews for each restaurant is created by taking to sum of the `we
 ```{r,eval=FALSE}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_plus_number.RData"))
 library(dplyr)
+
+
 ```
 
 *** =sample_code
