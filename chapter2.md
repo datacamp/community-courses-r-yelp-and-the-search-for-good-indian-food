@@ -139,7 +139,7 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:bf8ee8bcec
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 
@@ -153,10 +153,9 @@ When loading the names don't change the sample_code! Just remove the `#`
 *** =pre_exercise_code
 ```{r,eval=FALSE}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian.RData"))
-
-
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.RData"))
 
+library(dplyr)
 
 indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
 ```
@@ -176,6 +175,13 @@ authentic_users = subset(indian,indian$user_name %in% indian_names_clean)
 
 # Table
 table(authentic_users$user_name)
+
+# Find the number of users
+number_authentic_city = authentic_users %>%
+  select(city,user_name) %>%
+  group_by(city) %>%
+  summarise(users = n())
+
 ```
 
 *** =sct
@@ -189,33 +195,41 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 
 
 --- type:MultipleChoiceExercise xp:50 skills:1,3  key:f48b5ed8a3
-## How Many Indian names?
+## How Many Authentic Users?
 
-Now that you have created a simplified data set and are almost ready to begin manipulating the reviews take a moment to explore the new data set and answer the following question.
+Now that you have selected just the users with native Indian names you are ready to begin manipulate the reviews. Before you do, take a moment to explore the new data set and answer the following question.
 
-Take a look at the data set `indian` with `str()` and see how many reviews does our data set contain?
+Take a look at the `authentic_uers` and `number_authentic_city` data sets with `str()` or `summary` and then calculate the total number of authentic users.
 
 *** =instructions
 - 67
-- 76
+- 91
 - 56
 - 121
   
 *** =hint
+- a simple sum of the `number_authentic_city$users` would tell you the total users
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
 
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_users.RData"))
-save(authentic_users, file = "indian_users.RData")
-load("indian_users.RData")
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian.RData"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.RData"))
+
+
+indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
+authentic_users = subset(indian,indian$user_name %in% indian_names_clean)
+number_authentic_city = authentic_users %>%
+  select(city,user_name) %>%
+  group_by(city) %>%
+  summarise(users = n())
 
 ```
 
 *** =sct
 ```{r,eval=FALSE}
 msg1 <- "Try again!"
-msg2 <- "Very good! You found the total. Let's user their star reviews!"
+msg2 <- "Very good! You found the total. Let's move on to calculating the authentic star reviews!"
 msg3 <- "Incorrect. Maybe have a look at the hint."
 msg4 <- "Not so good... Maybe have a look at the hint."
 test_mc(correct = 2, feedback_msgs = c(msg1, msg2, msg3, msg4))
@@ -240,17 +254,15 @@ names(authentic_users)
 
 *** =sample_code
 ```{r, eval = FALSE}
+names(authentic_users)
 # Generate new "immigrant" rating
 avg_review_indian <- authentic_users %>% 
-  select(business_id, business_name, city, stars, 
-  avg_stars, is_indian, istars) %>%
-  group_by(city, business_name, avg_stars) %>%
-  summarise(count = n(),
-            nin = sum(user_name),
-            pin = sum(user_name) / n(),
-            avg = sum(stars) / count,
-            ias = sum(istars) / nin,
-            dif = ias - avg)
+    select(business_id, business_name, city, stars,
+         avg_stars, is_indian, user_name) %>%
+    group_by(city, business_name, avg_stars) %>%
+    summarise(count = n(),
+    new_stars = sum(stars) / count) %>%
+    mutate(dif = new_stars - avg_stars)
 
 ```
 
@@ -307,7 +319,7 @@ hist(avg_review_indian$new_stars)
 summary(avg_review_indian$dif)
 
 # Plot the distribution of changes to ratings 
-hist(new_review_indian$dif, main = "Changes in Star Ratings", xlab = "Change")
+hist(avg_review_indian$dif, main = "Changes in Star Ratings", xlab = "Change")
 
 # Plot the changes to per restaurant 
 qplot(reorder(avg_review_indian$business_name,avg_review_indian$dif),avg_review_indian$dif, xlab = "", ylab = "Changes in Star Rating")
