@@ -129,7 +129,11 @@ Take a look at the data set `indian` with `str()` and see how many reviews does 
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/authentic_users.RData"))
+
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_users.RData"))
+save(authentic_users, file = "indian_users.RData")
+load("indian_users.RData")
+
 ```
 
 *** =sct
@@ -142,7 +146,7 @@ test_mc(correct = 2, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:16969f799d
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Generating Average Authenic User Star Review
 
 
@@ -177,16 +181,15 @@ avg_review_indian <- authentic_users %>%
 *** =solution
 ```{r,eval=FALSE}
 # Generate new "immigrant" rating
+# Generate new "immigrant" rating
 avg_review_indian <- authentic_users %>% 
-  select(business_id, business_name, city, stars, 
-  avg_stars, is_indian, istars) %>%
-  group_by(city, business_name, avg_stars) %>%
-  summarise(count = n(),
-            nin = sum(user_name),
-            pin = sum(user_name) / n(),
-            avg = sum(stars) / count,
-            ias = sum(istars) / nin,
-            dif = ias - avg)
+    select(business_id, business_name, city, stars,
+         avg_stars, is_indian, user_name) %>%
+    group_by(city, business_name, avg_stars) %>%
+    summarise(count = n(),
+    new_stars = sum(stars) / count) %>%
+    mutate(dif = new_stars - avg_stars)
+
 
 ```
 
@@ -200,7 +203,7 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:65db062217
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Detecting Manipulation Effect 
 
 
@@ -219,11 +222,23 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/dat
 *** =sample_code
 ```{r, eval = FALSE}
 # Plots
-hist(avg_review_indian$ias)
-hist(avg_review_indian$avg)
+#save(avg_review_indian, file = "avg_review_indian.RData")
 
+
+hist(avg_review_indian$avg_stars)
+hist(avg_review_indian$new_stars)
 # Find out extent of effect of new rating
 summary(avg_review_indian$dif)
+
+# Plot the distribution of changes to ratings 
+hist(new_review_indian$dif, main = "Changes in Star Ratings", xlab = "Change")
+
+# Plot the changes to per restaurant 
+qplot(reorder(avg_review_indian$business_name,avg_review_indian$dif),avg_review_indian$dif, xlab = "", ylab = "Changes in Star Rating")
+
+# Display a summary of the 
+summary(avg_review_indian)
+
 
 ```
 
