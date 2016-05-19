@@ -82,7 +82,7 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/dat
 
 *** =sample_code
 ```{r,eval=FALSE}
-# Explore the `reviews` data set with `summary()` 
+# Explore the `reviews` data eset with `summary()` 
 summary(___)
 
 # Explore the `users` data set with `summary()` 
@@ -153,7 +153,7 @@ Once the data sets have been combined it can be helpful to explore the data some
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/Springboard_Yelp_ch1ex1.Rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/Springboard.yelp.datasets.Rdata"))
 ```
 
 *** =sample_code
@@ -305,7 +305,7 @@ The new data frame will be created using the `select()`, `group_by()`, `%>%` and
 After making the data frame, explore it! Check out the range in numbers of reviews and also the average number of reviews per user.  
 
 *** =instructions
-- Create a new data frame `number_reviews_Indian` by selecting columns: `user_id`, `user_name`, using `group_by` variable `user_id` and  `summarize()` with `n()` to create `total_reviews` column
+- Create a new data frame `number_reviews_indian` by selecting columns: `user_id`, `user_name`, using `group_by` variable `user_id` and  `summarize()` with `n()` to create `total_reviews` column
 - Print the table of `total_reviews`
 - Show the average number of reviews per users by averaging the `total_reviews`
 
@@ -322,38 +322,38 @@ library(dplyr)
 ```{r,eval=FALSE}
 # The package dplyr is available ot use
 # Generate a new data frame with the number of reviews by each reviewer
-number_reviews_Indian <- indian %>% 
+number_reviews_indian <- indian %>% 
   select(___, ___) %>%
   group_by(___) %>% 
   summarise(total_reviews = n())
 
 # Print the table of total_reviews
-table(number_reviews_Indian$___)
+table(number_reviews_indian$___)
 
 # Pring the avergare number of reviews per users
-mean(number_reviews_Indian$___)
+mean(number_reviews_indian$___)
 ```
 
 *** =solution
 ```{r,eval=FALSE}
 # The package dplyr is available ot use
 # Generate a summary of # of reviews of that cuisine done by each reviewer
-number_reviews_Indian <- indian %>% 
+number_reviews_indian <- indian %>% 
   select(user_id, user_name) %>%
   group_by(user_id) %>% 
   summarise(total_reviews = n())
 
 # Print the table of total_reviews
-table(number_reviews_Indian$total_reviews)
+table(number_reviews_indian$total_reviews)
 
 # Pring the avergare number of reviews per users
-mean(number_reviews_Indian$total_reviews)
+mean(number_reviews_indian$total_reviews)
 ```
 
 *** =sct
 ```{r,eval=FALSE}
 # first instruction
-test_data_frame("number_reviews_Indian", incorrect_msg = "Although this is not the only way to accomplish this task, using the dplry package is very efficient. If you are having trouble type ?dplyr in the console for more information.")
+test_data_frame("number_reviews_indian", incorrect_msg = "Although this is not the only way to accomplish this task, using the dplry package is very efficient. If you are having trouble type ?dplyr in the console for more information.")
 
 # second instruction
 test_function("table", index = 1, incorrect_msg = "Something is wrong with your table. Check your code and type ?table into the console for more information")
@@ -372,7 +372,7 @@ success_msg("Good job! We've created a data frame with the number of reviews per
 
 Before you create the weighted star rating, add the `number_reviews_indian` to the larger data frame `indian`. 
 
-Just like an earlier exercise, we don't want any missing data within our data set, so we will use the `inner_join` function to merge all the rows that are in both the `number_reviews_Indian` and `indian` data frames.
+Just like an earlier exercise, we don't want any missing data within our data set, so we will use the `inner_join` function to merge all the rows that are in both the `number_reviews_indian` and `indian` data frames.
 
 *** =instructions
 - Create a new data frame `indian_plus_number`
@@ -384,7 +384,7 @@ Just like an earlier exercise, we don't want any missing data within our data se
 *** =pre_exercise_code
 ```{r,eval=FALSE}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian.RData"))
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/number_reviews_Indian.RData"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/number_reviews_indian.RData"))
 library(dplyr)
 ```
 
@@ -393,7 +393,7 @@ library(dplyr)
 ```{r,eval=FALSE}
 # The package dplyr is available to use
 # Combine number of Indian reviews with original data frame of Indian restaurant reviews
-indian_plus_number <- inner_join(___,number_reviews_Indian)
+indian_plus_number <- inner_join(___,number_reviews_indian)
 
 # Display column names for the new data frame
 indian_plus_number
@@ -403,7 +403,7 @@ indian_plus_number
 ```{r,eval=FALSE}
 # The package dplyr is available to use
 # Combine number of Indian reviews with original data frame of indian restaurant reviews
-indian_plus_number <- inner_join(indian, number_reviews_Indian)
+indian_plus_number <- inner_join(indian, number_reviews_indian)
 
 # Display column names for the new data frame
 names(indian_plus_number)
@@ -456,13 +456,15 @@ library(dplyr)
 indian_plus_number$___ <- indian_plus_number$stars * indian_plus_number$total_reviews
 
 # Create a new weighted rating for each restaurant (Note: package dplyr is available to use)
-new_rating_Indian <- indian_plus_number %>% 
+new_review_indian <- indian_plus_number %>% 
   select(city, business_name, avg_stars, stars, total_reviews, weighted_stars) %>%
   group_by(city, business_name, avg_stars) %>%
   summarise(cnt = n(),
             avg = sum(stars) / cnt,
             new = sum(___) / sum(___),
-            dif = new - avg)
+            dif = (new - avg)
+
+
 
 ```
 
@@ -472,7 +474,7 @@ new_rating_Indian <- indian_plus_number %>%
 indian_plus_number$weighted_stars <- indian_plus_number$stars * indian_plus_number$total_reviews
 
 # Use "summarise" to generate a new rating for each restaurant
-new_rating_Indian <- indian_plus_number %>% 
+new_review_indian <- indian_plus_number %>% 
   select(city, business_name, avg_stars, stars, total_reviews, weighted_stars) %>%
   group_by(city, business_name, avg_stars) %>%
   summarise(cnt = n(),
@@ -488,7 +490,7 @@ new_rating_Indian <- indian_plus_number %>%
 test_data_frame("indian_plus_number", incorrect_msg = "There are some issues with how you generated the weighted stars, check your code.")
 
 # second instruction
-test_data_frame("new_rating_Indian", incorrect_msg = "The new data frame `new_rating_Indian` is not correct. If you are having trouble type ?dplyr in the console for more information.")
+test_data_frame("new_review_indian", incorrect_msg = "The new data frame `new_review_indian` is not correct. If you are having trouble type ?dplyr in the console for more information.")
 
 test_function("group_by",args = c(".data"), index = 1, incorrect_msg = "Did you group the correct variable?. Check your code and type ?group_by into the console for more information")
 
@@ -505,20 +507,20 @@ Now that we have new weighted star reviews for our restaurants, let's see if you
 
 To do so you will make use of some a general `hist` plot and a `qplot` from the `ggplot2` package. These graphs will help us visualize the effect of your modification. Take note of the magnitudes of the changes and if there were any patterns in the distribution of the difference in star ratings.
 
-A final summary of the `new_rating_Indian` will give context to how the reviews changed as well.
+A final summary of the `new_review_indian` will give context to how the reviews changed as well.
 
 *** =instructions
 - Make `ggplot2` available in the environment 
-- Use `hist()` function and the `new_rating_Indian$dif` column to create the plot of the distribution.
-- Use `qplot()`, `new_rating_Indian$business_name` and `new_rating_Indian$dif` for the plot of the difference in star rating per restaurant. To create a more appealing graph use `reorder()` to order of changes from least to greatest. 
-- Display the summary of the `new_rating_Indian` data frame 
+- Use `hist()` function and the `new_review_indian$dif` column to create the plot of the distribution.
+- Use `qplot()`, `new_review_indian$business_name` and `new_review_indian$dif` for the plot of the difference in star rating per restaurant. To create a more appealing graph use `reorder()` to order of changes from least to greatest. 
+- Display the summary of the `new_review_indian` data frame 
 
 *** =hint
 - The `reorder()` function makes the graph a bit more appealing. If you need assistance type ?reorder into the console.
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/new_rating_Indian.Rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/new_review_indian.Rdata"))
 ```
 
 *** =sample_code
@@ -527,10 +529,10 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/dat
 library(ggplot2)
 
 # Plot the distribution of changes to ratings 
-hist(new_rating_Indian$___, main = "Changes in Star Ratings", xlab = "Change")
+hist(new_review_indian$___, main = "Changes in Star Ratings", xlab = "Change")
 
 # Plot the changes in rating per restaurant 
-qplot(reorder(new_rating_Indian$business_name,new_rating_Indian$dif),new_rating_Indian$__, xlab = "", ylab = "Changes in Star Rating")
+qplot(reorder(new_review_indian$business_name,new_review_indian$dif),new_review_indian$__, xlab = "", ylab = "Changes in Star Rating")
 
 # Display a summary of the 
 summary(___)
@@ -543,13 +545,13 @@ summary(___)
 library(ggplot2)
 
 # Plot the distribution of changes to ratings 
-hist(new_rating_Indian$dif, main = "Changes in Star Ratings", xlab = "Change")
+hist(new_review_indian$dif, main = "Changes in Star Ratings", xlab = "Change")
 
 # Plot the changes to per restaurant 
-qplot(reorder(new_rating_Indian$business_name,new_rating_Indian$dif),new_rating_Indian$dif, xlab = "", ylab = "Changes in Star Rating")
+qplot(reorder(new_review_indian$business_name,new_review_indian$dif),new_review_indian$dif, xlab = "", ylab = "Changes in Star Rating")
 
 # Display a summary of the 
-summary(new_rating_Indian)
+summary(new_review_indian)
 
 ```
 
