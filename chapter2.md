@@ -158,7 +158,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:74ac900dea
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. The `subset` fuction will make this task simple, so subset the `indian` data set by defining the `subset` argument within the `subset` function. You define the column to subset from witht the `subset` arguement and with the `%in%` operator you can define what to look for.
@@ -448,20 +448,20 @@ ggplot(avg_review_indian, aes(x=1:nrow(avg_review_indian), y=dif, fill=city)) +
 # Fist instruction
 msg1 <- "Fill in the varaible that is the overall average star rating."
 test_function_v2("hist", "x", eval = FALSE, index = 1, 
-                 incorrect_msg = msg1)
+                 args_not_specified_msg = msg1)
 # second instruction
 msg2 <- "Fill in the varaible that is the new star rating."
 test_function_v2("hist", "x", eval = FALSE, index = 2, 
-                 incorrect_msg = msg2)
+                 args_not_specified_msg = msg2)
 
 # third instruction
 msg3 <- "Fill in the varaible that is the difference in star rating."
 test_function_v2("hist", "x", eval = FALSE, index = 3, 
-                 incorrect_msg = msg3)
+                 args_not_specified_msg = msg3)
 
 # fourth instruction
-msg4 <- "Something went wrong with the `qplot()` function. Did you reorder correctly? If you need assistance type ?reorcer in the console."
-test_function_v2("qplot", args = c("x","y"), eval = FALSE, index = 1, 
+msg4 <- "Something went wrong with the `ggplot()` function. Remember to not change any of the sample code."
+test_function_v2("ggplot", eval = FALSE, index = 1, 
                  incorrect_msg = msg4)
 
 # General
