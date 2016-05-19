@@ -225,7 +225,7 @@ With that said, you need to filter out all of the non-Indian reviews. To do this
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/rub.RData"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/rub.RData"))
 ```
 
 *** =sample_code
@@ -281,7 +281,7 @@ Take a look at the data set `indian` with `str()` and see how many reviews does 
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian.RData"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian.RData"))
 ```
 
 *** =sct
@@ -314,7 +314,7 @@ After making the data frame, explore it! Check out the range in numbers of revie
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian.RData"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian.RData"))
 library(dplyr)
 ```
 
@@ -383,8 +383,8 @@ Just like an earlier exercise, we don't want any missing data within our data se
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian.RData"))
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/number_reviews_indian.RData"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian.RData"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/number_reviews_indian.RData"))
 library(dplyr)
 ```
 
