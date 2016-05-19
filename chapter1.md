@@ -457,7 +457,7 @@ library(dplyr)
 
 *** =sample_code
 ```{r,eval=FALSE}
-# Generate "weighted_stars" variable 
+# Generate weighted_stars variable 
 indian_plus_number$___ <- indian_plus_number$stars * indian_plus_number$total_reviews
 
 # Create a new weighted rating for each restaurant (Note: package dplyr is available to use)
@@ -475,7 +475,7 @@ new_review_indian <- indian_plus_number %>%
 
 *** =solution
 ```{r,eval=FALSE}
-# Generate "weighted_stars" variable
+# Generate weighted_stars variable
 indian_plus_number$weighted_stars <- indian_plus_number$stars * indian_plus_number$total_reviews
 
 # Create a new weighted rating for each restaurant (Note: package dplyr is available to use)
