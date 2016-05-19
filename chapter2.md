@@ -141,7 +141,6 @@ table(indian_names_clean)
 test_function("table", index = 1, not_called_msg = "You didn't show the table of indian names. Just remove the # before the sample_code.")
 
 # Second instruction
-indian_names_remove <- grep("___",indian_names, perl = TRUE)
 test_function(grep, args = c("pattern","x","perl"), incorrect_msg = "Did you include the correct regular expression? Check the instructions for the right pattern.")
 
 # Third instruction 
@@ -159,7 +158,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:c29ee9bfc9
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. The `subset` fuction will make this task simple, so subset the `indian` data set by defining the `select` argument within the `subset` function. You define the column to select from and with the `%in%` operator you can define what to look for.
@@ -443,6 +442,7 @@ test_function_v2("qplot", args = c("x","y"), eval = FALSE, index = 1,
 test_error()
 success_msg("Congradulations! You have finished the course and now know some good tools in R to manipulate data. You have also seen them work to solve an interesting problem! For more indepth coverage to the concepts in this course try our Premium courses!")
 ```
+
 
 
 
