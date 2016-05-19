@@ -151,7 +151,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:551ac8e3ac
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. The `subset` fuction will make this task simple, so subset the `indian` data set by defining the `select` argument within the `subset` function. You define the column to select from and with the `%in%` operator you can define what to look for.
@@ -182,10 +182,10 @@ indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
 ```{r, eval = FALSE, warning=FALSE}
 # The package `dplyr` is available to use
 # Subset the `indian` data set to just the users with native Indian names
-authentic_users <- subset(indian,indian$user_name %in% indian_names_clean)
+authentic_users <- subset(indian$user_name %in% indian_names_clean)
 
 # Table
-table(authentic_users$user_name)
+#table(authentic_users$user_name)
 
 # Find the number of users in each city
 number_authentic_city <- authentic_users %>%
@@ -219,10 +219,16 @@ number_authentic_city
 *** =sct
 ```{r,eval=FALSE}
 # Fist instruction
+test_function("subset", args = c("x","select"),incorrect_msg = "Some thing went wrong with your `subset()`. Did you remember to add the data frame that the subset is coming from. The data frame `indians` should be included the first arguemnt.")
 
+# Second instruction
+test_output_contains("table(authentic_users$user_name)", not_called_msg = "Don't forget to remove the # before the sample_code." )
 
+# Third instruction
+test_data_frame("number_authentic_city", undefined_msg = NULL, incorrect_msg = "Some thing went wrong with your `number_authentic_city` data frame. Look at the `sample_code` that was given. Hit the refresh button to see it again.")
 
-
+# Fourth instruction
+test_output_contains("number_authentic_city", not_called_msg = "Don't forget to remove the # before the sample_code." )
 
 # General
 test_error()
@@ -424,17 +430,6 @@ test_function_v2("hist", "x", eval = FALSE, index = 3,
 msg4 <- "Something went wrong with the `qplot()` function. Did you reorder correctly? If you need assistance type ?reorcer in the console."
 test_function_v2("qplot", args = c("x","y"), eval = FALSE, index = 1, 
                  incorrect_msg = msg4)
-
-# General
-test_error()
-success_msg("Good job! We've modified the Yelp star reviews with one method. Continue to the next chapter for the second method!")
-
-
-
-
-
-
-
 
 # General
 test_error()
