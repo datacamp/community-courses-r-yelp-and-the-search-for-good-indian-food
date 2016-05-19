@@ -12,7 +12,7 @@ This method looks to adapt the star reviews with the perception that Yelp review
 
 This means that you need a way to select just the users with native Indian names and that is where this chapter begins! 
 
-You will load in a list of native Indians names that can be used to sort the names of the users 
+You will first load in a list of native Indians names that can be used to sort users. A list of native Indain names is located on our server in a text file `indian_names.txt`. The object `indian_names_url` contains a link to the data. Use the `indian_names_url` and the `scan` function to create a list `indian_names` that contains the native names you will use to sort the users.
 
 
 *** =instructions
@@ -30,10 +30,10 @@ When loading the names don't change the sample_code! Just remove the `#`
 *** =sample_code
 ```{r, eval = FALSE}
 # This url contains the .txt file with Indian names. (Note: Don't change this code)
-in_names_url = url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt")
+indian_names_url = url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt")
 
 # Read Indian names into a list
-#indian_names <- scan(in_names_url, what = character())
+#indian_names <- scan(indian_names_url, what = character())
 
 # Show the first 10 names from the indian_names list
 head(indian_names,___)
@@ -43,10 +43,10 @@ head(indian_names,___)
 *** =solution
 ```{r,eval=FALSE}
 # This url contains the .txt file with Indian names. (Note: Don't change this code)
-in_names_url = url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt")
+indian_names_url = url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt")
 
 # Read Indian names into a list
-indian_names <- scan(in_names_url, what = character())
+indian_names <- scan(indian_names_url, what = character())
 
 # Show the first 10 names from the indian_names list
 head(indian_names,10)
