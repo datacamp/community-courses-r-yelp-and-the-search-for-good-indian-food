@@ -158,7 +158,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:3479113ffa
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. The `subset` fuction will make this task simple, so subset the `indian` data set by defining the `subset` argument within the `subset` function. You define the column to subset from witht the `subset` arguement and with the `%in%` operator you can define what to look for.
@@ -298,10 +298,8 @@ There are many ways to do this but the `dplyr` package, as you have seen, has ma
 You can use the `select` to choose the varibales you want in choose from to create the new variables. The `group_by()`, `%<%` and `summarized()` functions allow for separate calcualtions to be performed within the unique values of the variable being grouped. 
 
 *** =instructions
-- `group_by` the variables `city`, `business_name`, and `avg_stars`
-- Use the `count` fucntion to tally the number of reviews for that restaurant
-- Create a `new_stars` column using a `sum` of the `star` column
-- Using the `mutate` fuction add a `diff` variable by subtracting the `new_stars` column by the `avg_stars` column
+- Generate a data frame `avg_review_indian` using tools from `dplyr`
+<p>- `group_by` the variables `city`, `business_name`, and `avg_stars`</p><p>- Use the `count` fucntion to tally the number of reviews for that restaurant</p><p>- Create a `new_stars` column using a `sum` of the `star` column</p><p>- Using the `mutate` fuction add a `diff` variable by subtracting the `new_stars` column by the `avg_stars` column
 *** =hint
 - Don't remove any of the `%>%` operators and make sure you have one after each function
 
@@ -328,18 +326,10 @@ number_authentic_city <- authentic_users %>%
 # Generate new "immigrant" rating
 avg_review_indian <- authentic_users %>% 
     select(business_id, business_name, city, stars, avg_stars, is_indian, user_name) %>%
-
-    # Group by the `city`, `Business_name` and `avg_stars` variables  
-    group_by(city, business_name, avg_stars) %>%
-  
-    # Tally the number of restaurants
-    summarise(count = n(),
-              
-    # Create a `new_stars` column
-    new_stars <- sum(stars) / count) %>%
-  
-    # Mutate a column `dif` between the new authentic star rating and the overall average rating
-    mutate(dif = new_stars - avg_stars)
+    group_by(city, business_name, ___) %>%
+    summarise(count = ___,
+    new_stars <- sum(___) / count) %>%
+    mutate(dif = ___ - avg_stars)
 
 ```
 
