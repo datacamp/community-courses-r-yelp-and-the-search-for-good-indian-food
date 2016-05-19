@@ -145,7 +145,7 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:1b08ca9699
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. The `subset` fuction will make this task simple, so subset the `indian` data set by defining the `select` argument within the `subset` function. You define the column to select from and with the `%in%` operator you can define what to look for.
@@ -174,6 +174,7 @@ indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
 
 *** =sample_code
 ```{r, eval = FALSE, warning=FALSE}
+# The package `dplyr` is available to use
 # Subset the `indian` data set to just the users with native Indian names
 authentic_users = subset(indian,indian$user_name %in% indian_names_clean)
 
@@ -185,11 +186,14 @@ number_authentic_city = authentic_users %>%
   select(city,user_name) %>%
   group_by(city) %>%
   summarise(users = n())
-number_authentic_city
+
+# Print the number of users per city
+#number_authentic_city
 ```
 
 *** =solution
 ```{r,eval=FALSE}
+# The package `dplyr` is available to use
 # Subset the `indian` data set to just the users with native Indian names
 authentic_users = subset(indian,indian$user_name %in% indian_names_clean)
 
@@ -201,8 +205,9 @@ number_authentic_city = authentic_users %>%
   select(city,user_name) %>%
   group_by(city) %>%
   summarise(users = n())
-number_authentic_city
 
+# Print the number of users per city
+number_authentic_city
 ```
 
 *** =sct
@@ -290,6 +295,7 @@ names(authentic_users)
 
 *** =sample_code
 ```{r, eval = FALSE}
+# The package `dplyr` is available to use
 # Generate new "immigrant" rating
 avg_review_indian <- authentic_users %>% 
     select(business_id, business_name, city, stars, avg_stars, is_indian, user_name) %>%
@@ -310,6 +316,7 @@ avg_review_indian <- authentic_users %>%
 
 *** =solution
 ```{r,eval=FALSE}
+# The package `dplyr` is available to use
 # Generate new "immigrant" rating
 avg_review_indian <- authentic_users %>% 
     select(business_id, business_name, city, stars,
@@ -338,30 +345,33 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 --- type:NormalExercise xp:100 skills:1,3  key:03314d8871
 ## Detecting Manipulation Effect 
 
+Now that you have created new average star reviews for our the authentic Indian users, let's see if you can detect the effects of the modifications. 
 
-
-
-
+To do so you will make use of some the `hist` plot and a `qplot` from the `ggplot2` package. These graphs will help us visualize the effect of your modification. Take note of the magnitudes of the changes and if there were any patterns in the distribution of the difference in star ratings.
 
 *** =instructions
-
+- Create a histogram of the `avg_stars` using the `hist()` function
+- Create a histogram of the `new_stars` using the `hist()` function
+- Plot the distribution of changes to ratings using the `hist()` function 
+- Plot the changes to per restaurant using `qplot()`. Using the `reorder()` function will make the data more astetically pleaseing. Reorder the `business_name`variable by the `dif` variable.
 
 *** =hint
-
+- Remember to remove the `#` from the code to run!
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/avg_review_indian.RData"))
+library(ggplot2)
 ```
 
 *** =sample_code
 ```{r, eval = FALSE}
-# Plots
+# The plotting package `ggplot2` is avaibale to use
+# Create a histogram of the avg_stars
 hist(avg_review_indian$avg_stars)
-hist(avg_review_indian$new_stars)
 
-# Find out extent of effect of new rating
-summary(avg_review_indian$dif)
+# Create a histogram of the new_stars
+hist(avg_review_indian$new_stars)
 
 # Plot the distribution of changes to ratings 
 hist(avg_review_indian$dif, main = "Changes in Star Ratings", xlab = "Change")
@@ -369,18 +379,16 @@ hist(avg_review_indian$dif, main = "Changes in Star Ratings", xlab = "Change")
 # Plot the changes to per restaurant 
 qplot(reorder(avg_review_indian$business_name,avg_review_indian$dif),avg_review_indian$dif, xlab = "", ylab = "Changes in Star Rating")
 
-# Display a summary of the 
-summary(avg_review_indian)
 ```
 
 *** =solution
 ```{r,eval=FALSE}
-# Plots
+# The plotting package `ggplot2` is avaibale to use
+# Create a histogram of the avg_stars
 hist(avg_review_indian$avg_stars)
-hist(avg_review_indian$new_stars)
 
-# Find out extent of effect of new rating
-summary(avg_review_indian$dif)
+# Create a histogram of the new_stars
+hist(avg_review_indian$new_stars)
 
 # Plot the distribution of changes to ratings 
 hist(avg_review_indian$dif, main = "Changes in Star Ratings", xlab = "Change")
@@ -388,8 +396,6 @@ hist(avg_review_indian$dif, main = "Changes in Star Ratings", xlab = "Change")
 # Plot the changes to per restaurant 
 qplot(reorder(avg_review_indian$business_name,avg_review_indian$dif),avg_review_indian$dif, xlab = "", ylab = "Changes in Star Rating")
 
-# Display a summary of the 
-summary(avg_review_indian)
 ```
 
 *** =sct
@@ -404,7 +410,7 @@ summary(avg_review_indian)
 
 # General
 test_error()
-success_msg("Well done! Now that your data is loaded in, you can start exploring it!")
+success_msg("Congradulations! You have finished the course and now know some good tools in R to manipulate data. You have also seen them work to solve an interesting problem! For more indepth coverage to the concepts in this course try our Premium courses!")
 ```
 
 
