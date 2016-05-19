@@ -189,9 +189,7 @@ summary(rub)
 *** =sct
 ```{r,eval=FALSE}
 # first instruction
-msg1 <- "Make sure you combine the `reviews` and the `users` data sets first"
-#test_output_contains("ru  <- inner_join(reviews,users)", incorrect_msg = msg1)
-#test_function("inner_join",args = c("x","y"), index = 1, incorrect_msg = msg1)
+msg1 <- "Make sure you combine the `reviews` and the `users` data sets in the correct order."
 test_data_frame("ru",incorrect_msg = msg1)
 
 # second instruction
