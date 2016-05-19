@@ -423,7 +423,7 @@ test_function("inner_join",args = c("x","y"), index = 1, incorrect_msg = msg1)
 test_data_frame("indian_plus_number", incorrect_msg = "Your newly created data frame seems off. Reread the instructions and try again.")
 
 # second instruction
-msg2 <- "We know there are other ways to do this too, but names() can be quick and straight forward. If you are having trouble type ?names in the console for more information."
+msg2 <- "You didn't display the coloumn names. Use the `names()` function. It is quick and straight forward. If you are having trouble type ?names in the console for more information."
 test_function("names",args = c("x"), index = 1, not_called_msg = msg2)
 
 # General
