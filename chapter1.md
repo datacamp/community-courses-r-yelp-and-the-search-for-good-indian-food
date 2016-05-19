@@ -454,7 +454,6 @@ Weighted star reviews for each restaurant is created by taking to sum of the `we
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_plus_number.RData"))
 library(dplyr)
 
-
 ```
 
 *** =sample_code
@@ -527,7 +526,18 @@ A final summary of the `new_review_indian` will give context to how the reviews 
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/new_review_indian.Rdata"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_plus_number.RData"))
+library(dplyr)
+
+indian_plus_number$weighted_stars <- indian_plus_number$stars * indian_plus_number$total_reviews
+
+new_review_indian <- indian_plus_number %>% 
+  select(city, business_name, avg_stars, stars, total_reviews, weighted_stars) %>%
+  group_by(city, business_name, avg_stars) %>%
+  summarise(cnt = n(),
+            avg = sum(stars) / cnt,
+            new = sum(weighted_stars) / sum(total_reviews),
+            dif = new - avg)
 ```
 
 *** =sample_code
