@@ -143,7 +143,7 @@ test_mc(correct = 2, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:118e372735
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Creat Authentic Star Review
 
 
@@ -184,7 +184,7 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:167c97004d
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Generating Average Authenic User Star Review
 
 
@@ -208,33 +208,32 @@ indian$istars <- indian$stars * indian$reviewer_indian_name
 *** =sample_code
 ```{r, eval = FALSE}
 # Generate new "immigrant" rating
-avg_review_indian <- indian %>% select(business_id, business_name, city, stars, 
-                                       avg_stars, reviewer_indian_name, 
-                                       is_indian, istars) %>%
-                                group_by(city, business_name, avg_stars) %>%
-                                summarise(count = n(),
-                                          nin = sum(reviewer_indian_name),
-                                          pin = sum(reviewer_indian_name) / n(),
-                                          avg = sum(stars) / count,
-                                          ias = sum(istars) / nin,
-                                          dif = ias - avg)
-
+avg_review_indian <- indian %>% 
+  select(business_id, business_name, city, stars, 
+  avg_stars, reviewer_indian_name, is_indian, istars) %>%
+  group_by(city, business_name, avg_stars) %>%
+  summarise(count = n(),
+            nin = sum(reviewer_indian_name),
+            pin = sum(reviewer_indian_name) / n(),
+            avg = sum(stars) / count,
+            ias = sum(istars) / nin,
+            dif = ias - avg)
 
 ```
 
 *** =solution
 ```{r,eval=FALSE}
 # Generate new "immigrant" rating
-avg_review_indian <- indian %>% select(business_id, business_name, city, stars, 
-                                       avg_stars, reviewer_indian_name, 
-                                       is_indian, istars) %>%
-                                group_by(city, business_name, avg_stars) %>%
-                                summarise(count = n(),
-                                          nin = sum(reviewer_indian_name),
-                                          pin = sum(reviewer_indian_name) / n(),
-                                          avg = sum(stars) / count,
-                                          ias = sum(istars) / nin,
-                                          dif = ias - avg)
+avg_review_indian <- indian %>% 
+  select(business_id, business_name, city, stars, 
+  avg_stars, reviewer_indian_name, is_indian, istars) %>%
+  group_by(city, business_name, avg_stars) %>%
+  summarise(count = n(),
+            nin = sum(reviewer_indian_name),
+            pin = sum(reviewer_indian_name) / n(),
+            avg = sum(stars) / count,
+            ias = sum(istars) / nin,
+            dif = ias - avg)
 
 ```
 
@@ -248,7 +247,7 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:ec795d5748
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Detecting Manipulation Effect 
 
 
