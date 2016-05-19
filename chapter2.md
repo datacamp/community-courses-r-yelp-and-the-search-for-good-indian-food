@@ -71,7 +71,7 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
  
 Now that you have a list of native Indian names, make sure that the list will do what you need it to. The list was taken from an online resouce and may contain names that don't make sense or aren't useful. 
 
-Take a look at the list and see if any names don't fit. 
+Take a look at the list and see if any names don't fit. The `table()` displays the names well. 
 
 Looks like there are a few names that could select users that would be hard to tell whether they were native Indian or not. 
 
@@ -81,6 +81,7 @@ You can do this by finding a regular expression that will find all the names wit
 
 
 *** =instructions
+- Display the names list with `table()`
 - Use `grep` and the regular expression `[A-z]\\.` to locate the names you want to eliminate
 - Double check that those are the right names
 - Remove the unwanted names from the `indain_names` list
@@ -96,6 +97,9 @@ load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/dat
 
 *** =sample_code
 ```{r, eval = FALSE}
+# Show the names list
+#table(indian_names)
+
 # Locate the names that you want to eliminate
 indian_names_remove <- grep("___",indian_names, perl = TRUE)
 
@@ -114,6 +118,9 @@ indian_names_clean <- indian_names[-____]
 
 *** =solution
 ```{r,eval=FALSE}
+# Show the names list
+table(indian_names)
+
 # Locate the names that you want to eliminate
 indian_names_remove <- grep("[A-z]\\.",indian_names, perl = TRUE)
 
@@ -133,16 +140,19 @@ table(indian_names_clean)
 *** =sct
 ```{r,eval=FALSE}
 # Fist instruction
+test_function("table(indian_names)", not_called_msg = "You didn't show the table of indian names. Just remove the # before the sample_code.")
+
+# Second instruction
 indian_names_remove <- grep("___",indian_names, perl = TRUE)
 test_function(grep, args = c("pattern","x","perl"), incorrect_msg = "Did you include the correct regular expression? Check the instructions for the right pattern.")
 
-# Second instruction
+# Third instruction 
 test_output_contains("indian_names[indian_names_remove]", not_called_msg = "Just remove the # before the sample_code.")
 
-# Third instruction 
+# Fourth instruction
 test_output_contains("indian_names_clean <- indian_names[-indian_names_remove]", incorrect_msg = "Did you fill in the black space to remove the unwanted names?")
 
-# Fourth instruction
+# Fifth instruction
 test_function(table, not_called_msg = "Don't forget to remove the # before the sample_code.")
 
 # General
@@ -151,7 +161,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:617345c40d
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. The `subset` fuction will make this task simple, so subset the `indian` data set by defining the `select` argument within the `subset` function. You define the column to select from and with the `%in%` operator you can define what to look for.
