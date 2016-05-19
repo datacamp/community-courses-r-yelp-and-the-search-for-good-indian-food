@@ -145,7 +145,7 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:9dae93ff3e
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. The `subset` fuction will make this task simple, so subset the `indian` data set by defining the `select` argument within the `subset` function. You define the column to select from and with the `%in%` operator you can define what to look for.
@@ -171,8 +171,9 @@ library(dplyr)
 
 indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
 ```
+
 *** =sample_code
-```{r, eval = FALSE}
+```{r, eval = FALSE, warning=FALSE}
 # Subset the `indian` data set to just the users with native Indian names
 authentic_users = subset(indian,indian$user_name %in% indian_names_clean)
 
@@ -184,6 +185,7 @@ number_authentic_city = authentic_users %>%
   select(city,user_name) %>%
   group_by(city) %>%
   summarise(users = n())
+number_authentic_city
 ```
 
 *** =solution
@@ -199,6 +201,7 @@ number_authentic_city = authentic_users %>%
   select(city,user_name) %>%
   group_by(city) %>%
   summarise(users = n())
+number_authentic_city
 
 ```
 
@@ -272,7 +275,13 @@ test_mc(correct = 2, feedback_msgs = c(msg1, msg2, msg3, msg4))
 
 
 *** =instructions
-
+avg_review_indian <- authentic_users %>% 
+    select(business_id, business_name, city, stars,
+         avg_stars, is_indian, user_name) %>%
+    group_by(city, business_name, avg_stars) %>%
+    summarise(count = n(),
+    new_stars = sum(stars) / count) %>%
+    mutate(dif = new_stars - avg_stars)
 *** =hint
 
 *** =pre_exercise_code
