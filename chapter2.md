@@ -144,13 +144,13 @@ test_function("unlist", index = 1, not_called_msg = "You didn't show the table o
 test_function("grep", args = c("pattern","x","perl"), incorrect_msg = "Did you include the correct regular expression? Check the instructions for the right pattern.")
 
 # Third instruction 
-test_output_contains("indian_names[indian_names_remove]", incorrect_msg = "Just remove the # before the sample_code.")
+test_output_contains("indian_names[indian_names_remove]", incorrect_msg = "You didn't display the unwanted names. Just remove the # before the sample_code to print them.")
 
 # Fourth instruction
 test_output_contains("indian_names_clean <- indian_names[-indian_names_remove]", incorrect_msg = "Did you fill in the black space to remove the unwanted names?")
 
 # Fifth instruction
-test_function("unlist",index = 2, not_called_msg = "Don't forget to remove the # before the sample_code.")
+test_function("unlist",index = 2, not_called_msg = "You didn't dsplay the `indian_names_clean` list. Don't forget to remove the # before the sample_code.")
 
 # General
 test_error()
@@ -158,7 +158,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:ceafb61184
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. The `subset` fuction will make this task simple, so subset the `indian` data set by defining the `select` argument within the `subset` function. You define the column to select from and with the `%in%` operator you can define what to look for.
