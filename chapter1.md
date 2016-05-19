@@ -464,10 +464,10 @@ indian_plus_number$___ <- indian_plus_number$stars * indian_plus_number$total_re
 new_review_indian <- indian_plus_number %>% 
   select(city, business_name, avg_stars, stars, total_reviews, weighted_stars) %>%
   group_by(city, business_name, avg_stars) %>%
-  summarise(cnt = n(),
-            avg = sum(stars) / cnt,
+  summarise(cnt = ___,
+            avg = sum(___) / ___,
             new = sum(___) / sum(___),
-            dif = (new - avg)
+            dif = (___ - ___)
 
 
 
