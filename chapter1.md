@@ -512,10 +512,10 @@ To do so, you will make use of some a general `hist` plot and a `qplot` from the
 A final summary of the `new_review_indian` will give context to how the reviews changed as well.
 
 *** =instructions
--Make `ggplot2` available in the environment 
--Use `hist()` function and the `new_review_indian$diff` column to create the plot of the distribution.
--Use `qplot()`, `new_review_indian$business_name` and `new_review_indian$diff` for the plot of the difference in star review per restaurant. To create a more appealing graph use `reorder()` to order of changes from least to greatest. 
--Display the summary of the `new_review_indian` data frame 
+- Make `ggplot2` available in the environment 
+- Use `hist()` function and the `new_review_indian$diff` column to create the plot of the distribution.
+- Use `qplot()`, `new_review_indian$business_name` and `new_review_indian$diff` for the plot of the difference in star review per restaurant. To create a more appealing graph use `reorder()` to order of changes from least to greatest. 
+- Display the summary of the `new_review_indian` data frame 
 
 *** =hint
 The `reorder()` function makes the graph a bit more appealing. If you need assistance type ?reorder into the console.
