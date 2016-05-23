@@ -596,7 +596,7 @@ test_function_v2("aes", args = c("x","y","fill"), eval = FALSE, index = 1,
 # third instruction
 msg3 <- "Something went wrong with the `summary()` function. Check your code and run again."
 test_function_v2("summary", "object", index = 1, 
-                 incorrect_msg = msg3)
+                incorrect_msg = msg3, args_not_specified_msg = "Did you forget to specify the `y` argument?")
 
 # General
 test_error()
