@@ -158,7 +158,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:15a0e0eccb
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. 
@@ -166,9 +166,8 @@ You have successfully cleaned the list of native Indian names and you are ready 
 The `subset` function will make this task simple. Split the `indian` data set by defining the `subset` argument within the `subset` function. You can define the column to in which to divide the data by with the `subset` argument. Using the `%in%` operator, you can define criteria in which to select from the column defined by the `subset` function. In this case it would be looking for authentic Indian names within the `user_name` column.
 
 Example Subset Code:
-<p>`subset(x,subset)`</p>
 <p>`alpha = c("A","B","C","D","E","F")`
-<p>`> subset(alpha, alpha %in% "A")`
+<p>`subset(alpha, alpha %in% "A")`
 <p>`[1] "A"`</p>
 
 After successfully subsetting the data, generate a table of the authentic Indian users to get a sense of the size of the data.
