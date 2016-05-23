@@ -417,7 +417,7 @@ names(indian_plus_number)
 *** =sct
 ```{r,eval=FALSE}
 # first instruction
-msg1 <- "Although there are many ways to achieve this, try using inner_join and if you are having trouble type ?inner_join in the console for more information."
+msg1 <- "Although there are many ways to achieve this, try using inner_join and if you are having trouble type ?inner_join in the console for more information. Are they arguements correct?"
 test_function("inner_join",args = c("x","y"), index = 1, incorrect_msg = msg1)
 test_data_frame("indian_plus_number", incorrect_msg = "Your newly created data frame seems off. Reread the instructions and try again.")
 
@@ -443,7 +443,7 @@ Weighted star reviews for each restaurant are created by taking the sum of the `
 
 *** =instructions
 - Create a new column `weighted_stars` in the `indian_plus_number` data frame
-- Use `select()`, `group_by()`, `%>%` and `summarize()` to generate new weighted reviews for each restaurant while also creating columns:<p> - Create a variable `cnt` that counts the number of reviews for each restaurant</p><p> - Calculate the previous average star review using the `stars` and the `cnt` variables</p><p> - Generate new star reviews from the sum of the `weighted_stars` variable and the `sum` of the `total_reviews` varaible</p><p> - Finally, compute the difference in the `weighted_star` reviews and the previous average star review. Assign this variable to `diff`</p>
+- Use `select()`, `group_by()`, `%>%` and `summarize()` to generate new weighted reviews for each restaurant while also creating columns:<p> - Create a variable `cnt` that counts the number of reviews for each restaurant</p><p> - Calculate the previous average star review using the `stars` and the `cnt` variables</p><p> - Generate new star reviews from the sum of the `weighted_stars` variable and the `sum` of the `total_reviews` variable</p><p> - Finally, compute the difference in the `weighted_star` reviews and the previous average star review. Assign this variable to `diff`</p>
 
 *** =hint
 The `%>%` operators are important for `dplyr` piping. Do not eliminate any of these from the sample code. 
@@ -514,7 +514,7 @@ A final summary of the `new_review_indian` will give context to how the reviews 
 *** =instructions
 - Make `ggplot2` available in the environment 
 - Use `hist()` function and the `new_review_indian$diff` column to create the plot of the distribution.
-- Use `geom_bar()` with the `new_review_indian$diff` to the plot the difference in star review per restaurant. Fill in the `x` aurgement with the `new_review_indian` data set and assign the `y` arguement within the `aes()` to the `city` variable.  
+- Use `geom_bar()` with the `new_review_indian$diff` to the plot the difference in star review per restaurant. Fill in the `x` enlargement with the `new_review_indian` data set and assign the `y` argument within the `aes()` to the `city` variable.  
 - Display the summary of the `new_review_indian` data frame 
 
 *** =hint
