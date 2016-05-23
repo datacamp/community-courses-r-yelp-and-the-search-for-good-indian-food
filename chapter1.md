@@ -587,7 +587,7 @@ msg3 <- "There is something wrong with your `geom_bar()` plot. Fill in the `data
 test_function_v2("ggplot", args = c("data"), eval = FALSE, index = 1, 
                  incorrect_msg = msg3)
 
-test_function_v2("aes", args = c("x","y"), eval = FALSE, index = 1, 
+test_function_v2("aes", args = c("x","y","fill"), eval = FALSE, index = 1, 
                  incorrect_msg = msg3)
 
 # third instruction
