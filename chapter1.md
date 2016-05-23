@@ -61,7 +61,7 @@ success_msg("Awesome! See how the console shows the result of the R code you sub
 
 For this course, the data comes in three separate data sets. 
 
-- The first is labeled `reviews` and it contains a `user_id`, a `business_id` and a `star` review.
+- The first is labeled `reviews` and it contains `user_id's`, `business_id's` and a `star` reviews.
 - The second is labeled `users` and it is a list of `user_id's` and `user_names's`
 - The last is labeled `businesses` and it is a contains information about the businesses on yelp like the business location, the category of food, the number of reviews and the average star review.
 
