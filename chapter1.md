@@ -63,7 +63,7 @@ For this course, the data comes in three separate data sets.
 
 - The first is labeled `reviews` and it contains a `user_id`, a `business_id` and a `star` review.
 - The second is labeled `users` and it is a list of `user_id's` and `user_names's`
-- The last is labeled `businesses` and it is a contains information about the businesses on yelp like the business location, the category of food, the number of reviews and theaverage star review.
+- The last is labeled `businesses` and it is a contains information about the businesses on yelp like the business location, the category of food, the number of reviews and the average star review.
 
 They have been loaded into the environment already and are ready to be explored!
 
@@ -131,20 +131,20 @@ success_msg("Good job! We've seen a little more about the data so now let's move
 --- type:NormalExercise xp:100 skills:1,3  key:a72c7124db
 ## Combining data into one
 
-Before manipulating the Yelp ratings, you first need to combine the three data sets that were just explored so you can understand and adapt the data more effectively. 
+Before manipulating the Yelp reviews, you first need to combine the three data sets that were just explored so you can understand and adapt the data more effectively. 
 
-The datasets from the previous exercise, `reviews`, `users`, and `businesses`, are data frames, R's way of representing a dataset. You can combine a data frame in many ways, but for this exercise you don't want any missing data, let's say a business without a review. So you will use the `inner_join()` function from the `dplyr` package to combine the three data sets. The function `inner_join()` combines two data sets by finding columns with identical labels and then only combining the rows that are in both independent data sets. 
+The data sets from the previous exercise, `reviews`, `users`, and `businesses`, are data frames, R's way of representing a data set. You can combine a data frame in many ways, but for this exercise you don't want any missing data, let's say a business without a review. So you will use the `inner_join()` function from the `dplyr` package to combine the three data sets. The function `inner_join()` combines two data sets by finding columns with identical labels and then only combining the rows that are in both independent data sets. 
 
 Let's see how it works!
 
-The 3 data frames are already loaded into your workspace. Apply `inner_join()` to the `reviews` and the `users` datasets first. Don't forget to name that newly combined data set. Next, apply `inner_join()` again but with the newly created data set and the final data set from the previous exercise `businesses`.
+The 3 data frames are already loaded into your workspace. Apply `inner_join()` to the `reviews` and the `users` data sets first. Don't forget to name that newly combined data set. Next, apply `inner_join()` again but with the newly created data set and the final data set from the previous exercise `businesses`.
 
 Once the data sets have been combined it can be helpful to explore the data some. Using `summary` you can get a better feel for the variables that are in out data and the types data you have to use. 
 
 *** =instructions
 - The code provided uses `library()` to load `dplyr` to the environment
-- Use `inner_join()` combine the `reviews` and `users` datasets and assign to `ru`.
-- Use `inner_join()` combine the newly created `ru` and `businesses` datasets and assign new data frame to `rub`. 
+- Use `inner_join()` combine the `reviews` and `users` data sets and assign to `ru`.
+- Use `inner_join()` combine the newly created `ru` and `businesses` data sets and assign new data frame to `rub`. 
 - Inspect new data frame `rub`, take note of the variables and types of data.
   
 *** =hint
@@ -266,7 +266,7 @@ success_msg("Good job! We've selected jus the reviews for Indian restaurants so 
 
 Now that you have created a simplified data set and are almost ready to begin manipulating the reviews take a moment to explore the new data set and answer the following question.
 
-Take a look at the data set `indian` with `str()` and see how many reviews does our dataset contain?
+Take a look at the data set `indian` with `str()` and see how many reviews does our data set contain?
 
 *** =instructions
 - 1456
@@ -294,7 +294,7 @@ test_mc(correct = 4, feedback_msgs = c(msg1, msg2, msg3, msg4))
 --- type:NormalExercise xp:100 skills:1 key:1b2e20ac0a
 ## Review Modification Method I
 
-Now that you have a manageable data set with just one type of cuisine it's time to begin adapting the Yelp star ratings to see if you can make them more meaningful. In this course, you will look into just two of the almost infinite ways one can scale and manipulate ratings. The first method is to create a new rating that gives more weight to those who have reviewed more restaurants of the same cuisine. 
+Now that you have a manageable data set with just one type of cuisine it's time to begin adapting the Yelp star reviews to see if you can make them more meaningful. In this course, you will look into just two of the almost infinite ways one can scale and manipulate reviews. The first method is to create a new review that gives more weight to those who have reviewed more restaurants of the same cuisine. 
 
 To do this start by creating a new data frame with the number of reviews each reviewer has made for the collection of Indian restaurants in the original data set.  
 
@@ -368,7 +368,7 @@ success_msg("Good job! We've created a data frame with the number of reviews per
 --- type:NormalExercise xp:100 skills:1 key:30db019cde
 ## Review Modification Method I Cont.
 
-Before you create the weighted star rating, add the `number_reviews_indian` to the larger data frame `indian`. 
+Before you create the weighted star review, add the `number_reviews_indian` to the larger data frame `indian`. 
 
 Just like an earlier exercise, you don't want any missing data within our data set, so you will use the `inner_join` function to merge all the rows that are in both the `number_reviews_indian` and `indian` data frames.
 
@@ -434,7 +434,7 @@ success_msg("Good job! We've added a new column to the data. Let's use it in the
 --- type:NormalExercise xp:100 skills:1 key:3981380079
 ## Review Modification Method I Cont. 2
 
-Use the combined data set to create weighted star reviews for each user. To do this you will simply multiply the unweighted restaurant rating variable `stars` by the total number of reviews variable `total_reviews` for each user.
+Use the combined data set to create weighted star reviews for each user. To do this you will simply multiply the unweighted restaurant review variable `stars` by the total number of reviews variable `total_reviews` for each user.
 
 This weighted star variable will allow us to generate weighted star reviews. 
 
@@ -443,7 +443,7 @@ Weighted star reviews for each restaurant is created by taking the sum of the `w
 
 *** =instructions
 - Create a new column `weighted_stars` in the `indian_plus_number` data frame
-- Use `select()`, `group_by()`, `%>%` and `summarize()` to generate new weighted ratings for each restaurant while also creatng columns:<p> -`cnt = n()`</p><p> -`avg = sum(stars) / cnt`</p><p> -`new = sum(weighted_stars) / sum(total_reviews)`</p><p> -`dif = new - avg`</p>
+- Use `select()`, `group_by()`, `%>%` and `summarize()` to generate new weighted reviews for each restaurant while also creatng columns:<p> -`cnt = n()`</p><p> -`avg = sum(stars) / cnt`</p><p> -`new = sum(weighted_stars) / sum(total_reviews)`</p><p> -`dif = new - avg`</p>
 
 *** =hint
 - 
@@ -460,7 +460,7 @@ library(dplyr)
 # Generate weighted_stars variable 
 indian_plus_number$___ <- indian_plus_number$stars * indian_plus_number$total_reviews
 
-# Create a new weighted rating for each restaurant (Note: package dplyr is available to use)
+# Create a new weighted review for each restaurant (Note: package dplyr is available to use)
 new_review_indian <- indian_plus_number %>% 
   select(city, business_name, avg_stars, stars, total_reviews, weighted_stars) %>%
   group_by(city, business_name, avg_stars) %>%
@@ -478,7 +478,7 @@ new_review_indian <- indian_plus_number %>%
 # Generate weighted_stars variable
 indian_plus_number$weighted_stars <- indian_plus_number$stars * indian_plus_number$total_reviews
 
-# Create a new weighted rating for each restaurant (Note: package dplyr is available to use)
+# Create a new weighted review for each restaurant (Note: package dplyr is available to use)
 new_review_indian <- indian_plus_number %>% 
   select(city, business_name, avg_stars, stars, total_reviews, weighted_stars) %>%
   group_by(city, business_name, avg_stars) %>%
@@ -510,14 +510,14 @@ success_msg("Good job! We've created weighted reviews. Let's check them out in t
 
 Now that you have new weighted star reviews for our restaurants, let's see if you can detect the effects of the modifications. 
 
-To do so you will make use of some a general `hist` plot and a `qplot` from the `ggplot2` package. These graphs will help us visualize the effect of your modification. Take note of the magnitudes of the changes and if there were any patterns in the distribution of the difference in star ratings.
+To do so you will make use of some a general `hist` plot and a `qplot` from the `ggplot2` package. These graphs will help us visualize the effect of your modification. Take note of the magnitudes of the changes and if there were any patterns in the distribution of the difference in star reviews.
 
 A final summary of the `new_review_indian` will give context to how the reviews changed as well.
 
 *** =instructions
 - Make `ggplot2` available in the environment 
 - Use `hist()` function and the `new_review_indian$dif` column to create the plot of the distribution.
-- Use `qplot()`, `new_review_indian$business_name` and `new_review_indian$dif` for the plot of the difference in star rating per restaurant. To create a more appealing graph use `reorder()` to order of changes from least to greatest. 
+- Use `qplot()`, `new_review_indian$business_name` and `new_review_indian$dif` for the plot of the difference in star review per restaurant. To create a more appealing graph use `reorder()` to order of changes from least to greatest. 
 - Display the summary of the `new_review_indian` data frame 
 
 *** =hint
@@ -544,11 +544,11 @@ new_review_indian <- indian_plus_number %>%
 # Load the ggplot2 package into the environment
 library(ggplot2)
 
-# Plot the distribution of changes to ratings 
-hist(new_review_indian$___, main = "Changes in Star Ratings", xlab = "Change")
+# Plot the distribution of changes to reviews 
+hist(new_review_indian$___, main = "Changes in Star Reviews", xlab = "Change")
 
-# Plot the changes in rating per restaurant 
-qplot(reorder(new_review_indian$business_name,new_review_indian$dif),new_review_indian$__, xlab = "", ylab = "Changes in Star Rating")
+# Plot the changes in review per restaurant 
+qplot(reorder(new_review_indian$business_name,new_review_indian$dif),new_review_indian$__, xlab = "", ylab = "Changes in Star Review")
 
 # Display a summary of the 
 summary(___)
@@ -560,11 +560,11 @@ summary(___)
 # Load the ggplot2 package into the environment
 library(ggplot2)
 
-# Plot the distribution of changes to ratings 
-hist(new_review_indian$dif, main = "Changes in Star Ratings", xlab = "Change")
+# Plot the distribution of changes to reviews 
+hist(new_review_indian$dif, main = "Changes in Star Reviews", xlab = "Change")
 
 # Plot the changes to per restaurant 
-qplot(reorder(new_review_indian$business_name,new_review_indian$dif),new_review_indian$dif, xlab = "", ylab = "Changes in Star Rating")
+qplot(reorder(new_review_indian$business_name,new_review_indian$dif),new_review_indian$dif, xlab = "", ylab = "Changes in Star Review")
 
 # Display a summary of the 
 summary(new_review_indian)
@@ -575,12 +575,12 @@ summary(new_review_indian)
 ```{r,eval=FALSE}
 
 # second instruction
-msg1 <- "Fill in the varaible that is the change in star rating."
+msg1 <- "Fill in the varaible that is the change in star review."
 test_function_v2("hist", "x", eval = FALSE, index = 1, 
                  incorrect_msg = msg1)
 
 # third instruction
-msg3 <- "Fill in the varaible that is the change in star rating."
+msg3 <- "Fill in the varaible that is the change in star review."
 test_function_v2("qplot", args = c("x","y"), eval = FALSE, index = 1, 
                  incorrect_msg = msg3)
 
