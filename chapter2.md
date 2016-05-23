@@ -1,478 +1,597 @@
 ---
-title_meta  : Chapter 2
+title_meta  : Chapter 1
 title       : Springboard Yelp Analysis
 description : "Springboard Yelp Analysis"
 
---- type:NormalExercise xp:100 skills:1,3  key:0d1199072c
-## Exploring the Data
+--- type:NormalExercise xp:100 skills:1 key:70e19e0e7d
+## Quick intro to DataCamp
 
-The second chapter of this tutorial will be an alternative method of manipulating the Yelp star reviews. You will be working with the same sample of reviews of Indian restaurants but adapting the star reviews in a different way. 
+Welcome to our tutorial based on the popular Springboard blog post [Blog post link] about Yelp Review Modifications. Here you will learn how the author tailored the Yelp star reviews for restaurants to provide more useful information when deciding where to eat. In case you're new to R, it's recommended that you first take our free [Introduction to R Tutorial](https://www.datacamp.com/courses/free-introduction-to-r).
 
-This method looks to adapt the star reviews with the perception that Yelp reviewers with Indian heritage would provide more accurate and authentic reviews for Indian cuisine. The strategy for manipulating the star reviews involves selecting only the reviewers with Indian names for the aggregate restaurant star review. 
+In the editor on the right, you should type R code to solve the exercises. When you hit the 'Submit Answer' button, every line of code is interpreted and executed by R and you get a message whether or not your code was correct. The output of your R code is shown in the console in the lower right corner. R makes use of the `#` sign to add comments; these lines are not run as R code, so they will not influence your result.
 
-This means that you need a way to select just the users with native Indian names and that is where this chapter begins! 
-
-You will first load in a list of native Indians names that can be used to sort users. A list of native Indian names is located on our server in a text file `indian_names.txt`. The object `indian_names_url` contains a link to the data. Use the `indian_names_url` and the `scan` function to create a list `indian_names` that contains the native names you will use to sort the users.
-
+You can also execute R commands straight in the console. This is a good way to experiment with R code, as your submission is not checked for correctness.
 
 *** =instructions
-- Use `scan()` to load in the `indian_names.txt` file
-- Display the first 10 names with `head()`
+- In the editor on the right, there is already some sample code. Can you see which lines are actual R code and which are comments?
+- Add a line of code that calculates the sum of 8 and 15, and hit the 'Submit Answer' button.
 
 *** =hint
-When loading the names don't change the sample_code! Just remove the `#`
+Just add a line of R code that calculates the sum of 8 and 15, just like the example in the sample code!
 
 *** =pre_exercise_code
-```{r,eval=FALSE}
+```{r eval=FALSE}
 # no pec
 ```
 
 *** =sample_code
-```{r, eval = FALSE}
-# This url contains the .txt file with Indian names. (Note: Don't change this code)
-indian_names_url <-url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt")
+```{r eval=FALSE}
+# Calculate 3 * 4
+3 * 4
 
-# Read Indian names into a list
-#indian_names <- scan(indian_names_url, what = character())
+# Calculate 8 + 15
 
-# Show the first 10 names from the indian_names list
-head(indian_names, ___)
 
 ```
 
 *** =solution
-```{r,eval=FALSE}
-# This url contains the .txt file with Indian names. (Note: Don't change this code)
-indian_names_url <-url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.txt")
+```{r eval=FALSE}
+# Calculate 3 * 4
+3 * 4
 
-# Read Indian names into a list
-indian_names <- scan(indian_names_url, what = character())
-
-# Show the first 10 names from the indian_names list
-head(indian_names,10)
+# Calculate 8 + 15
+8 + 15
 ```
 
 *** =sct
-```{r,eval=FALSE}
-# Fist instruction
-test_object("indian_names", undefined_msg = "Something went wrong with loading the `indian_names`. Don't change the `sample_code` just remove the `#`.")
+```{r eval=FALSE}
+test_output_contains("12", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, just add another line that calculates the sum of 8 and 15.")
 
-# Second instruction
-test_function("head", args = c("x","n"), index = 1, incorrect_msg  = "Did you include the number of names you wanted to display?")
+test_output_contains("3 * 4", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, just add another line that calculates the sum of 8 and 15.")
 
-# General
-test_error()
-success_msg("Well done! Now that your data is loaded in, you can start exploring it!")
+test_output_contains("23", incorrect_msg = "Make sure to add a line of R code, that calculates the sum of 8 and 15. Do not start the line with a `#`, otherwise, your R code will not be executed!")
+
+test_output_contains("8 + 15", incorrect_msg = "Do not remove the line of R code that calculates the product of 3 and 4. Instead, just add another line that calculates the sum of 8 and 15.")
+
+success_msg("Awesome! See how the console shows the result of the R code you submitted? Now that you're familiar with the interface, let's get down to R business!")
 ```
 
+--- type:NormalExercise xp:100 skills:1,3  key:0d1199072c
+## Exploring the Data
 
---- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
-## Cleaning the Names list
- 
-Now that you have a list of native Indian names, make sure that the list will do what you need it to. The list was taken from an online resource and may contain names that don't make sense or aren't useful. 
+For this course, the data comes in three separate data sets. 
 
-Take a look at the list and see if any names don't fit. The `unlist()` displays the names well. 
+- The first is labeled `reviews` and it contains a `user_id`, a `business_id` and a `star` review.
+- The second is labeled `users` and it is a list of `user_id's` and `user_names's`
+- The last is labeled `businesses` and it is a contains information about the businesses on yelp like the business location, the category of food, the number of reviews and the average star review.
 
-Looks like there are a few names that could select users that would be hard to tell whether they were native Indian or not. 
-
-The single character names like `A.`, `C.` or `K.` may select users that we don't want. You should remove those names from the list before using it to select the native Indian users.
-
-You can do this by finding a regular expression that will find all the names with a single character followed by a `.`. The regular expression `[A-z]\\.` should do the trick. Combine the regular expression with the `grep` function to locate the names that you want to eliminate. These locations can be used to eliminate just the names you don't want.
-
+They have been loaded into the environment already and are ready to be explored!
 
 *** =instructions
-- Display the names list with `unlist()`
-- Use `grep` and the regular expression `[A-z]\\.` to locate the names you want to eliminate
-- Double check that those are the right names
-- Remove the unwanted names from the `indain_names` list using `-indian_names_remove`
-- Display the cleaned names list with `unlist()`
+- Explore the `reviews` data set with `summary()` function.
+- Explore the `users` data set with `summary()` function.
+- Explore the `businesses` data set with `summary()` function.
 
 *** =hint
-When there is a `#` before the sample_code, don't change it, just remove the `#`
+- Don't forget to look at all three data sets
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.RData"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/Springboard.yelp.datasets.Rdata"))
 ```
 
 *** =sample_code
-```{r, eval = FALSE}
-# Show the names list
-#unlist(indian_names)
+```{r,eval=FALSE}
+# Explore the `reviews` data eset with `summary()` 
+summary()
 
-# Locate the names that you want to eliminate
-indian_names_remove <- grep("___",indian_names, perl = TRUE)
+# Explore the `users` data set with `summary()` 
+summary()
 
-# Check to make sure they are the correct names
-#indian_names[indian_names_remove]
-
-# Eliminate them from the indian_names list
-indian_names_clean <- indian_names[-____]
-
-# Display a table of the cleaned names list
-#unlist(indian_names_clean)
-
-
+# Explore the `businesses` data set with `summary()` 
+summary()
 ```
 
 *** =solution
 ```{r,eval=FALSE}
-# Show the names list
-unlist(indian_names)
+# Explore the `reviews` data set with `summary()` 
+summary(reviews)
 
-# Locate the names that you want to eliminate
-indian_names_remove <- grep("[A-z]\\.",indian_names, perl = TRUE)
+# Explore the `users` data set with `summary()` 
+summary(users)
 
-# Check to make sure they are the correct names
-indian_names[indian_names_remove]
-
-# Eliminate them from the indian_names list
-indian_names_clean <- indian_names[-indian_names_remove]
-
-# Display a table of the cleaned names list
-unlist(indian_names_clean)
-
+# Explore the `businesses` data set with `summary()` 
+summary(businesses)
 
 ```
 
 *** =sct
 ```{r,eval=FALSE}
-# Fist instruction
-test_function("unlist", index = 1, not_called_msg = "You didn't show the table of indian names. Just remove the # before the sample_code.")
+# first instruction
+msg1 <- "Did you remember to take a look at the `reviews` data set?"
+#test_output_contains("summary(reviews)", incorrect_msg = msg1)
+test_function("summary",args = c("object"), index = 1, args_not_specified_msg = msg1)
 
-# Second instruction
-test_function("grep", args = c("pattern","x","perl"), incorrect_msg = "Did you include the correct regular expression? Check the instructions for the right pattern.")
+# second instruction
+msg2 <- "Did you remember to take a look at the `users` data set?"
+#test_output_contains("summary(users)", incorrect_msg = msg2)
+test_function("summary",args = c("object"),index = 2, args_not_specified_msg = msg2)
 
-# Third instruction 
-test_output_contains("indian_names[indian_names_remove]", incorrect_msg = "You didn't display the unwanted names. Just remove the # before the sample_code to print them.")
-
-# Fourth instruction
-test_output_contains("indian_names_clean <- indian_names[-indian_names_remove]", incorrect_msg = "Did you fill in the black space to remove the unwanted names?")
-
-# Fifth instruction
-test_function("unlist",index = 2, not_called_msg = "You didn't dsplay the `indian_names_clean` list. Don't forget to remove the # before the sample_code.")
-
-# General
-test_error()
-success_msg("Well done! You've removed the unwanted names now you can subset the reviews for the authentic users!")
-```
-
-
---- type:NormalExercise xp:100 skills:1,3  key:9cbfd54dc3
-## Finding Authentic Users
- 
-You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. 
-
-The `subset` function will make this task simple. Split the `indian` data set by defining the `subset` argument within the `subset` function. You can define the column to in which to divide the data by with the `subset` argument. Using the `%in%` operator, you can define criteria in which to select from the column defined by the `subset` function. In this case it would be looking for authentic Indian names within the `user_name` column.
-
-After successfully subsetting the data, generate a table of the authentic Indian users to get a sense of the size of the data.
-
-Take a look at the number of users in each city. The `select`, `group_by`, `summarise` and `n()` functions of the `dplyr` package are great tools for quickly calculating the users in each city.  
- 
-*** =instructions
-- Subset the `indian` data set to just the users with native Indian names. Use the operator `%in%` with the `indian_names_clean` data set as the subset terms.
-- Generate a table of the `authentic_users`.
-- Display the total number of authentic users in each city. Use `select`, `group_by`, `summarise` and `n()`.
-
-*** =hint
-When loading the names don't change the sample_code! Just remove the `#`
-
-*** =pre_exercise_code
-```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian.RData"))
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.RData"))
-
-library(dplyr)
-
-indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
-```
-
-*** =sample_code
-```{r, eval = FALSE, warning=FALSE}
-# The package `dplyr` is available to use
-# Subset the `indian` data set to just the users with native Indian names
-authentic_users <- subset(indian$user_name %in% indian_names_clean)
-
-# Table of the authentic users
-#table(authentic_users$user_name)
-
-# Find the number of users in each city
-number_authentic_city <- authentic_users %>%
-  select(city,user_name) %>%
-  group_by(city) %>%
-  summarise(users = n())
-
-# Print the number of users per city
-#number_authentic_city
-```
-
-*** =solution
-```{r,eval=FALSE}
-# The package `dplyr` is available to use
-# Subset the `indian` data set to just the users with native Indian names
-authentic_users <- subset(indian,indian$user_name %in% indian_names_clean)
-
-# Table
-table(authentic_users$user_name)
-
-# Find the number of users in each city
-number_authentic_city <- authentic_users %>%
-  select(city,user_name) %>%
-  group_by(city) %>%
-  summarise(users = n())
-
-# Print the number of users per city
-number_authentic_city
-```
-
-*** =sct
-```{r,eval=FALSE}
-# Fist instruction
-test_function("subset", args = c("x","subset"),incorrect_msg = "Something went wrong with your `subset()`. Did you remember to add the data frame that the subset is coming from. The data frame `indians` should be included the first arguemnt.")
-
-# Second instruction
-test_output_contains("table(authentic_users$user_name)", incorrect_msg = "You forgot to display the table of the authentic users. Don't forget to remove the # before the sample_code." )
-
-# Third instruction
-test_data_frame("number_authentic_city", undefined_msg = NULL, incorrect_msg = "Something went wrong with your `number_authentic_city` data frame. Look at the `sample_code` that was given. Hit the refresh button to see it again.")
-
-# Fourth instruction
-test_output_contains("number_authentic_city", incorrect_msg = "Don't forget to remove the # before the sample_code." )
+# third instruction
+msg3 <- "Did you remember to take a look at the `businesses` data set?"
+#test_output_contains("summary(businesses)", incorrect_msg = msg3)
+test_function("summary",args = c("object"), index = 3, args_not_specified_msg = msg3)
 
 # General
 test_error()
-success_msg("Well done! Now that your data is loaded in, you can start exploring it!")
+success_msg("Good job! We've seen a little more about the data so now let's move on!")
+
 ```
 
+--- type:NormalExercise xp:100 skills:1,3  key:a72c7124db
+## Combining data into one
 
---- type:MultipleChoiceExercise xp:50 skills:1,3  key:f48b5ed8a3
-## How Many Authentic Users?
+Before manipulating the Yelp star reviews, you first need to combine the three data sets that were just explored so you can understand and adapt the data more effectively. 
 
-Now that you have selected just the users with native Indian names you are ready to begin manipulating the reviews. Before you do,however, take a moment to explore the new data set and answer the following question.
+The data sets from the previous exercise, `reviews`, `users`, and `businesses`, are data frames, R's way of representing a data set. You can combine a data frame in many ways, but for this exercise you don't want any missing data, let's say a business without a review. So you will use the `inner_join()` function from the `dplyr` package to combine the three data sets. The function `inner_join()` combines two data sets by finding columns with identical labels and then only combining the rows that are found in both independent data sets. 
 
-Take a look at the `authentic_uers` and `number_authentic_city` data sets with `str()` or `summary()` and then calculate the total number of authentic users.
+Let's see how it works!
+
+The 3 data frames are already loaded into your workspace. Apply `inner_join()` to the `reviews` and the `users` data sets first. Don't forget to name that newly combined data set. Next, apply `inner_join()` again but with the newly created data set and the final data set from the previous exercise `businesses`.
+
+Once the data sets have been combined it can be helpful to explore the data some. Using `summary` you can get a better feel for the variables that are in out data and the types data you have to use. 
 
 *** =instructions
-- 67
-- 91
-- 56
-- 121
+- The code provided uses `library()` to load `dplyr` to the environment
+- Use `inner_join()` to combine the `reviews` and `users` data sets and assign to `ru`.
+- Use `inner_join()` to combine the newly created `ru` and `businesses` data sets and assign new data frame to `rub`. 
+- Inspect new data frame `rub`, take note of the variables and types of data.
   
 *** =hint
-- a simple sum of the `number_authentic_city$users` would tell you the total users
+- The order of the `join` function is important! Look at the instructions for the correct order. 
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/Springboard.yelp.datasets.Rdata"))
+```
 
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian.RData"))
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.RData"))
-
-
-indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
-authentic_users <- subset(indian,indian$user_name %in% indian_names_clean)
-
+*** =sample_code
+```{r,eval=FALSE}
+# Make dplry package avaiable to use
 library(dplyr)
 
-number_authentic_city <- authentic_users %>%
-  select(city,user_name) %>%
-  group_by(city) %>%
-  summarise(users = n())
+# Combine the reviews and users data sets
+ru  <- inner_join(___, ___)
 
+# combine the newly created data set with the businesses data set
+rub <- inner_join(___, ___)
+
+# Take a look at the combined data frame
+summary(___)
+
+```
+
+*** =solution
+```{r,eval=FALSE}
+library(dplyr)
+
+# Combine the reviews and users data sets
+ru  <- inner_join(reviews, users)
+
+# combine the newly created data set with the businesses data set
+rub <- inner_join(ru, businesses)
+
+# Take a look at the combined data frame
+summary(rub)
+```
+
+*** =sct
+```{r,eval=FALSE}
+# first instruction
+msg1 <- "Make sure you combine the `reviews` and the `users` data sets in the correct order."
+test_data_frame("ru",incorrect_msg = msg1)
+
+# second instruction
+msg2 <- "Make sure you combine the `ru` and `businesses` data sets in the correct order."
+test_data_frame("rub",incorrect_msg = msg2)
+
+# third instruction
+msg3 <- "Somethings not right. Check your `summary()` code"
+#test_output_contains("summary(rub)", incorrect_msg = msg3)
+test_function("summary",args = c("object"), index = 1, incorrect_msg = msg3)
+
+# General
+test_error()
+success_msg("Awesome! We've combined the data set, but let's keep moving.")
+
+```
+
+--- type:NormalExercise xp:100 skills:1 key:6a66494184
+## Isolate Indian restaurants 
+
+As you noticed with the summary of `rub` from the previous exerceise, the data set is large and convers many genres of cuisine. It makes sense to compare restaurants of similar cuisine for obvious reasons, so in order to simplify the task of adapting Yelp reviews, you will only look at reviews for Indian restaurants. The modifications in this course will serve as a case study of how you could adapt other reviews from the various types of food that also exist on Yelp.      
+
+With that said, you need to filter out all of the non-Indian reviews. To do this you will use a combination of `grepl()` and `subset()` to create a binary true/false column indicating whether that review was for an Indian restaurant. This column will allow you to filter out all reviews that are not for Indian restaurants.
+
+*** =instructions
+- Create binary true/false column `is_indian` for Indian-only restaurant reviews using `grepl()` and the `categories` column.
+- Use `subset()` to filter out all non-Indian reviews and assign the remaining reviews to data frame `indian`.
+
+*** =hint
+- Which column of the `rub` data set should you look for the type of food served at the restaurant
+
+*** =pre_exercise_code
+```{r,eval=FALSE}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/rub.RData"))
+```
+
+*** =sample_code
+```{r,eval=FALSE}
+# Create indian review column
+rub$is_indian <- grepl("Indian", rub$___) == TRUE
+
+# Select only reviews for Indian restaurants
+_____ <- subset(rub, is_indian == TRUE)
+```
+
+*** =solution
+```{r,eval=FALSE}
+# Create indian review column
+rub$is_indian <- grepl("Indian", rub$categories) == TRUE
+
+# Select only reviews for Indian restaurants
+indian <- subset(rub, is_indian == TRUE)
+
+```
+
+*** =sct
+```{r,eval=FALSE}
+# first instruction
+msg1 <- "Although there are many ways to achieve this, try using grepl and if you are having trouble type ?grepl in the console for more information. Remember to search for Indian in the `categories` variable."
+# test_output_contains("rub$is_indian <- grepl('Indian', rub$categories) == TRUE", incorrect_msg = msg1)
+test_function("grepl", args = c("pattern","x"), index = 1, incorrect_msg = msg1)
+
+# second instruction
+msg2 <- "We know there are other ways to do this too, but subset can be quick and straight forward. If you are having trouble type ?subset in the console for more information."
+test_function("subset", args = c("x","subset"), index = 1, incorrect_msg = msg2)
+test_object("indian", incorrect_msg = msg2)
+
+# General
+test_error()
+success_msg("Good job! We've selected jus the reviews for Indian restaurants so now let's move on!")
+```
+
+--- type:MultipleChoiceExercise xp:50 skills:1,3  key:f48b5ed8a3
+## How Many Reviews?
+
+Now that you have created a simplified data set and are almost ready to begin manipulating the reviews take a moment to explore the new data set and answer the following question.
+
+Take a look at the data set `indian` with `str()` and see how many reviews does our data set contain?
+
+*** =instructions
+- 1456
+- 980
+- 1238
+- 1563
+  
+*** =hint
+- There first-row from the `str()` output indicates how many rows are in this data set. There is one review per row!  
+
+*** =pre_exercise_code
+```{r,eval=FALSE}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian.RData"))
 ```
 
 *** =sct
 ```{r,eval=FALSE}
 msg1 <- "Try again!"
-msg2 <- "Very good! You found the total. Let's move on to calculating the authentic star reviews!"
+msg2 <- "Not so good... Maybe have a look at the hint."
 msg3 <- "Incorrect. Maybe have a look at the hint."
-msg4 <- "Not so good... Maybe have a look at the hint."
-test_mc(correct = 2, feedback_msgs = c(msg1, msg2, msg3, msg4))
+msg4 <- "Very good! You found the total. Let's start manipulating the star reviews!"
+test_mc(correct = 4, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```
 
+--- type:NormalExercise xp:100 skills:1 key:1b2e20ac0a
+## Review Modification Method I
 
---- type:NormalExercise xp:100 skills:1,3  key:50ac99f74a
-## Generating Average Authenic User Star Review
+Now that you have a manageable data set with just one type of cuisine it's time to begin adapting the Yelp star reviews to see if you can make them more meaningful. In this course, you will look into just two of the almost infinite ways one can scale and manipulate reviews. The first method is to create a new review that gives more weight to those who have reviewed more restaurants of the same cuisine. 
 
-You've now selected your authentic Indian users and can use their reviews to generate average authentic star reviews! 
+To do this start by creating a new data frame with the number of reviews each reviewer has made for the collection of Indian restaurants in the original data set.  
 
-There are many ways to do this but the `dplyr` package, as you have seen, has many great tools to quickly group data, add new columns and calculate new values. You will use the `select`, `group_by`, `summarise` and `mutate` functions to add new variables to the larger data set. 
+The new data frame will be created using the `select()`, `group_by()`, `%>%` and `summarize()` functions of the `dplyr` package. The `select()` function determines the columns that will be included in the new data frame. The `group_by()`, `%<%` and `summarized()` functions allow for separate summaries to be performed within the unique values of the variable being grouped.  
 
-The `select` function allows you to isolate the variables you wish to use to create the new values. The `group_by()`, `%>%` and `summarized()` functions allow for separate calculations to be performed within the unique values of the variable  or variables being grouped. 
-
-You should create a new star review column called `new_star` and a column of the difference between the original average star reviews and the new star reviews. Assign the column of differences to `diff`. 
+After making the data frame, explore it! Check out the range in numbers of reviews and also the average number of reviews per user.  
 
 *** =instructions
-- Generate a data frame `avg_review_indian` using tools from `dplyr`
-<p>- `group_by` the variables `city`, `business_name`, and `avg_stars`</p><p>- Use the `n()` function to tally the number of reviews for that restaurant</p><p>- Create a `new_stars` column using a `sum` of the `star` column</p><p>- Using the `mutate` function, add a `diff` variable by subtracting the `new_stars` column by the `avg_stars` column
+- Create a new data frame `number_reviews_indian` by selecting columns: `user_id`, `user_name`, using `group_by` variable `user_id` and  `summarize()` with `n()` to create `total_reviews` column
+- Print the table of `total_reviews`
+- Show the average number of reviews per users by averaging the `total_reviews`
+
 *** =hint
-- Don't remove any of the `%>%` operators and make sure you have one after each function
+- Did you `group_by()` the correct variable? Check the instructions again.
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian.RData"))
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.RData"))
-
-
-indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
-authentic_users <- subset(indian,indian$user_name %in% indian_names_clean)
-
 library(dplyr)
-
-number_authentic_city <- authentic_users %>%
-  select(city,user_name) %>%
-  group_by(city) %>%
-  summarise(users = n())
 ```
 
 *** =sample_code
-```{r, eval = FALSE}
-# The package `dplyr` is available to use
-# Generate new "immigrant" review
-avg_review_indian <- authentic_users %>% 
-    select(business_id, business_name, city, stars, avg_stars, is_indian, user_name) %>%
-    group_by(city, business_name, ___) %>%
-    summarise(count = ___,
-    new_stars = sum(___) / count) %>%
-    mutate(dif = ___ - avg_stars)
+```{r,eval=FALSE}
+# The package dplyr is available ot use
+# Generate a new data frame with the number of reviews by each reviewer
+number_reviews_indian <- indian %>% 
+  select(___, ___) %>%
+  group_by(___) %>% 
+  summarise(total_reviews = n())
+
+# Print the table of total_reviews
+table(number_reviews_indian$___)
+
+# Pring the average number of reviews per users
+mean(number_reviews_indian$___)
+```
+
+*** =solution
+```{r,eval=FALSE}
+# The package dplyr is available ot use
+# Generate a summary of # of reviews of that cuisine done by each reviewer
+number_reviews_indian <- indian %>% 
+  select(user_id, user_name) %>%
+  group_by(user_id) %>% 
+  summarise(total_reviews = n())
+
+# Print the table of total_reviews
+table(number_reviews_indian$total_reviews)
+
+# Pring the average number of reviews per users
+mean(number_reviews_indian$total_reviews)
+```
+
+*** =sct
+```{r,eval=FALSE}
+# first instruction
+test_data_frame("number_reviews_indian", incorrect_msg = "Although this is not the only way to accomplish this task, using the dplry package is very efficient. If you are having trouble type ?dplyr in the console for more information.")
+
+# second instruction
+test_function("table", index = 1, incorrect_msg = "Something is wrong with your table. Check your code and type ?table into the console for more information")
+
+# third instruction
+test_function("mean", args = c("x"), index = 1, incorrect_msg = "Something is wrong with your mean calculation. Check your code and type ?mean into the console for more information")
+
+# General
+test_error()
+success_msg("Good job! We've created a data frame with the number of reviews per user. Let's use it in the next exercise!")
+
+```
+
+--- type:NormalExercise xp:100 skills:1 key:30db019cde
+## Review Modification Method I Cont.
+
+Before you create the weighted star review, add the `number_reviews_indian` to the larger data frame `indian`. 
+
+Just like an earlier exercise, you don't want any missing data within our data set, so you will use the `inner_join` function to merge all the rows that are in both the `number_reviews_indian` and `indian` data frames.
+
+*** =instructions
+- Create a new data frame `indian_plus_number`
+- Display column names to ensure that the `total_reviews` column was added
+
+*** =hint
+- Which column of the `rub` data set should you look for the type of food served at the restaurant
+
+*** =pre_exercise_code
+```{r,eval=FALSE}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian.RData"))
+
+library(dplyr)
+
+number_reviews_indian <- indian %>% 
+  select(user_id, user_name) %>%
+  group_by(user_id) %>% 
+  summarise(total_reviews = n())
+
+```
+
+
+*** =sample_code
+```{r,eval=FALSE}
+# The package dplyr is available to use
+# Combine number of Indian reviews with original data frame of Indian restaurant reviews
+indian_plus_number <- inner_join(___,number_reviews_indian)
+
+# Display column names for the new data frame
+indian_plus_number
+```
+
+*** =solution
+```{r,eval=FALSE}
+# The package dplyr is available to use
+# Combine number of Indian reviews with original data frame of indian restaurant reviews
+indian_plus_number <- inner_join(indian, number_reviews_indian)
+
+# Display column names for the new data frame
+names(indian_plus_number)
+
+```
+
+*** =sct
+```{r,eval=FALSE}
+# first instruction
+msg1 <- "Although there are many ways to achieve this, try using inner_join and if you are having trouble type ?inner_join in the console for more information."
+test_function("inner_join",args = c("x","y"), index = 1, incorrect_msg = msg1)
+test_data_frame("indian_plus_number", incorrect_msg = "Your newly created data frame seems off. Reread the instructions and try again.")
+
+# second instruction
+msg2 <- "You didn't display the coloumn names. Use the `names()` function. It is quick and straight forward. If you are having trouble type ?names in the console for more information."
+test_function("names",args = c("x"), index = 1, not_called_msg = msg2)
+
+# General
+test_error()
+success_msg("Good job! We've added a new column to the data. Let's use it in the next exercise!")
+
+```
+
+--- type:NormalExercise xp:100 skills:1 key:3981380079
+## Review Modification Method I Cont. 2
+
+Use the combined data set to create weighted star reviews for each user. To do this you will simply multiply the unweighted restaurant review variable `stars` by the total number of reviews variable `total_reviews` for each user.
+
+This weighted star variable will allow us to generate weighted star reviews. 
+
+Weighted star reviews for each restaurant is created by taking the sum of the `weighted_stars` variables and dividing them by the sum of the `total_reviews` variable for each restaurant. This is accomplished using the `select()`, `group_by()`, `%>%` and `summarize()` functions of the `dplyr` package. 
+
+
+*** =instructions
+- Create a new column `weighted_stars` in the `indian_plus_number` data frame
+- Use `select()`, `group_by()`, `%>%` and `summarize()` to generate new weighted reviews for each restaurant while also creatng columns:<p> -`cnt = n()`</p><p> -`avg = sum(stars) / cnt`</p><p> -`new = sum(weighted_stars) / sum(total_reviews)`</p><p> -`dif = new - avg`</p>
+
+*** =hint
+- 
+
+*** =pre_exercise_code
+```{r,eval=FALSE}
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_plus_number.RData"))
+library(dplyr)
+
+```
+
+*** =sample_code
+```{r,eval=FALSE}
+# Generate weighted_stars variable 
+indian_plus_number$___ <- indian_plus_number$stars * indian_plus_number$total_reviews
+
+# Create a new weighted review for each restaurant (Note: package dplyr is available to use)
+new_review_indian <- indian_plus_number %>% 
+  select(city, business_name, avg_stars, stars, total_reviews, weighted_stars) %>%
+  group_by(city, business_name, avg_stars) %>%
+  summarise(cnt = ___,
+            avg = sum(___) / ___,
+            new = sum(___) / sum(___),
+            dif = ___ - ___)
+
+
 
 ```
 
 *** =solution
 ```{r,eval=FALSE}
-# The package `dplyr` is available to use
-# Generate new "immigrant" review
-avg_review_indian <- authentic_users %>% 
-    select(business_id, business_name, city, stars,
-         avg_stars, is_indian, user_name) %>%
-    group_by(city, business_name, avg_stars) %>%
-    summarise(count = n(),
-    new_stars = sum(stars) / count) %>%
-    mutate(dif = new_stars - avg_stars)
+# Generate weighted_stars variable
+indian_plus_number$weighted_stars <- indian_plus_number$stars * indian_plus_number$total_reviews
+
+# Create a new weighted review for each restaurant (Note: package dplyr is available to use)
+new_review_indian <- indian_plus_number %>% 
+  select(city, business_name, avg_stars, stars, total_reviews, weighted_stars) %>%
+  group_by(city, business_name, avg_stars) %>%
+  summarise(cnt = n(),
+            avg = sum(stars) / cnt,
+            new = sum(weighted_stars) / sum(total_reviews),
+            dif = new - avg)
+
 ```
 
 *** =sct
 ```{r,eval=FALSE}
 #first instruction
-test_data_frame("avg_review_indian", incorrect_msg = "There are some issues with how you generated the avg_review_indian, check your see if you changed any of the sample code.")
+test_data_frame("indian_plus_number", incorrect_msg = "There are some issues with how you generated the weighted stars, check your code.")
 
 # second instruction
+test_data_frame("new_review_indian", incorrect_msg = "The new data frame `new_review_indian` is not correct. If you are having trouble type ?dplyr in the console for more information.")
+
 test_function("group_by",args = c(".data"), index = 1, incorrect_msg = "Did you group the correct variable?. Check your code and type ?group_by into the console for more information")
 
 # General
 test_error()
 success_msg("Good job! We've created weighted reviews. Let's check them out in the next exercise!")
+
 ```
 
+--- type:NormalExercise xp:100 skills:1 key:4ad4885c8d
+## Detecting Modification Effects
 
---- type:NormalExercise xp:100 skills:1,3  key:03314d8871
-## Detecting Manipulation Effect 
+Now that you have new weighted star reviews for our restaurants, let's see if you can detect the effects of the modifications. 
 
-Now that you have created new average star reviews based on the authentic Indian users, let's see if you can detect the effects of the modifications. 
+To do so you will make use of some a general `hist` plot and a `qplot` from the `ggplot2` package. These graphs will help us visualize the effect of your modification. Take note of the magnitudes of the changes and if there were any patterns in the distribution of the difference in star reviews.
 
-To do so you will make use of the `hist` plot and the `geom_bar()` plot from the `ggplot2` package. These graphs will help you visualize the effect of your modification. Take note of the magnitudes of the changes and if there were any patterns in the distribution of the difference in star reviews.
-
-The graphs will be rendered from the `avg_review_indian` data frame containing the `new_stars` and the `avg_stars` reviews.
+A final summary of the `new_review_indian` will give context to how the reviews changed as well.
 
 *** =instructions
-- Create a histogram of the `avg_stars` using the `hist()` function
-- Create a histogram of the `new_stars` using the `hist()` function
-- Plot the distribution of changes to star reviews using the `hist()` function 
-- Plot the changes to per restaurant using `ggplot()` and `geom_bar()`. 
+- Make `ggplot2` available in the environment 
+- Use `hist()` function and the `new_review_indian$dif` column to create the plot of the distribution.
+- Use `qplot()`, `new_review_indian$business_name` and `new_review_indian$dif` for the plot of the difference in star review per restaurant. To create a more appealing graph use `reorder()` to order of changes from least to greatest. 
+- Display the summary of the `new_review_indian` data frame 
 
 *** =hint
-Remember to remove the `#` from the code to run! Don't change the `ggplot()` sample code.
+- The `reorder()` function makes the graph a bit more appealing. If you need assistance type ?reorder into the console.
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian.RData"))
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_names.RData"))
-
-
-indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
-authentic_users <- subset(indian,indian$user_name %in% indian_names_clean)
-
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1087/datasets/indian_plus_number.RData"))
 library(dplyr)
 
-number_authentic_city <- authentic_users %>%
-  select(city,user_name) %>%
-  group_by(city) %>%
-  summarise(users = n())
+indian_plus_number$weighted_stars <- indian_plus_number$stars * indian_plus_number$total_reviews
 
-avg_review_indian <- authentic_users %>% 
-    select(business_id, business_name, city, stars,
-         avg_stars, is_indian, user_name) %>%
-    group_by(city, business_name, avg_stars) %>%
-    summarise(count = n(),
-    new_stars = sum(stars) / count) %>%
-    mutate(dif = new_stars - avg_stars) %>%
-    ungroup() %>%
-    arrange(dif)
-
-library(ggplot2)
+new_review_indian <- indian_plus_number %>% 
+  select(city, business_name, avg_stars, stars, total_reviews, weighted_stars) %>%
+  group_by(city, business_name, avg_stars) %>%
+  summarise(cnt = n(),
+            avg = sum(stars) / cnt,
+            new = sum(weighted_stars) / sum(total_reviews),
+            dif = new - avg)
 ```
 
 *** =sample_code
-```{r, eval = FALSE}
-# The plotting package `ggplot2` is avaibale to use
-# Create a histogram of the avg_stars
-hist()
-
-# Create a histogram of the new_stars
-hist()
+```{r,eval=FALSE}
+# Load the ggplot2 package into the environment
+library(ggplot2)
 
 # Plot the distribution of changes to reviews 
-hist(___, main = "Changes in Star Reviews", xlab = "Change")
+hist(new_review_indian$___, main = "Changes in Star Reviews", xlab = "Change")
 
-# Plot the changes to per restaurant 
-ggplot(avg_review_indian, aes(x=1:nrow(avg_review_indian), y=dif, fill=city)) +
-    geom_bar(stat="identity", position=position_dodge()) + 
-    theme_classic() + scale_fill_grey() + xlab("Businesses ID") + ylab("Change in Star Review")
+# Plot the changes in review per restaurant 
+qplot(reorder(new_review_indian$business_name,new_review_indian$dif),new_review_indian$__, xlab = "", ylab = "Changes in Star Review")
+
+# Display a summary of the 
+summary(___)
 
 ```
 
 *** =solution
 ```{r,eval=FALSE}
-# The plotting package `ggplot2` is avaibale to use
-# Create a histogram of the avg_stars
-hist(avg_review_indian$avg_stars)
-
-# Create a histogram of the new_stars
-hist(avg_review_indian$new_stars)
+# Load the ggplot2 package into the environment
+library(ggplot2)
 
 # Plot the distribution of changes to reviews 
-hist(avg_review_indian$dif, main = "Changes in Star Reviews", xlab = "Change")
+hist(new_review_indian$dif, main = "Changes in Star Reviews", xlab = "Change")
 
 # Plot the changes to per restaurant 
-ggplot(avg_review_indian, aes(x=1:nrow(avg_review_indian), y=dif, fill=city)) +
-    geom_bar(stat="identity", position=position_dodge()) + 
-    theme_classic() + scale_fill_grey() + xlab("Businesses ID") + ylab("Change in Star Review")
+qplot(reorder(new_review_indian$business_name,new_review_indian$dif),new_review_indian$dif, xlab = "", ylab = "Changes in Star Review")
+
+# Display a summary of the 
+summary(new_review_indian)
 
 ```
 
 *** =sct
 ```{r,eval=FALSE}
-# Fist instruction
-msg1 <- "Fill in the varaible that is the overall average star review."
-test_function_v2("hist", "x", eval = FALSE, index = 1, 
-                 args_not_specified_msg = msg1)
+
 # second instruction
-msg2 <- "Fill in the varaible that is the new star review."
-test_function_v2("hist", "x", eval = FALSE, index = 2, 
-                 args_not_specified_msg = msg2)
+msg1 <- "Fill in the varaible that is the change in star review."
+test_function_v2("hist", "x", eval = FALSE, index = 1, 
+                 incorrect_msg = msg1)
 
 # third instruction
-msg3 <- "Fill in the varaible that is the difference in star review."
-test_function_v2("hist", "x", eval = FALSE, index = 3, 
-                 args_not_specified_msg = msg3)
+msg3 <- "Fill in the varaible that is the change in star review."
+test_function_v2("qplot", args = c("x","y"), eval = FALSE, index = 1, 
+                 incorrect_msg = msg3)
 
 # fourth instruction
-msg4 <- "Something went wrong with the `ggplot()` function. Remember to not change any of the sample code."
-test_function_v2("ggplot", eval = FALSE, index = 1, 
-                 incorrect_msg = msg4)
+msg3 <- "Something went wrong with the `summary()` function. Check your code and run again."
+test_function_v2("summary", "object", index = 1, 
+                 incorrect_msg = msg3)
 
 # General
 test_error()
-success_msg("Congratulations! You have finished the course and now know some good tools in R to manipulate data. You have also seen them work to solve an interesting problem! For more in-depth coverage to the concepts in this course try our Premium courses!")
+success_msg("Good job! We've modified the Yelp star reviews with one method. Continue to the next chapter for the second method!")
+
+
 ```
-
-
