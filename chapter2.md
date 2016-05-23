@@ -158,7 +158,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:a0898f7043
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. 
@@ -333,7 +333,7 @@ avg_review_indian <- authentic_users %>%
     group_by(city, business_name, ___) %>%
     summarise(count = ___,
     new_stars = sum(___) / count) %>%
-    mutate(dif = ___ - avg_stars)
+    mutate(diff = ___ - avg_stars)
 
 ```
 
@@ -347,7 +347,7 @@ avg_review_indian <- authentic_users %>%
     group_by(city, business_name, avg_stars) %>%
     summarise(count = n(),
     new_stars = sum(stars) / count) %>%
-    mutate(dif = new_stars - avg_stars)
+    mutate(diff = new_stars - avg_stars)
 ```
 
 *** =sct
@@ -404,7 +404,7 @@ avg_review_indian <- authentic_users %>%
     group_by(city, business_name, avg_stars) %>%
     summarise(count = n(),
     new_stars = sum(stars) / count) %>%
-    mutate(dif = new_stars - avg_stars) %>%
+    mutate(diff = new_stars - avg_stars) %>%
     ungroup() %>%
     arrange(diff)
 
@@ -424,7 +424,7 @@ hist()
 hist(___, main = "Changes in Star Reviews", xlab = "Change")
 
 # Plot the changes to per restaurant 
-ggplot(avg_review_indian, aes(x=1:nrow(avg_review_indian), y=dif, fill=city)) +
+ggplot(avg_review_indian, aes(x=1:nrow(avg_review_indian), y = diff, fill = city)) +
     geom_bar(stat="identity", position=position_dodge()) + 
     theme_classic() + scale_fill_grey() + xlab("Businesses ID") + ylab("Change in Star Review")
 
@@ -443,7 +443,7 @@ hist(avg_review_indian$new_stars)
 hist(avg_review_indian$diff, main = "Changes in Star Reviews", xlab = "Change")
 
 # Plot the changes to per restaurant 
-ggplot(avg_review_indian, aes(x=1:nrow(avg_review_indian), y=dif, fill=city)) +
+ggplot(avg_review_indian, aes(x=1:nrow(avg_review_indian), y=diff, fill=city)) +
     geom_bar(stat="identity", position=position_dodge()) + 
     theme_classic() + scale_fill_grey() + xlab("Businesses ID") + ylab("Change in Star Review")
 
