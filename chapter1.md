@@ -417,7 +417,7 @@ names(indian_plus_number)
 *** =sct
 ```{r,eval=FALSE}
 # first instruction
-msg1 <- "Although there are many ways to achieve this, try using inner_join and if you are having trouble type ?inner_join in the console for more information. Are they arguements correct?"
+msg1 <- "Although there are many ways to achieve this, try using inner_join and if you are having trouble type ?inner_join in the console for more information. Are your arguements correct?"
 test_function("inner_join",args = c("x","y"), index = 1, incorrect_msg = msg1)
 test_data_frame("indian_plus_number", incorrect_msg = "Your newly created data frame seems off. Reread the instructions and try again.")
 
