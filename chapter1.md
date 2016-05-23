@@ -444,7 +444,7 @@ Weighted star reviews for each restaurant are created by taking the sum of the `
 *** =instructions
 - Create a new column `weighted_stars` in the `indian_plus_number` data frame
 - Use `select()`, `group_by()`, `%>%` and `summarize()` to generate new weighted reviews for each restaurant while also creating columns:<p> -`cnt = n()`</p><p> -`avg = sum(stars) / cnt`</p><p> -`new = sum(weighted_stars) /`
-`sum(total_reviews)`</p><p> -`diff = new - avg`</p>
+  `sum(total_reviews)`</p><p> -`diff = new - avg`</p>
 
 *** =hint
 The `%>%` operators are important for `dplyr` piping. Do not eliminate any of these from the sample code. 
