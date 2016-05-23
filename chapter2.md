@@ -158,7 +158,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:6f939e3faf
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. 
@@ -177,8 +177,8 @@ Take a look at the number of users in each city. The `select`, `group_by`, `summ
 *** =instructions
 - Subset the `indian` data set to just the users with native Indian names. Use the operator `%in%` with the `indian_names_clean` data set as the subset terms.
 - Generate a table of the `authentic_users`.
-- Display the total number of authentic users in each city. Use `select`, `group_by`, `summarise` and `n()`.
-
+- Generate the `number_authentic_city` data frame using `select`, `group_by`, `summarise` and `n()`.
+- Display the total number of authentic users in each city.
 *** =hint
 When loading the names don't change the sample_code! Just remove the `#`
 
