@@ -4,7 +4,7 @@ title       : Springboard Yelp Analysis
 description : "Springboard Yelp Analysis"
 
 --- type:NormalExercise xp:100 skills:1 key:70e19e0e7d
-## Quick intro to DataCamp
+## Quick intro to DataCamp 
 
 Welcome to our tutorial based on the popular [Springboard blog post](https://www.springboard.com/blog/eat-rate-love-an-exploration-of-r-yelp-and-the-search-for-good-indian-food) about Yelp Review Modifications. Here you will learn how the author tailored the Yelp star reviews for restaurants to provide more useful information when deciding where to eat. In case you're new to R, it's recommended that you first take our free [Introduction to R Tutorial](https://www.datacamp.com/courses/free-introduction-to-r).
 
