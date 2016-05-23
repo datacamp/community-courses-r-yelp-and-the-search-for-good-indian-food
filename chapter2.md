@@ -20,7 +20,7 @@ You will first load in a list of native Indians names that can be used to sort u
 - Display the first 10 names with `head()`
 
 *** =hint
-When loading the names don't change the sample_code! Just remove the `#`.
+When loading the names don't change the sample_code! Just remove the `#`
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -88,7 +88,7 @@ You can do this by finding a regular expression that will find all the names wit
 - Display the cleaned names list with `unlist()`
 
 *** =hint
-When there is a `#` before the sample_code, don't change it, just remove the `#`.
+When there is a `#` before the sample_code, don't change it, just remove the `#`
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -158,7 +158,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:6ca7bfe71b
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. 
@@ -175,7 +175,7 @@ Take a look at the number of users in each city. The `select`, `group_by`, `summ
 - Display the total number of authentic users in each city. Use `select`, `group_by`, `summarise` and `n()`.
 
 *** =hint
-When loading the names don't change the sample_code! Just remove the `#`.
+When loading the names don't change the sample_code! Just remove the `#`
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -259,7 +259,7 @@ Take a look at the `authentic_uers` and `number_authentic_city` data sets with `
 - 121
   
 *** =hint
-A simple sum of the `number_authentic_city$users` would tell you the total users.
+- a simple sum of the `number_authentic_city$users` would tell you the total users
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -305,7 +305,7 @@ You should create a new star review column called `new_star` and a column of the
 - Generate a data frame `avg_review_indian` using tools from `dplyr`
 <p>- `group_by` the variables `city`, `business_name`, and `avg_stars`</p><p>- Use the `n()` function to tally the number of reviews for that restaurant</p><p>- Create a `new_stars` column using a `sum` of the `star` column</p><p>- Using the `mutate` function, add a `diff` variable by subtracting the `new_stars` column by the `avg_stars` column
 *** =hint
-Don't remove any of the `%>%` operators and make sure you have one after each function.
+- Don't remove any of the `%>%` operators and make sure you have one after each function
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -406,7 +406,7 @@ avg_review_indian <- authentic_users %>%
     new_stars = sum(stars) / count) %>%
     mutate(dif = new_stars - avg_stars) %>%
     ungroup() %>%
-    arrange(dif)
+    arrange(diff)
 
 library(ggplot2)
 ```
@@ -440,7 +440,7 @@ hist(avg_review_indian$avg_stars)
 hist(avg_review_indian$new_stars)
 
 # Plot the distribution of changes to reviews 
-hist(avg_review_indian$dif, main = "Changes in Star Reviews", xlab = "Change")
+hist(avg_review_indian$diff, main = "Changes in Star Reviews", xlab = "Change")
 
 # Plot the changes to per restaurant 
 ggplot(avg_review_indian, aes(x=1:nrow(avg_review_indian), y=dif, fill=city)) +
