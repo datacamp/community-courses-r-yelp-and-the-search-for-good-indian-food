@@ -443,8 +443,7 @@ Weighted star reviews for each restaurant are created by taking the sum of the `
 
 *** =instructions
 - Create a new column `weighted_stars` in the `indian_plus_number` data frame
-- Use `select()`, `group_by()`, `%>%` and `summarize()` to generate new weighted reviews for each restaurant while also creating columns:<p> -`cnt = n()`</p><p> -`avg = sum(stars) / cnt`</p><p> -`new = sum(weighted_stars) /`
-  `sum(total_reviews)`</p><p> -`diff = new - avg`</p>
+- Use `select()`, `group_by()`, `%>%` and `summarize()` to generate new weighted reviews for each restaurant while also creating columns:<p> - Create a variable `cnt` that counts the number of reviews for each restaurant</p><p> - Calculate the previous average star review using the `stars` and the `cnt` variables</p><p> - Generate new star reviews from the sum of the `weighted_stars` variable and the `sum` of the `total_reviews` varaible</p><p> - Finally, compute the difference in the `weighted_star` reviews and the previous average star review. Assign this variable to `diff`</p>
 
 *** =hint
 The `%>%` operators are important for `dplyr` piping. Do not eliminate any of these from the sample code. 
@@ -513,10 +512,10 @@ To do so, you will make use of some a general `hist` plot and a `qplot` from the
 A final summary of the `new_review_indian` will give context to how the reviews changed as well.
 
 *** =instructions
-Make `ggplot2` available in the environment 
-Use `hist()` function and the `new_review_indian$diff` column to create the plot of the distribution.
-Use `qplot()`, `new_review_indian$business_name` and `new_review_indian$diff` for the plot of the difference in star review per restaurant. To create a more appealing graph use `reorder()` to order of changes from least to greatest. 
-Display the summary of the `new_review_indian` data frame 
+-Make `ggplot2` available in the environment 
+-Use `hist()` function and the `new_review_indian$diff` column to create the plot of the distribution.
+-Use `qplot()`, `new_review_indian$business_name` and `new_review_indian$diff` for the plot of the difference in star review per restaurant. To create a more appealing graph use `reorder()` to order of changes from least to greatest. 
+-Display the summary of the `new_review_indian` data frame 
 
 *** =hint
 The `reorder()` function makes the graph a bit more appealing. If you need assistance type ?reorder into the console.
