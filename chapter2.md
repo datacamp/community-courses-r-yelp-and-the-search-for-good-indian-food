@@ -158,7 +158,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:cde35929ee
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. 
@@ -309,7 +309,7 @@ You should create a new star review column called `new_star` and a column of the
 - Generate a data frame `avg_review_indian` using tools from `dplyr`
 <p>- `group_by` the variables `city`, `business_name`, and `avg_stars`</p><p>- Use the `n()` function to tally the number of reviews for that restaurant</p><p>- Create a `new_stars` column using a `sum` of the `star` column</p><p>- Using the `mutate` function, add a `diff` variable by subtracting the `new_stars` column by the `avg_stars` column
 *** =hint
-- Don't remove any of the `%>%` operators and make sure you have one after each function
+- Don't remove any of the `%>%` operators and make sure you have one after each function. Also the order of `group_by()` matters! Check the instructions for the correct order.
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -335,7 +335,7 @@ number_authentic_city <- authentic_users %>%
 avg_review_indian <- authentic_users %>% 
     select(business_id, business_name, city, stars, 
            avg_stars, is_indian, user_name) %>%
-    group_by(city, business_name, ___) %>%
+    group_by(___, ___, ___) %>%
     summarise(count = ___,
     new_stars = sum(___) / count) %>%
     mutate(diff = ___ - avg_stars)
@@ -361,10 +361,10 @@ names(avg_review_indian)
 *** =sct
 ```{r,eval=FALSE}
 #first instruction
-test_data_frame("avg_review_indian", incorrect_msg = "There are some issues with how you generated the avg_review_indian, check your see if you changed any of the sample code.")
+test_data_frame("avg_review_indian", incorrect_msg = "There are some issues with how you generated the avg_review_indian. Do you have the correct order fro the `group_by()` fucntion.")
 
 # second instruction
-test_function("group_by",args = c(".data"), index = 1, incorrect_msg = "Did you group the correct variable?. Check your code and type ?group_by into the console for more information")
+test_function("group_by",args = c(".data"), index = 1, incorrect_msg = "Did you group the correct variable?. Check your code and type ?group_by into the console for more information?")
 
 # General
 test_error()
