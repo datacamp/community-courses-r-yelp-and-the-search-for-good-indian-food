@@ -492,11 +492,11 @@ new_review_indian <- indian_plus_number %>%
 test_data_frame("indian_plus_number", incorrect_msg = "There are some issues with how you generated the weighted stars, check your code.")
 
 # second instruction
-test_data_frame("new_review_indian", incorrect_msg = "The new data frame `new_review_indian` is not correct. If you are having trouble type ?dplyr in the console for more information.")
-
 test_function("group_by",args = c(".data"), index = 1, incorrect_msg = "Did you group the correct variable?. Check your code and type ?group_by into the console for more information")
 
 test_function("summarise",args = c(".data"), index = 1, incorrect_msg = "Did you group the correct variable?. Check your code and type ?group_by into the console for more information")
+
+test_data_frame("new_review_indian", incorrect_msg = "The new data frame `new_review_indian` is not correct. If you are having trouble type ?dplyr in the console for more information.")
 
 
 # General
