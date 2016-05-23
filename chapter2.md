@@ -158,7 +158,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:ece6e1c971
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. 
@@ -232,7 +232,7 @@ number_authentic_city
 *** =sct
 ```{r,eval=FALSE}
 # Fist instruction
-test_function("subset", args = c("x","subset"),incorrect_msg = "Something went wrong with your `subset()`. Did you remember to add the data frame that the subset is coming from. The data frame `indians` should be included the first arguemnt.")
+test_function("subset", args = c("x","subset"),incorrect_msg = "Something went wrong with your `subset()`. Did you remember to specify the column in the data frame that the subset is coming from. The data frame `indian` should be included the first arguemnt, but which column are we subsetting from?")
 
 # Second instruction
 test_output_contains("table(authentic_users$user_name)", incorrect_msg = "You forgot to display the table of the authentic users. Don't forget to remove the # before the sample_code." )
