@@ -59,11 +59,11 @@ success_msg("Awesome! See how the console shows the result of the R code you sub
 --- type:NormalExercise xp:100 skills:1,3  key:0d1199072c
 ## Exploring the Data
 
-For this course the data comes in three separate data sets. 
+For this course, the data comes in three separate data sets. 
 
 - The first is labeled `reviews` and it contains a `user_id`, a `business_id` and a `star` review.
-- The second is labeled `users` and it is a list of `user_id's` and `user_names's`
-- The last is labeled `businesses` and it is a contains information about the businesses on yelp like the business location, category of food, number of reviews and average star review.
+- The second is labeled `users` and it is a list of `user_id`s and `user_names`s
+- The last is labeled `businesses` and it is a contains information about the businesses on yelp like the business location, the category of food, the number of reviews and theaverage star review.
 
 They have been loaded into the environment already and are ready to be explored!
 
@@ -133,23 +133,22 @@ success_msg("Good job! We've seen a little more about the data so now let's move
 
 Before manipulating the Yelp ratings, you first need to combine the three data sets that were just explored so you can understand and adapt the data more effectively. 
 
-The data sets form the previous exercise, `reviews`, `users`, and `businesses`, are data frames, R's way of representing a dataset. You can combine a data frame in many ways, but for this exercise you don't want any missing data, let's say a business without a review. So you will use the `inner_join()` function from the `dplyr` package to combine the three data sets. The function `inner_join()` combines two data sets by finding columns with identical labels and then only combining the rows that are in both independent data sets. 
+The datasets from the previous exercise, `reviews`, `users`, and `businesses`, are data frames, R's way of representing a dataset. You can combine a data frame in many ways, but for this exercise you don't want any missing data, let's say a business without a review. So you will use the `inner_join()` function from the `dplyr` package to combine the three data sets. The function `inner_join()` combines two data sets by finding columns with identical labels and then only combining the rows that are in both independent data sets. 
 
 Let's see how it works!
 
-The 3 data frames are already loaded into your workspace. Apply `inner_join()` to the `reviews` and the `users` data sets first. Don't forget to name that newly combined data set. Next apply `inner_join()` again but with the newly created data set and the final data set from the previous exercise `businesses`.
+The 3 data frames are already loaded into your workspace. Apply `inner_join()` to the `reviews` and the `users` datasets first. Don't forget to name that newly combined data set. Next, apply `inner_join()` again but with the newly created data set and the final data set from the previous exercise `businesses`.
 
 Once the data sets have been combined it can be helpful to explore the data some. Using `summary` you can get a better feel for the variables that are in out data and the types data you have to use. 
 
-
 *** =instructions
-- The code provided uses `library()` to load `dplyr` to the enironment
-- Use `inner_join()` combine the `reviews` and `users` data sets and assign to `ru`.
-- Use `inner_join()` combine the newly created `ru` and `businesses` data sets and assign new data frame to `rub`. 
+- The code provided uses `library()` to load `dplyr` to the environment
+- Use `inner_join()` combine the `reviews` and `users` datasets and assign to `ru`.
+- Use `inner_join()` combine the newly created `ru` and `businesses` datasets and assign new data frame to `rub`. 
 - Inspect new data frame `rub`, take note of the variables and types of data.
   
 *** =hint
--
+- The order of the `join` fuctions is important! Look at the instructions for the correct order. 
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -210,13 +209,13 @@ success_msg("Awesome! We've combined the data set, but let's keep moving.")
 --- type:NormalExercise xp:100 skills:1 key:6a66494184
 ## Isolate Indian restaurants 
 
-As you noticed with the summary of `rub` from the previous exerceise, the data set is large and convers many genres of cuisine. It makes sense to compare restaurants of similar cuisine for obvious reasons, so in order to simplify the task of adapting Yelp reviews you will only look at reviews for Indian restaurants. This modifications in this course will serve as a case study of how you could adapt other reviews from the various types of food that also exist on Yelp.      
+As you noticed with the summary of `rub` from the previous exerceise, the data set is large and convers many genres of cuisine. It makes sense to compare restaurants of similar cuisine for obvious reasons, so in order to simplify the task of adapting Yelp reviews, you will only look at reviews for Indian restaurants. The modifications in this course will serve as a case study of how you could adapt other reviews from the various types of food that also exist on Yelp.      
 
 With that said, you need to filter out all of the non-Indian reviews. To do this you will use a combination of `grepl()` and `subset()` to create a binary true/false column indicating whether that review was for an Indian restaurant. This column will allow you to filter out all reviews that are not for Indian restaurants.
 
 *** =instructions
 - Create binary true/false column `is_indian` for Indian-only restaurant reviews using `grepl()` and the `categories` column.
-- Use `subset()` to filter out all non-Indian reviews and assign the remiaing reviews to data frame `indian`.
+- Use `subset()` to filter out all non-Indian reviews and assign the remaining reviews to data frame `indian`.
 
 *** =hint
 - Which column of the `rub` data set should you look for the type of food served at the restaurant
@@ -267,7 +266,7 @@ success_msg("Good job! We've selected jus the reviews for Indian restaurants so 
 
 Now that you have created a simplified data set and are almost ready to begin manipulating the reviews take a moment to explore the new data set and answer the following question.
 
-Take a look at the data set `indian` with `str()` and see how many reviews does our data set contain?
+Take a look at the data set `indian` with `str()` and see how many reviews does our dataset contain?
 
 *** =instructions
 - 1456
@@ -276,7 +275,7 @@ Take a look at the data set `indian` with `str()` and see how many reviews does 
 - 1563
   
 *** =hint
-- There first row form the `str()` output indicates how many rows are in this data set. There is one review per row!  
+- There first-row from the `str()` output indicates how many rows are in this data set. There is one review per row!  
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -295,7 +294,7 @@ test_mc(correct = 4, feedback_msgs = c(msg1, msg2, msg3, msg4))
 --- type:NormalExercise xp:100 skills:1 key:1b2e20ac0a
 ## Review Modification Method I
 
-Now that you have a manageable data set with just one type of cuisine it's time to begin adapting the Yelp star ratings to see if you can make them more meaningful. In this course you will look into just two of the almost infinite ways one can scale and manipulate ratings. The first method is to create a new rating that gives more weight to those who have reviewed more restaurants of the same cuisine. 
+Now that you have a manageable data set with just one type of cuisine it's time to begin adapting the Yelp star ratings to see if you can make them more meaningful. In this course, you will look into just two of the almost infinite ways one can scale and manipulate ratings. The first method is to create a new rating that gives more weight to those who have reviewed more restaurants of the same cuisine. 
 
 To do this start by creating a new data frame with the number of reviews each reviewer has made for the collection of Indian restaurants in the original data set.  
 
@@ -309,7 +308,7 @@ After making the data frame, explore it! Check out the range in numbers of revie
 - Show the average number of reviews per users by averaging the `total_reviews`
 
 *** =hint
-- Did you `group_by()` the correct vararable? Check the the insturctions again.
+- Did you `group_by()` the correct variable? Check the instructions again.
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -329,7 +328,7 @@ number_reviews_indian <- indian %>%
 # Print the table of total_reviews
 table(number_reviews_indian$___)
 
-# Pring the avergare number of reviews per users
+# Pring the average number of reviews per users
 mean(number_reviews_indian$___)
 ```
 
@@ -345,7 +344,7 @@ number_reviews_indian <- indian %>%
 # Print the table of total_reviews
 table(number_reviews_indian$total_reviews)
 
-# Pring the avergare number of reviews per users
+# Pring the average number of reviews per users
 mean(number_reviews_indian$total_reviews)
 ```
 
@@ -428,7 +427,7 @@ test_function("names",args = c("x"), index = 1, not_called_msg = msg2)
 
 # General
 test_error()
-success_msg("Good job! We've added a new coloumn to the data. Let's use it in the next exercise!")
+success_msg("Good job! We've added a new column to the data. Let's use it in the next exercise!")
 
 ```
 
@@ -439,7 +438,7 @@ Use the combined data set to create weighted star reviews for each user. To do t
 
 This weighted star variable will allow us to generate weighted star reviews. 
 
-Weighted star reviews for each restaurant is created by taking to sum of the `weighted_stars` variables and dividing them by the sum of the `total_reviews` variable for each restuarant. This is accomplished using the the `select()`, `group_by()`, `%>%` and `summarize()` functions of the `dplyr` package. 
+Weighted star reviews for each restaurant is created by taking the sum of the `weighted_stars` variables and dividing them by the sum of the `total_reviews` variable for each restaurant. This is accomplished using the `select()`, `group_by()`, `%>%` and `summarize()` functions of the `dplyr` package. 
 
 
 *** =instructions
@@ -502,7 +501,7 @@ test_function("group_by",args = c(".data"), index = 1, incorrect_msg = "Did you 
 
 # General
 test_error()
-success_msg("Good job! We've created weighted reveiws. Let's check them out in the next exercise!")
+success_msg("Good job! We've created weighted reviews. Let's check them out in the next exercise!")
 
 ```
 
