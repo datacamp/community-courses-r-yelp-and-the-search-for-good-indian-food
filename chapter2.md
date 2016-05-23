@@ -20,7 +20,7 @@ You will first load in a list of native Indians names that can be used to sort u
 - Display the first 10 names with `head()`
 
 *** =hint
-When loading the names don't change the sample_code! Just remove the `#`
+When loading the names don't change the sample_code! Just remove the `#`.
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -88,7 +88,7 @@ You can do this by finding a regular expression that will find all the names wit
 - Display the cleaned names list with `unlist()`
 
 *** =hint
-When there is a `#` before the sample_code, don't change it, just remove the `#`
+When there is a `#` before the sample_code, don't change it, just remove the `#`.
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -175,7 +175,7 @@ Take a look at the number of users in each city. The `select`, `group_by`, `summ
 - Display the total number of authentic users in each city. Use `select`, `group_by`, `summarise` and `n()`.
 
 *** =hint
-When loading the names don't change the sample_code! Just remove the `#`
+When loading the names don't change the sample_code! Just remove the `#`.
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -259,7 +259,7 @@ Take a look at the `authentic_uers` and `number_authentic_city` data sets with `
 - 121
   
 *** =hint
-- a simple sum of the `number_authentic_city$users` would tell you the total users
+A simple sum of the `number_authentic_city$users` would tell you the total users.
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -305,7 +305,7 @@ You should create a new star review column called `new_star` and a column of the
 - Generate a data frame `avg_review_indian` using tools from `dplyr`
 <p>- `group_by` the variables `city`, `business_name`, and `avg_stars`</p><p>- Use the `n()` function to tally the number of reviews for that restaurant</p><p>- Create a `new_stars` column using a `sum` of the `star` column</p><p>- Using the `mutate` function, add a `diff` variable by subtracting the `new_stars` column by the `avg_stars` column
 *** =hint
-- Don't remove any of the `%>%` operators and make sure you have one after each function
+Don't remove any of the `%>%` operators and make sure you have one after each function.
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
