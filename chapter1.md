@@ -393,7 +393,7 @@ Ended SCTs here
 indian_plus_number <- inner_join(___,number_reviews_Indian)
 
 # Display column names for the new data frame
-indian_plus_number
+indian_plus_number   
 ```
 
 *** =solution
