@@ -65,10 +65,13 @@ success_msg("Awesome! See how the console shows the result of the R code you sub
 --- type:NormalExercise xp:100 skills:1,3  key:0d1199072c
 ## Exploring the Data
 
-For this course the data comes in three separate data sets.They have been loaded into the environment already and are ready to be explored!
+For this course the data comes in three separate data sets.
 
+- The first is labeled `reviews` and it contains `user_id's`, `business_id's` and `star` reviews.
+- The second is labeled `users` and it is a list of `user_id's` and `user_names's`
+- The last is labeled `businesses` and it is a contains information about the businesses on yelp like the business location, the category of food, the number of reviews and the average star review.
 
-
+They have been loaded into the environment already and are ready to be explored!
 
 *** =instructions
 - Explore each data sets with `summary()` function.
