@@ -514,7 +514,7 @@ A final summary of the `new_review_indian` will give context to how the reviews 
 *** =instructions
 - Make `ggplot2` available in the environment 
 - Use `hist()` function and the `new_review_indian$diff` column to create the plot of the distribution.
-- Use `qplot()`, `new_review_indian$business_name` and `new_review_indian$diff` for the plot of the difference in star review per restaurant. To create a more appealing graph use `reorder()` to order of changes from least to greatest. 
+- Use `geom_bar()` with the `new_review_indian$diff` to the plot the difference in star review per restaurant. Fill in the `x` aurgement with the `new_review_indian` data set and assign the `y` arguement within the `aes()` to the `city` variable.  
 - Display the summary of the `new_review_indian` data frame 
 
 *** =hint
@@ -533,7 +533,9 @@ new_review_indian <- indian_plus_number %>%
   summarise(cnt = n(),
             avg = sum(stars) / cnt,
             new = sum(weighted_stars) / sum(total_reviews),
-            diff = new - avg)
+            diff = new - avg) %>%
+  ungroup() %>%
+  arrange(diff)
 ```
 
 *** =sample_code
@@ -545,7 +547,9 @@ library(ggplot2)
 hist(new_review_indian$___, main = "Changes in Star Reviews", xlab = "Change")
 
 # Plot the changes in review per restaurant 
-qplot(reorder(new_review_indian$business_name,new_review_indian$diff),new_review_indian$__, xlab = "", ylab = "Changes in Star Review")
+ggplot(______, aes(x=1:nrow(new_review_indian), y=___, fill=city)) +
+    geom_bar(stat="identity", position=position_dodge()) + 
+    theme_classic() + scale_fill_grey() + xlab("Businesses ID") + ylab("Change in Star Review")
 
 # Display a summary of the 
 summary(___)
@@ -561,7 +565,9 @@ library(ggplot2)
 hist(new_review_indian$diff, main = "Changes in Star Reviews", xlab = "Change")
 
 # Plot the changes to per restaurant 
-qplot(reorder(new_review_indian$business_name,new_review_indian$diff),new_review_indian$diff, xlab = "", ylab = "Changes in Star Review")
+ggplot(new_review_indian, aes(x=1:nrow(new_review_indian), y=diff, fill=city)) +
+    geom_bar(stat="identity", position=position_dodge()) + 
+    theme_classic() + scale_fill_grey() + xlab("Businesses ID") + ylab("Change in Star Review")
 
 # Display a summary of the 
 summary(new_review_indian)
