@@ -158,7 +158,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:5af9bf9f4b
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. 
@@ -307,7 +307,7 @@ You should create a new star review column called `new_star` and a column of the
 
 *** =instructions
 - Generate a data frame `avg_review_indian` using tools from `dplyr`
-<p>- `group_by` the variables `city`, `business_name`, and `avg_stars`</p><p>- Use the `n()` function to tally the number of reviews for that restaurant</p><p>- Create a `new_stars` column using a `sum` of the `star` column</p><p>- Using the `mutate` function, add a `diff` variable by subtracting the `new_stars` column by the `avg_stars` column
+<p>- `group_by` the variables `city`, `business_name`, and `avg_stars`</p><p>- Use the `n()` function to tally the number of reviews for that restaurant</p><p>- Create a `new_stars` column using a `sum` of the `stars` column</p><p>- Using the `mutate` function, add a `diff` variable by subtracting the `new_stars` column by the `avg_stars` column
 *** =hint
 - Don't remove any of the `%>%` operators and make sure you have one after each function. Also the order of `group_by()` matters! Check the instructions for the correct order.
 
