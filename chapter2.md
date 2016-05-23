@@ -6,9 +6,9 @@ description : "Springboard Yelp Analysis"
 --- type:NormalExercise xp:100 skills:1,3  key:0d1199072c
 ## Exploring the Data
 
-The second chapter of this tutorial will be an alternative method of manipulating the Yelp star reviews. You will be working with the same sample of reviews of Indian restaurants but adapting the star ratings in a different way. 
+The second chapter of this tutorial will be an alternative method of manipulating the Yelp star reviews. You will be working with the same sample of reviews of Indian restaurants but adapting the star reviews in a different way. 
 
-This method looks to adapt the star reviews with the perception that Yelp reviewers with Indian heritage would provide more accurate and authentic ratings for Indian cuisine. The strategy for manipulating the star reviews involves selecting only the reviewers with Indian names for the aggregate restaurant star rating. 
+This method looks to adapt the star reviews with the perception that Yelp reviewers with Indian heritage would provide more accurate and authentic reviews for Indian cuisine. The strategy for manipulating the star reviews involves selecting only the reviewers with Indian names for the aggregate restaurant star review. 
 
 This means that you need a way to select just the users with native Indian names and that is where this chapter begins! 
 
@@ -158,7 +158,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:c50d68844c
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. 
@@ -327,7 +327,7 @@ number_authentic_city <- authentic_users %>%
 *** =sample_code
 ```{r, eval = FALSE}
 # The package `dplyr` is available to use
-# Generate new "immigrant" rating
+# Generate new "immigrant" review
 avg_review_indian <- authentic_users %>% 
     select(business_id, business_name, city, stars, avg_stars, is_indian, user_name) %>%
     group_by(city, business_name, ___) %>%
@@ -340,7 +340,7 @@ avg_review_indian <- authentic_users %>%
 *** =solution
 ```{r,eval=FALSE}
 # The package `dplyr` is available to use
-# Generate new "immigrant" rating
+# Generate new "immigrant" review
 avg_review_indian <- authentic_users %>% 
     select(business_id, business_name, city, stars,
          avg_stars, is_indian, user_name) %>%
@@ -369,14 +369,14 @@ success_msg("Good job! We've created weighted reviews. Let's check them out in t
 
 Now that you have created new average star reviews based on the authentic Indian users, let's see if you can detect the effects of the modifications. 
 
-To do so you will make use of the `hist` plot and the `geom_bar()` plot from the `ggplot2` package. These graphs will help you visualize the effect of your modification. Take note of the magnitudes of the changes and if there were any patterns in the distribution of the difference in star ratings.
+To do so you will make use of the `hist` plot and the `geom_bar()` plot from the `ggplot2` package. These graphs will help you visualize the effect of your modification. Take note of the magnitudes of the changes and if there were any patterns in the distribution of the difference in star reviews.
 
 The graphs will be rendered from the `avg_review_indian` data frame containing the `new_stars` and the `avg_stars` reviews.
 
 *** =instructions
 - Create a histogram of the `avg_stars` using the `hist()` function
 - Create a histogram of the `new_stars` using the `hist()` function
-- Plot the distribution of changes to star ratings using the `hist()` function 
+- Plot the distribution of changes to star reviews using the `hist()` function 
 - Plot the changes to per restaurant using `ggplot()` and `geom_bar()`. 
 
 *** =hint
@@ -420,13 +420,13 @@ hist()
 # Create a histogram of the new_stars
 hist()
 
-# Plot the distribution of changes to ratings 
-hist(___, main = "Changes in Star Ratings", xlab = "Change")
+# Plot the distribution of changes to reviews 
+hist(___, main = "Changes in Star Reviews", xlab = "Change")
 
 # Plot the changes to per restaurant 
 ggplot(avg_review_indian, aes(x=1:nrow(avg_review_indian), y=dif, fill=city)) +
     geom_bar(stat="identity", position=position_dodge()) + 
-    theme_classic() + scale_fill_grey() + xlab("Businesses ID") + ylab("Change in Star Rating")
+    theme_classic() + scale_fill_grey() + xlab("Businesses ID") + ylab("Change in Star Review")
 
 ```
 
@@ -439,29 +439,29 @@ hist(avg_review_indian$avg_stars)
 # Create a histogram of the new_stars
 hist(avg_review_indian$new_stars)
 
-# Plot the distribution of changes to ratings 
-hist(avg_review_indian$dif, main = "Changes in Star Ratings", xlab = "Change")
+# Plot the distribution of changes to reviews 
+hist(avg_review_indian$dif, main = "Changes in Star Reviews", xlab = "Change")
 
 # Plot the changes to per restaurant 
 ggplot(avg_review_indian, aes(x=1:nrow(avg_review_indian), y=dif, fill=city)) +
     geom_bar(stat="identity", position=position_dodge()) + 
-    theme_classic() + scale_fill_grey() + xlab("Businesses ID") + ylab("Change in Star Rating")
+    theme_classic() + scale_fill_grey() + xlab("Businesses ID") + ylab("Change in Star Review")
 
 ```
 
 *** =sct
 ```{r,eval=FALSE}
 # Fist instruction
-msg1 <- "Fill in the varaible that is the overall average star rating."
+msg1 <- "Fill in the varaible that is the overall average star review."
 test_function_v2("hist", "x", eval = FALSE, index = 1, 
                  args_not_specified_msg = msg1)
 # second instruction
-msg2 <- "Fill in the varaible that is the new star rating."
+msg2 <- "Fill in the varaible that is the new star review."
 test_function_v2("hist", "x", eval = FALSE, index = 2, 
                  args_not_specified_msg = msg2)
 
 # third instruction
-msg3 <- "Fill in the varaible that is the difference in star rating."
+msg3 <- "Fill in the varaible that is the difference in star review."
 test_function_v2("hist", "x", eval = FALSE, index = 3, 
                  args_not_specified_msg = msg3)
 
