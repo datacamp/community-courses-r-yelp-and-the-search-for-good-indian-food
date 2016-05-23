@@ -496,6 +496,9 @@ test_data_frame("new_review_indian", incorrect_msg = "The new data frame `new_re
 
 test_function("group_by",args = c(".data"), index = 1, incorrect_msg = "Did you group the correct variable?. Check your code and type ?group_by into the console for more information")
 
+test_function("summarise",args = c(".data"), index = 1, incorrect_msg = "Did you group the correct variable?. Check your code and type ?group_by into the console for more information")
+
+
 # General
 test_error()
 success_msg("Good job! We've created weighted reviews. Let's check them out in the next exercise!")
