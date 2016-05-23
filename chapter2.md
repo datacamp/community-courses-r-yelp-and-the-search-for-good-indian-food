@@ -158,7 +158,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 ```
 
 
---- type:NormalExercise xp:100 skills:1,3  key:2be366436a
+--- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
 ## Finding Authentic Users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. 
@@ -329,7 +329,8 @@ number_authentic_city <- authentic_users %>%
 # The package `dplyr` is available to use
 # Generate new "immigrant" review
 avg_review_indian <- authentic_users %>% 
-    select(business_id, business_name, city, stars, avg_stars, is_indian, user_name) %>%
+    select(business_id, business_name, city, stars, 
+           avg_stars, is_indian, user_name) %>%
     group_by(city, business_name, ___) %>%
     summarise(count = ___,
     new_stars = sum(___) / count) %>%
@@ -348,6 +349,9 @@ avg_review_indian <- authentic_users %>%
     summarise(count = n(),
     new_stars = sum(stars) / count) %>%
     mutate(diff = new_stars - avg_stars)
+
+names(authentic_users)
+names(avg_review_indian)
 ```
 
 *** =sct
