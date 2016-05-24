@@ -92,7 +92,10 @@ When there is a `#` before the sample_code, don't change it, just remove the `#`
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian_names.RData"))
+indian_names_url <-url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian_names.txt")
+
+# Read Indian names into a list
+indian_names <- scan(indian_names_url, what = character())
 ```
 
 *** =sample_code
@@ -185,7 +188,10 @@ When loading the names don't change the sample_code! Just remove the `#`
 *** =pre_exercise_code
 ```{r,eval=FALSE}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian.RData"))
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian_names.txt"))
+indian_names_url <-url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian_names.txt")
+
+# Read Indian names into a list
+indian_names <- scan(indian_names_url, what = character())
 
 library(dplyr)
 
@@ -269,7 +275,11 @@ Take a look at the `authentic_uers` and `number_authentic_city` data sets with `
 ```{r,eval=FALSE}
 
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian.RData"))
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian_names.txt"))
+
+indian_names_url <-url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian_names.txt")
+
+# Read Indian names into a list
+indian_names <- scan(indian_names_url, what = character())
 
 
 indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
@@ -314,8 +324,11 @@ You should create a new star review column called `new_star` and a column of the
 *** =pre_exercise_code
 ```{r,eval=FALSE}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian.RData"))
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian_names.txt"))
 
+indian_names_url <-url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian_names.txt")
+
+# Read Indian names into a list
+indian_names <- scan(indian_names_url, what = character())
 
 indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
 authentic_users <- subset(indian,indian$user_name %in% indian_names_clean)
@@ -400,8 +413,11 @@ Remember to remove the `#` from the code to run! Don't change the `ggplot()` sam
 *** =pre_exercise_code
 ```{r,eval=FALSE}
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian.RData"))
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian_names.txt"))
 
+indian_names_url <-url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian_names.txt")
+
+# Read Indian names into a list
+indian_names <- scan(indian_names_url, what = character())
 
 indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
 authentic_users <- subset(indian,indian$user_name %in% indian_names_clean)
