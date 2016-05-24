@@ -1,7 +1,7 @@
 ---
 title_meta  : Chapter 1
 title       : Importing Data and Reivew Modification Method I
-description : 
+description : "test"
 
 --- type:NormalExercise xp:100 skills:1 key:70e19e0e7d
 ## Quick intro to DataCamp
