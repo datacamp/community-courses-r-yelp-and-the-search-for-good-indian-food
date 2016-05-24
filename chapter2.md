@@ -1,7 +1,7 @@
 ---
 title_meta  : Chapter 2
-title       : Reivew Modification Method II
-description : "test"
+title       : Generating authentic star reviews
+description : "Modifying restaurant reviews to only the native Indian users"
 
 --- type:NormalExercise xp:100 skills:1,3  key:0d1199072c
 ## Exploring the data
