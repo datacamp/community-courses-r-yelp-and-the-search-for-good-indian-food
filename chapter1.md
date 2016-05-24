@@ -490,6 +490,7 @@ new_review_indian <- indian_plus_number %>%
 ```{r,eval=FALSE}
 #first instruction
 test_error()
+success_msg("Good job! We've created weighted reviews. Let's check them out in the next exercise!")
 
 test_correct({
  test_function_result("summarise", incorrect_msg = "Have you correctly performed the `summarise()` operation? Make sure to create the summary variables, `cnt`, `avg`, `new`,and `diff`.")  
@@ -514,7 +515,7 @@ test_correct({
 # test_data_frame("new_review_indian", incorrect_msg = "The new data frame `new_review_indian` is not correct. If you are having trouble type ?dplyr in the console for more information.")
 
 # General
-success_msg("Good job! We've created weighted reviews. Let's check them out in the next exercise!")
+
 
 ```
 
@@ -617,3 +618,4 @@ success_msg("Good job! We've modified the Yelp star reviews with one method. Con
 
 
 ```
+
