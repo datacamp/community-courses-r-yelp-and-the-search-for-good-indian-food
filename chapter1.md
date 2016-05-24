@@ -1,7 +1,7 @@
 ---
 title_meta  : Chapter 1
-title       : Springboard Yelp Analysis
-description : "Springboard Yelp Analysis"
+title       : Importing Data and Reivew Modification Method I
+description : 
 
 --- type:NormalExercise xp:100 skills:1 key:70e19e0e7d
 ## Quick intro to DataCamp
@@ -292,7 +292,7 @@ test_mc(correct = 4, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```
 
 --- type:NormalExercise xp:100 skills:1,4 key:1b2e20ac0a
-## Review modification method I
+## Finding number of reviews per user
 
 You now have a manageable data set with just one type of cuisine. It's time to begin adapting the Yelp star reviews to see if you can make them more meaningful. In this course, you will look into just two of the almost infinite ways one can scale and manipulate reviews. The first method is to create a new review that gives more weight to those who have reviewed more restaurants of the same cuisine. 
 
@@ -366,7 +366,7 @@ success_msg("Good job! We've created a data frame with the number of reviews per
 ```
 
 --- type:NormalExercise xp:100 skills:1,4 key:30db019cde
-## Review modification method I Cont.
+## Adding reivew count to dataset
 
 Before you create a weighted star review for each restaurant, add the `number_reviews_indian` to the larger data frame `indian`. 
 
@@ -432,7 +432,7 @@ success_msg("Good job! We've added a new column to the data. Let's use it in the
 ```
 
 --- type:NormalExercise xp:100 skills:1,4 key:3981380079
-## Review modification method I Cont. 2
+## Generated weighted star reviews
 
 Use the combined data set, `indian_plus_number`, to create weighted star reviews for each user. To do this you will simply multiply the unweighted restaurant review variable `stars` by the total number of reviews variable `total_reviews` for each user.
 
