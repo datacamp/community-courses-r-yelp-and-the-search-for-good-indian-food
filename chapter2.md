@@ -367,20 +367,50 @@ avg_review_indian <- authentic_users %>%
     new_stars = sum(stars) / count) %>%
     mutate(diff = new_stars - avg_stars)
 
-avg_review_indian2 <- authentic_users %>% 
-    select(business_id, business_name, city, stars, 
-           avg_stars, is_indian, user_name) %>%
-    group_by(avg_stars,city, business_name) %>%
-    summarise(count = n(),
-    new_stars = sum(stars) / count) %>%
-    mutate(diff = new_stars - avg_stars)
-
-
 ```
 
 *** =sct
 ```{r,eval=FALSE}
 #first instruction
+ test_correct({
+   test_function("select", ".data", eval = FALSE, incorrect_msg = "Make sure to pass the `authentic_users` argument to the  `select()`. Double check you included the correct variables to select.")
+ },
+ {
+   test_function("select", ".data", eval = FALSE, incorrect_msg = "Make sure to pass the `indian_plus_number` argument to the  `select()`. Double check you included the correct variables to select.")
+ })
+
+ test_correct({
+   test_function("group_by", ".data", eval = FALSE, incorrect_msg = "Make sure to pass the `select` argument to `group_by()`. Double check you included the correct variables to group.")
+ },
+ {
+   test_function("group_by", ".data", eval = FALSE, incorrect_msg = "Make sure to pass the `select` argument to `group_by()`. Double check you included the correct variables to group.")
+ })
+
+test_correct({
+ test_function_result("summarise", incorrect_msg = "Have you correctly performed the `summarise()` operation? Double check instructions for the summary variables, `count` and `new_stars`.")  
+}, {
+   test_function("summarise", ".data", eval = FALSE, incorrect_msg = "Make sure to pass the `group_by()` argument to `summarise()`.")
+ })
+
+test_correct({
+ test_function_result("mutate", incorrect_msg = "Have you correctly performed the `mutate()` operation? Double check instructions for the mutate variable `diff`.")  
+}, {
+   test_function("mutate", ".data", eval = FALSE, incorrect_msg = "Make sure to pass the `summarise()` argument to `mutate()`.")
+ })
+
+test_data_frame("indian_plus_number", incorrect_msg = "There are some issues with how you generated the weighted stars, check your code.", undefined_cols_msg = "Did you assign the weighted star reviews to the correct column name?")
+
+ test_student_typed("indian_plus_number$weighted_stars<- indian_plus_number$stars * indian_plus_number$total_reviews", not_typed_msg ="Did you assign the weighted star reviews to the correct column name?")
+
+test_data_frame("new_review_indian", incorrect_msg = "The new data frame `new_review_indian` is not correct. Make sure the summary variables are all defined correctly. Check the instrucitons if you are having trouble.")
+
+# General
+test_error()
+success_msg("Good job! We've created weighted reviews. Let's check them out in the next exercise!")
+
+
+
+
 test_data_frame("avg_review_indian", incorrect_msg = "There are some issues with how you generated the avg_review_indian. Remember there should be a `%>%` operator following each function.")
 
 # second instruction
