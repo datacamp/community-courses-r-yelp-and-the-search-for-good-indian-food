@@ -4,7 +4,7 @@ title       : Springboard Yelp Analysis
 description : "Springboard Yelp Analysis"
 
 --- type:NormalExercise xp:100 skills:1,3  key:0d1199072c
-## Exploring the Data
+## Exploring the data
 
 The second chapter of this tutorial will be an alternative method of manipulating the Yelp star reviews. You will be working with the same sample of reviews of Indian restaurants but adapting the star reviews in a different way. 
 
@@ -67,7 +67,7 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 
 
 --- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
-## Cleaning the Names List
+## Cleaning the names list
  
 Now that you have a list of native Indian names, make sure that the list will do what you need it to. The list was taken from an online resource and may contain names that don't make sense or aren't useful. 
 
@@ -162,7 +162,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
 
 
 --- type:NormalExercise xp:100 skills:1,3  key:f1235d0967
-## Finding Authentic Users
+## Finding authentic users
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. 
 
@@ -256,7 +256,7 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 
 
 --- type:MultipleChoiceExercise xp:50 skills:1,3  key:f48b5ed8a3
-## How Many Authentic Users?
+## How many authentic users?
 
 Now that you have selected just the users with native Indian names you are ready to begin manipulating the reviews. Before you do,however, take a moment to explore the new data set and answer the following question.
 
@@ -305,7 +305,7 @@ test_mc(correct = 2, feedback_msgs = c(msg1, msg2, msg3, msg4))
 
 
 --- type:NormalExercise xp:100 skills:1,3  key:50ac99f74a
-## Generating Average Authenic User Star Review
+## Generating average authenic reviews
 
 You've now selected your authentic Indian users and can use their reviews to generate average authentic star reviews! 
 
@@ -410,7 +410,7 @@ success_msg("Good job! We've created weighted reviews. Let's check them out in t
 
 
 --- type:NormalExercise xp:100 skills:1,3  key:03314d8871
-## Detecting Manipulation Effect 
+## Detecting manipulation effect 
 
 Now that you have created new average star reviews based on the authentic Indian users, let's see if you can detect the effects of the modifications. 
 
