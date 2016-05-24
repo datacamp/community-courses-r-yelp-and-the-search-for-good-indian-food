@@ -507,13 +507,10 @@ new_review_indian <- indian_plus_number %>%
  })
 
 test_correct({
- test_function("summarise", incorrect_msg = "Have you correctly performed the `summarise()` operation? Make sure to create the summary variables, `cnt`, `avg`, `new`,and `diff`.")  
+ test_function_result("summarise", incorrect_msg = "Have you correctly performed the `summarise()` operation? Make sure to create the summary variables, `cnt`, `avg`, `new`,and `diff`.")  
 }, {
    test_function("summarise", ".data", eval = FALSE, incorrect_msg = "Make sure to pass the `group_by()` argument to `summarise()`.")
  })
-
-
-# success_msg("Awesome! With this extra tool, i.e. the pipe, you can efficiently solve meaningful questions concerning your dataset. Get ready for takeoff!")
 
 test_data_frame("indian_plus_number", incorrect_msg = "There are some issues with how you generated the weighted stars, check your code.", undefined_cols_msg = "Did you assign the weighted star reviews to the correct column name?")
 
