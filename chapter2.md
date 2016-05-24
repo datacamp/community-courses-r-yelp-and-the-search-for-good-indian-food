@@ -1,7 +1,7 @@
 ---
 title_meta  : Chapter 2
 title       : Reivew Modification Method II
-description : 
+description : "test"
 
 --- type:NormalExercise xp:100 skills:1,3  key:0d1199072c
 ## Exploring the data
