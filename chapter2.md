@@ -398,19 +398,6 @@ test_correct({
    test_function("mutate", ".data", eval = FALSE, incorrect_msg = "Make sure to pass the `summarise()` argument to `mutate()`.")
  })
 
-test_data_frame("indian_plus_number", incorrect_msg = "There are some issues with how you generated the weighted stars, check your code.", undefined_cols_msg = "Did you assign the weighted star reviews to the correct column name?")
-
- test_student_typed("indian_plus_number$weighted_stars<- indian_plus_number$stars * indian_plus_number$total_reviews", not_typed_msg ="Did you assign the weighted star reviews to the correct column name?")
-
-test_data_frame("new_review_indian", incorrect_msg = "The new data frame `new_review_indian` is not correct. Make sure the summary variables are all defined correctly. Check the instrucitons if you are having trouble.")
-
-# General
-test_error()
-success_msg("Good job! We've created weighted reviews. Let's check them out in the next exercise!")
-
-
-
-
 test_data_frame("avg_review_indian", incorrect_msg = "There are some issues with how you generated the avg_review_indian. Remember there should be a `%>%` operator following each function.")
 
 # second instruction
