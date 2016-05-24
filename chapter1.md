@@ -513,14 +513,13 @@ test_correct({
  })
 
 
-
 # success_msg("Awesome! With this extra tool, i.e. the pipe, you can efficiently solve meaningful questions concerning your dataset. Get ready for takeoff!")
 
 test_data_frame("indian_plus_number", incorrect_msg = "There are some issues with how you generated the weighted stars, check your code.", undefined_cols_msg = "Did you assign the weighted star reviews to the correct column name?")
 
 # test_student_typed("indian_plus_number$weighted_stars<- indian_plus_number$stars * indian_plus_number$total_reviews", not_typed_msg ="Did you assign the weighted star reviews to the correct column name?")
 
-test_data_frame("new_review_indian", incorrect_msg = "The new data frame `new_review_indian` is not correct. If you are having trouble type ?dplyr in the console for more information.")
+test_data_frame("new_review_indian", incorrect_msg = "The new data frame `new_review_indian` is not correct. Make sure the summary variables are all defined correctly. Check the instrucitons if you are having trouble.")
 
 # General
 test_error()
