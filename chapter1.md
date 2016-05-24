@@ -1,6 +1,6 @@
 ---
 title_meta  : Chapter 1
-title       : Importing Data and Reivew Modification
+title       : Importing data and star review modification
 description : "Weighting star reviews based on users who review more restaurants"
 
 --- type:NormalExercise xp:100 skills:1 key:70e19e0e7d
