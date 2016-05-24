@@ -489,20 +489,31 @@ new_review_indian <- indian_plus_number %>%
 *** =sct
 ```{r,eval=FALSE}
 #first instruction
-test_data_frame("indian_plus_number", columns = "weighted_stars", incorrect_msg = "There are some issues with how you generated the weighted stars, check your code.", undefined_cols_msg = "Did you assign the weighted star reviews to the correct column name?")
+test_error()
 
-test_student_typed("indian_plus_number$weighted_stars<- indian_plus_number$stars * indian_plus_number$total_reviews", not_typed_msg ="Did you assign the weighted star reviews to the correct column name?")
+test_correct({
+ test_function_result("summarise", incorrect_msg = "Have you correctly performed the `summarise()` operation? Make sure to create the summary variables, `cnt`, `avg`, `new`,and `diff`.")  
+}, {
 
-# second instruction
-test_function("group_by",args = c(".data"), index = 1, incorrect_msg = "Did you group the correct variable?. Check your code and type ?group_by into the console for more information")
+ test_correct({
+   test_function_result("group_by", incorrect_msg = "Is your `group_by()` call correct? Make sure you have the correct variables.")  
+ }, {
+   test_function("mutate", ".data", eval = FALSE, incorrect_msg = "Make sure to pass the `select` argument to `mutate()`.")
+ })
 
-test_function("summarise",args = c(".data"), index = 1, incorrect_msg = "Did you group the correct variable?. Check your code and type ?group_by into the console for more information")
+ test_correct({
+   test_function_result("summerise", incorrect_msg = "Have you correctly performed the `summerise` operation? Make sure your summary variables are correct.")  
+ })
 
-test_data_frame("new_review_indian", incorrect_msg = "The new data frame `new_review_indian` is not correct. If you are having trouble type ?dplyr in the console for more information.")
+# success_msg("Awesome! With this extra tool, i.e. the pipe, you can efficiently solve meaningful questions concerning your dataset. Get ready for takeoff!")
 
+# test_data_frame("indian_plus_number", columns = "weighted_stars", incorrect_msg = "There are some issues with how you generated the weighted stars, check your code.", undefined_cols_msg = "Did you assign the weighted star reviews to the correct column name?")
+
+# test_student_typed("indian_plus_number$weighted_stars<- indian_plus_number$stars * indian_plus_number$total_reviews", not_typed_msg ="Did you assign the weighted star reviews to the correct column name?")
+
+# test_data_frame("new_review_indian", incorrect_msg = "The new data frame `new_review_indian` is not correct. If you are having trouble type ?dplyr in the console for more information.")
 
 # General
-test_error()
 success_msg("Good job! We've created weighted reviews. Let's check them out in the next exercise!")
 
 ```
