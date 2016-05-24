@@ -494,9 +494,15 @@ new_review_indian <- indian_plus_number %>%
 
  test_correct({
    test_function("select", ".data", eval = FALSE, incorrect_msg = "Make sure to pass the `indian_plus_number` argument to the  `select()`.")
+ },
+ {
+   test_function("select", ".data", eval = FALSE, incorrect_msg = "Make sure to pass the `indian_plus_number` argument to the  `select()`.")
  })
 
  test_correct({
+   test_function("group_by", ".data", eval = FALSE, incorrect_msg = "Make sure to pass the `select` argument to `group_by()`.")
+ },
+ {
    test_function("group_by", ".data", eval = FALSE, incorrect_msg = "Make sure to pass the `select` argument to `group_by()`.")
  })
 
