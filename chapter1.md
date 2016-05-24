@@ -490,11 +490,10 @@ new_review_indian <- indian_plus_number %>%
 ```{r,eval=FALSE}
 #first instruction
 
-
-test_correct({
- test_function_result("summarise", incorrect_msg = "Have you correctly performed the `summarise()` operation? Make sure to create the summary variables, `cnt`, `avg`, `new`,and `diff`.")  
-}, {
-   test_function("summarise", ".data", eval = FALSE, incorrect_msg = "Make sure to pass the `group_by()` argument to `summarise()`.")
+ test_correct({
+   test_function_result("select", incorrect_msg = "Have you correctly performed the `select` operation? Make sure your summary variables are correct.")  
+ }, {
+   test_function("select", ".data", eval = FALSE, incorrect_msg = "Make sure to pass the `indian_plus_number` argument to the  `select()`.")
  })
 
  test_correct({
@@ -503,11 +502,13 @@ test_correct({
    test_function("group_by", ".data", eval = FALSE, incorrect_msg = "Make sure to pass the `select` argument to `group_by()`.")
  })
 
- test_correct({
-   test_function_result("select", incorrect_msg = "Have you correctly performed the `select` operation? Make sure your summary variables are correct.")  
- }, {
-   test_function("select", ".data", eval = FALSE, incorrect_msg = "Make sure to pass the `indian_plus_number` argument to the  `select()`.")
+test_correct({
+ test_function_result("summarise", incorrect_msg = "Have you correctly performed the `summarise()` operation? Make sure to create the summary variables, `cnt`, `avg`, `new`,and `diff`.")  
+}, {
+   test_function("summarise", ".data", eval = FALSE, incorrect_msg = "Make sure to pass the `group_by()` argument to `summarise()`.")
  })
+
+
 
 # success_msg("Awesome! With this extra tool, i.e. the pipe, you can efficiently solve meaningful questions concerning your dataset. Get ready for takeoff!")
 
