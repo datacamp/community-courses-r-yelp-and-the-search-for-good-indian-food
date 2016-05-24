@@ -56,8 +56,8 @@ test_output_contains("8 + 15", incorrect_msg = "Do not remove the line of R code
 success_msg("Awesome! See how the console shows the result of the R code you submitted? Now that you're familiar with the interface, let's get down to R business!")
 ```
 
---- type:NormalExercise xp:100 skills:1,3  key:0d1199072c
-## Exploring the Data
+--- type:NormalExercise xp:100 skills:1  key:0d1199072c
+## Exploring the data
 
 For this course, the data comes in three separate data sets. 
 
@@ -206,7 +206,7 @@ success_msg("Awesome! We've combined the data set, but let's keep moving.")
 
 ```
 
---- type:NormalExercise xp:100 skills:1 key:6a66494184
+--- type:NormalExercise xp:100 skills:1,3 key:6a66494184
 ## Isolate Indian restaurants 
 
 You may have noticed from the previous exercise, the data set `rub` is large and covers many genres of cuisine. It makes sense to compare restaurants of similar cuisine for obvious reasons, so in order to simplify the task of adapting Yelp reviews, you will only look at reviews for Indian restaurants. The modifications in this course will serve as a case study of how you could adapt other reviews from the various types of food that also exist on Yelp.      
@@ -261,8 +261,8 @@ test_error()
 success_msg("Good job! We've selected jus the reviews for Indian restaurants so now let's move on!")
 ```
 
---- type:MultipleChoiceExercise xp:50 skills:1,3  key:f48b5ed8a3
-## How Many Reviews?
+--- type:MultipleChoiceExercise xp:50 skills:1  key:f48b5ed8a3
+## How many reviews?
 
 Now that you have created a simplified data set, you are almost ready to begin manipulating the star reviews. Take a moment to explore the new data set and answer the following question.
 
@@ -291,8 +291,8 @@ msg4 <- "Very good! You found the total. Let's start manipulating the star revie
 test_mc(correct = 4, feedback_msgs = c(msg1, msg2, msg3, msg4))
 ```
 
---- type:NormalExercise xp:100 skills:1 key:1b2e20ac0a
-## Review Modification Method I
+--- type:NormalExercise xp:100 skills:1,4 key:1b2e20ac0a
+## Review modification method I
 
 You now have a manageable data set with just one type of cuisine. It's time to begin adapting the Yelp star reviews to see if you can make them more meaningful. In this course, you will look into just two of the almost infinite ways one can scale and manipulate reviews. The first method is to create a new review that gives more weight to those who have reviewed more restaurants of the same cuisine. 
 
@@ -365,8 +365,8 @@ success_msg("Good job! We've created a data frame with the number of reviews per
 
 ```
 
---- type:NormalExercise xp:100 skills:1 key:30db019cde
-## Review Modification Method I Cont.
+--- type:NormalExercise xp:100 skills:1,4 key:30db019cde
+## Review modification method I Cont.
 
 Before you create a weighted star review for each restaurant, add the `number_reviews_indian` to the larger data frame `indian`. 
 
@@ -431,8 +431,8 @@ success_msg("Good job! We've added a new column to the data. Let's use it in the
 
 ```
 
---- type:NormalExercise xp:100 skills:1 key:3981380079
-## Review Modification Method I Cont. 2
+--- type:NormalExercise xp:100 skills:1,4 key:3981380079
+## Review modification method I Cont. 2
 
 Use the combined data set, `indian_plus_number`, to create weighted star reviews for each user. To do this you will simply multiply the unweighted restaurant review variable `stars` by the total number of reviews variable `total_reviews` for each user.
 
@@ -523,7 +523,7 @@ success_msg("Good job! We've created weighted reviews. Let's check them out in t
 ```
 
 --- type:NormalExercise xp:100 skills:1 key:4ad4885c8d
-## Detecting Modification Effects
+## Detecting modification effects
 
 Now that you have new weighted star reviews for each restaurant, let's see if you can detect the effects of the modifications. 
 
