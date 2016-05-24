@@ -67,7 +67,7 @@ success_msg("Well done! Now that your data is loaded in, you can start exploring
 
 
 --- type:NormalExercise xp:100 skills:1,3  key:cd888199f3
-## Cleaning the Names list
+## Cleaning the Names List
  
 Now that you have a list of native Indian names, make sure that the list will do what you need it to. The list was taken from an online resource and may contain names that don't make sense or aren't useful. 
 
@@ -92,7 +92,7 @@ When there is a `#` before the sample_code, don't change it, just remove the `#`
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian_names.txt"))
+load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian_names.RData"))
 ```
 
 *** =sample_code
