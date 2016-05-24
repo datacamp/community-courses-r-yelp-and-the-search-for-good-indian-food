@@ -507,7 +507,7 @@ new_review_indian <- indian_plus_number %>%
  })
 
 test_correct({
- test_function_result("summarise", incorrect_msg = "Have you correctly performed the `summarise()` operation? Make sure to create the summary variables, `cnt`, `avg`, `new`,and `diff`.")  
+ test_function_result("summarise", incorrect_msg = "Have you correctly performed the `summarise()` operation? Double check instructions for the summary variables, `cnt`, `avg`, `new` and `diff`.")  
 }, {
    test_function("summarise", ".data", eval = FALSE, incorrect_msg = "Make sure to pass the `group_by()` argument to `summarise()`.")
  })
