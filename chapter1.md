@@ -294,7 +294,7 @@ test_mc(correct = 4, feedback_msgs = c(msg1, msg2, msg3, msg4))
 --- type:NormalExercise xp:100 skills:1 key:1b2e20ac0a
 ## Review Modification Method I
 
-You now have have a manageable data set with just one type of cuisine. It's time to begin adapting the Yelp star reviews to see if you can make them more meaningful. In this course, you will look into just two of the almost infinite ways one can scale and manipulate reviews. The first method is to create a new review that gives more weight to those who have reviewed more restaurants of the same cuisine. 
+You now have a manageable data set with just one type of cuisine. It's time to begin adapting the Yelp star reviews to see if you can make them more meaningful. In this course, you will look into just two of the almost infinite ways one can scale and manipulate reviews. The first method is to create a new review that gives more weight to those who have reviewed more restaurants of the same cuisine. 
 
 To do this start by creating a new data frame with the number of reviews each reviewer has made for the collection of Indian restaurants in the original data set.  
 
@@ -490,8 +490,6 @@ new_review_indian <- indian_plus_number %>%
 ```{r,eval=FALSE}
 #first instruction
 
-
-
  test_correct({
    test_function("select", ".data", eval = FALSE, incorrect_msg = "Make sure to pass the `indian_plus_number` argument to the  `select()`.")
  },
@@ -516,12 +514,11 @@ test_data_frame("indian_plus_number", incorrect_msg = "There are some issues wit
 
  test_student_typed("indian_plus_number$weighted_stars<- indian_plus_number$stars * indian_plus_number$total_reviews", not_typed_msg ="Did you assign the weighted star reviews to the correct column name?")
 
-test_data_frame("new_review_indian", incorrect_msg = "The new data frame `new_review_indian` is not correct. Make sure the summary variables are all defined correctly. Check the instrucitons if you are having trouble.")
+test_data_frame("new_review_indian", incorrect_msg = "The new data frame `new_review_indian` is not correct. Make sure the summary variables are all defined correctly. Check the instructions if you are having trouble.")
 
 # General
 test_error()
 success_msg("Good job! We've created weighted reviews. Let's check them out in the next exercise!")
-
 
 ```
 
