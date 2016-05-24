@@ -166,7 +166,7 @@ success_msg("Well done! You've removed the unwanted names now you can subset the
  
 You have successfully cleaned the list of native Indian names and you are ready to select just the reviews from the users that have a name that is part of this list. 
 
-The `subset` function will make this task simple. Split the `indian` data set by defining the `subset` argument within the `subset` function. You can define the column to in which to divide the data by with the `subset` argument. Using the `%in%` operator, you can define criteria in which to select from the column defined by the `subset` function. In this case it would be looking for authentic Indian names within the `user_name` column.
+The `subset` function will make this task simple. Split the `indian` data set by defining the `subset` argument within the `subset` function. You can define the column to in which to divide the data by with the `subset` argument. Using the `%in%` operator, you can define criteria in which to select from the column defined by the `subset` function. In this case, it would be looking for authentic Indian names within the `user_name` column.
 
 Example Subset Code:
 <p>`alpha = c("A","B","C","D","E","F")`
@@ -522,5 +522,4 @@ test_function_v2("ggplot", eval = FALSE, index = 1,
 test_error()
 success_msg("Congratulations! You have finished the course and now know some good tools in R to manipulate data. You have also seen them work to solve an interesting problem! For more in-depth coverage to the concepts in this course try our Premium courses!")
 ```
-
 
