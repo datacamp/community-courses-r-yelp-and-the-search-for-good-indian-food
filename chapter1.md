@@ -492,7 +492,7 @@ new_review_indian <- indian_plus_number %>%
 
 
 
-# test_correct({
+ test_correct({
    test_function("select", ".data", eval = FALSE, incorrect_msg = "Make sure to pass the `indian_plus_number` argument to the  `select()`.")
  })
 
