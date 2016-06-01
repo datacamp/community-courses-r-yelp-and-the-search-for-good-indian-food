@@ -10,8 +10,7 @@ author_bio       : DataCamp is a young team of data analytics enthusiasts that
   create their own interactive courses.<p/> <p> <a target="_blank" href="https://www.springboard.com"> Springboard<a/> offers data science education with 1-on-1 
   mentorship from industry experts, and publishes resources for aspiring data scientists, 
   like this <a target="_blank" href="https://www.springboard.com/resources/data-career-guide">guide to data science careers<a/>.<p/>
-  <p>This interactive course was based on a Springboard alum's <a target="_blank" 
-  href="https://www.springboard.com/blog/eat-rate-love-an-exploration-of-r-yelp-and-the-search-for-good-indian-food/"> blog post<a/> about his final project. 
+  <p>This interactive course was based on a Springboard alum's <a target="_blank" href="https://www.springboard.com/blog/eat-rate-love-an-exploration-of-r-yelp-and-the-search-for-good-indian-food"> blog post<a/> about his final project. 
   The course R code was based on the author's code available at this Github repo.<p/>
 university       : DataCamp
 difficulty_level : 1
