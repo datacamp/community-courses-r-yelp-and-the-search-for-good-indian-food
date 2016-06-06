@@ -534,11 +534,11 @@ A final summary of the `new_review_indian` will give context to how the reviews 
 *** =instructions
 - Make `ggplot2` available in the environment 
 - Use `hist()` function and the `new_review_indian$diff` column to create the plot of the distribution.
-- Use `geom_bar()` with the `new_review_indian$diff` to the plot the difference in star review per restaurant. Fill in the `x` enlargement with the `new_review_indian` data set and assign the `y` argument within the `aes()` to the `city` variable.  
+- Use `geom_bar()` with the `new_review_indian$diff` to the plot the difference in star review per restaurant. Fill in the `x` enlargement with the `new_review_indian` data set and assign the `y` argument within the `aes()` to the `diff` variable.
 - Display the summary of the `new_review_indian` data frame 
 
 *** =hint
-The `reorder()` function makes the graph a bit more appealing. If you need assistance type ?reorder into the console.
+The `reorder()` function makes the graph a bit more appealing. If you need assistance type `?reorder` into the console.
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -567,7 +567,7 @@ library(ggplot2)
 hist(new_review_indian$___, main = "Changes in Star Reviews", xlab = "Change")
 
 # Plot the changes in review per restaurant 
-ggplot(______, aes(x=1:nrow(new_review_indian), y=___, fill=city)) +
+ggplot(___, aes(x=1:nrow(new_review_indian), y=___, fill=city)) +
     geom_bar(stat="identity", position=position_dodge()) + 
     theme_classic() + scale_fill_grey() + xlab("Businesses ID") + ylab("Change in Star Review")
 
