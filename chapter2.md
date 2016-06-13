@@ -234,7 +234,7 @@ test_error()
 success_msg("Well done! Now that your data is loaded in, you can start exploring it!")
 ```
 --- type:NormalExercise xp:100 skills:1,3  key:2e0e6abeec
-## Finding authentic users
+## Finding authentic users 2
  
 Nnow that you have successfully subsetting the data, generate a table of the authentic Indian users to get a sense of the size of the data.
 
