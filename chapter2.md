@@ -202,7 +202,7 @@ indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
 ```{r, eval = FALSE, warning=FALSE}
 # The package `dplyr` is available to use
 # Subset the `indian` data set to just the users with native Indian names
-authentic_users <- subset(___, ___ %in% ___)
+authentic_users <- subset(___, indian$user_name %in% indian$___)
 
 # Table of the authentic users
 #table(authentic_users$user_name)
