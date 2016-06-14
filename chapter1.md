@@ -443,7 +443,7 @@ Weighted star reviews for each restaurant are created by taking the sum of the `
 
 *** =instructions
 - Create a new column `weighted_stars` in the `indian_plus_number` data frame
-- Use `select()`, `group_by()`, `%>%` and `summarize()` to generate new weighted reviews for each restaurant while also creating columns:<p> - Create a variable `cnt` that counts the number of reviews for each restaurant</p><p> - Calculate the previous average star review using the `stars` and the `cnt` variables</p><p> - Generate new star reviews by dividing the sum of the `weighted_stars` variable and the `sum` of the `total_reviews` variable</p><p> - Finally, compute the difference in the star reviews from by subtracting the new star reviews, `new`, and the previous average star reviews `avg`. Assign this variable to `diff`</p>
+- Use `select()`, `group_by()`, `%>%` and `summarize()` to generate new weighted reviews for each restaurant while also creating columns:<p> - Create a variable `count` that counts the number of reviews for each restaurant</p><p> - Calculate the previous average star review using the `stars` and the `cnt` variables</p><p> - Generate new star reviews by dividing the sum of the `weighted_stars` variable and the `sum` of the `total_reviews` variable</p><p> - Finally, compute the difference in the star reviews from by subtracting the new star reviews, `new`, and the previous average star reviews `avg`. Assign this variable to `diff`</p>
 
 *** =hint
 The `%>%` operators are important for `dplyr` piping. Do not eliminate any of these from the sample code. 
@@ -480,7 +480,7 @@ new_review_indian <- indian_plus_number %>%
   select(city, business_name, avg_stars, stars, total_reviews, weighted_stars) %>%
   group_by(city, business_name, avg_stars) %>%
   summarise(count = n(),
-            avg = sum(stars) / cnt,
+            avg = sum(stars) / count,
             new = sum(weighted_stars) / sum(total_reviews),
             diff = new - avg)
 
