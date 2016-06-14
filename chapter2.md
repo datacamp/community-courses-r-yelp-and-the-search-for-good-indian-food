@@ -173,10 +173,15 @@ Example Subset Code:
 <p>`subset(alpha, alpha %in% "A")`
 <p>`[1] "A"`</p>
 
+After successfully subsetting the data, generate a table of the authentic Indian users to get a sense of the size of the data.
+
+Take a look at the number of users in each city. The `select`, `group_by`, `summarise` and `n()` functions of the `dplyr` package are great tools for quickly calculating the users in each city.  
  
 *** =instructions
 - Subset the `indian` data set to just the users with native Indian names. Use the operator `%in%` with the `indian_names_clean` data set as the subset terms.
 - Generate a table of the `authentic_users`.
+- Generate the `number_authentic_city` data frame using `select`, `group_by`, `summarise` and `n()`.
+- Display the total number of authentic users in each city.
 *** =hint
 When loading the names don't change the sample_code! Just remove the `#`
 
@@ -200,70 +205,7 @@ indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
 authentic_users <- subset(___, ___ %in% ___)
 
 # Table of the authentic users
-table(_______$_______)
-
-
-```
-
-*** =solution
-```{r,eval=FALSE}
-# The package `dplyr` is available to use
-# Subset the `indian` data set to just the users with native Indian names
-authentic_users <- subset(indian,indian$user_name %in% indian_names_clean)
-
-# Table
-table(authentic_users$user_name)
-```
-
-*** =sct
-```{r,eval=FALSE}
-# Fist instruction
-test_function("subset", args = c("x","subset"),incorrect_msg = "Something went wrong with your `subset()`. Did you remember to specify the column in the data frame that the subset is coming from. The data frame `indian` should be included the first arguemnt, but which column are we subsetting from?")
-
-# Second instruction
-test_output_contains("table(authentic_users$user_name)", incorrect_msg = "You forgot to display the table of the authentic users. Don't forget to remove the # before the sample_code." )
-
-# Third instruction
-test_data_frame("number_authentic_city", undefined_msg = NULL, incorrect_msg = "Something went wrong with your `number_authentic_city` data frame. Look at the `sample_code` that was given. Hit the refresh button to see it again.")
-
-# Fourth instruction
-test_output_contains("number_authentic_city", incorrect_msg = "Don't forget to remove the # before the sample_code." )
-
-# General
-test_error()
-success_msg("Well done! Now that your data is loaded in, you can start exploring it!")
-```
---- type:NormalExercise xp:100 skills:1,3  key:2e0e6abeec
-## Finding authentic users 2
- 
-Nnow that you have successfully subsetting the data, generate a table of the authentic Indian users to get a sense of the size of the data.
-
-Take a look at the number of users in each city. The `select`, `group_by`, `summarise` and `n()` functions of the `dplyr` package are great tools for quickly calculating the users in each city.  
- 
-*** =instructions
-- Generate the `number_authentic_city` data frame using `select`, `group_by`, `summarise` and `n()`.
-- Display the total number of authentic users in each city.
-*** =hint
-When loading the names don't change the sample_code! Just remove the `#`
-
-*** =pre_exercise_code
-```{r,eval=FALSE}
-load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian.RData"))
-indian_names_url <-url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian_names.txt")
-
-# Read Indian names into a list
-indian_names <- scan(indian_names_url, what = character())
-
-library(dplyr)
-
-indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
-authentic_users <- subset(indian,indian$user_name %in% indian_names_clean)
-
-```
-
-*** =sample_code
-```{r, eval = FALSE, warning=FALSE}
-# The package `dplyr` is available to use
+#table(authentic_users$user_name)
 
 # Find the number of users in each city
 number_authentic_city <- authentic_users %>%
@@ -276,6 +218,13 @@ number_authentic_city <- authentic_users %>%
 
 *** =solution
 ```{r,eval=FALSE}
+# The package `dplyr` is available to use
+# Subset the `indian` data set to just the users with native Indian names
+authentic_users <- subset(indian,indian$user_name %in% indian_names_clean)
+
+# Table
+table(authentic_users$user_name)
+
 # Find the number of users in each city
 number_authentic_city <- authentic_users %>%
   select(city,user_name) %>%
@@ -304,7 +253,6 @@ test_output_contains("number_authentic_city", incorrect_msg = "Don't forget to r
 test_error()
 success_msg("Well done! Now that your data is loaded in, you can start exploring it!")
 ```
-
 
 
 --- type:MultipleChoiceExercise xp:50 skills:1,3  key:f48b5ed8a3
