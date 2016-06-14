@@ -432,7 +432,7 @@ success_msg("Good job! We've added a new column to the data. Let's use it in the
 ```
 
 --- type:NormalExercise xp:100 skills:1,4 key:3981380079
-## Generated weighted star reviews
+## Generating weighted star reviews
 
 Use the combined data set, `indian_plus_number`, to create weighted star reviews for each user. To do this you will simply multiply the unweighted restaurant review variable `stars` by the total number of reviews variable `total_reviews` for each user.
 
@@ -443,7 +443,7 @@ Weighted star reviews for each restaurant are created by taking the sum of the `
 
 *** =instructions
 - Create a new column `weighted_stars` in the `indian_plus_number` data frame
-- Use `select()`, `group_by()`, `%>%` and `summarize()` to generate new weighted reviews for each restaurant while also creating columns:<p> - Create a variable `cnt` that counts the number of reviews for each restaurant</p><p> - Calculate the previous average star review using the `stars` and the `cnt` variables</p><p> - Generate new star reviews by dividing the sum of the `weighted_stars` variable and the `sum` of the `total_reviews` variable</p><p> - Finally, compute the difference in the star reviews from by subtracting the new star reviews, `new`, and the previous average star reviews `avg`. Assign this variable to `diff`</p>
+- Use `select()`, `group_by()`, `%>%` and `summarize()` to generate new weighted reviews for each restaurant while also creating columns:<p> - Create a variable `count` that counts the number of reviews for each restaurant with the `n()` function</p><p> - Calculate the previous average star review using the `stars` and the `count` variables</p><p> - Generate new star reviews by dividing the sum of the `weighted_stars` variable and the `sum` of the `total_reviews` variable</p><p> - Finally, compute the difference in the star reviews from by subtracting the new star reviews, `new`, and the previous average star reviews `avg`. Assign this variable to `diff`</p>
 
 *** =hint
 The `%>%` operators are important for `dplyr` piping. Do not eliminate any of these from the sample code. 
@@ -464,10 +464,10 @@ indian_plus_number$___ <- indian_plus_number$stars * indian_plus_number$total_re
 new_review_indian <- indian_plus_number %>% 
   select(city, business_name, avg_stars, stars, total_reviews, weighted_stars) %>%
   group_by(city, business_name, avg_stars) %>%
-  summarise(cnt = ___,
-            avg = sum(___) / ___,
-            new = sum(___) / sum(___),
-            diff = ___ - ___)
+  summarise(count = ___,
+            avg = sum(___) / count,
+            new = sum(___) / sum(total_reviews),
+            diff = new - avg)
 ```
 
 *** =solution
@@ -479,8 +479,8 @@ indian_plus_number$weighted_stars <- indian_plus_number$stars * indian_plus_numb
 new_review_indian <- indian_plus_number %>% 
   select(city, business_name, avg_stars, stars, total_reviews, weighted_stars) %>%
   group_by(city, business_name, avg_stars) %>%
-  summarise(cnt = n(),
-            avg = sum(stars) / cnt,
+  summarise(count = n(),
+            avg = sum(stars) / count,
             new = sum(weighted_stars) / sum(total_reviews),
             diff = new - avg)
 
@@ -505,7 +505,7 @@ new_review_indian <- indian_plus_number %>%
  })
 
 test_correct({
- test_function_result("summarise", incorrect_msg = "Have you correctly performed the `summarise()` operation? Double check instructions for the summary variables, `cnt`, `avg`, `new` and `diff`.")  
+ test_function_result("summarise", incorrect_msg = "Have you correctly performed the `summarise()` operation? Double check instructions for the summary variables, `count`, `avg`, `new` and `diff`.")  
 }, {
    test_function("summarise", ".data", eval = FALSE, incorrect_msg = "Make sure to pass the `group_by()` argument to `summarise()`.")
  })
@@ -550,8 +550,8 @@ indian_plus_number$weighted_stars <- indian_plus_number$stars * indian_plus_numb
 new_review_indian <- indian_plus_number %>% 
   select(city, business_name, avg_stars, stars, total_reviews, weighted_stars) %>%
   group_by(city, business_name, avg_stars) %>%
-  summarise(cnt = n(),
-            avg = sum(stars) / cnt,
+  summarise(count = n(),
+            avg = sum(stars) / count,
             new = sum(weighted_stars) / sum(total_reviews),
             diff = new - avg) %>%
   ungroup() %>%
