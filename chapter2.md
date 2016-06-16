@@ -179,11 +179,12 @@ Take a look at the number of users in each city. The `select`, `group_by`, `summ
  
 *** =instructions
 - Subset the `indian` data set to just the users with native Indian names. Use the operator `%in%` with the `indian_names_clean` data set as the subset terms.
-- Generate a table of the authentic 'user_name's`.
-- Generate the `number_authentic_city` data frame using `select`, `group_by`, `summarise` and `n()`.
-- Display the total number of authentic users in each city.
+- Use the code provided to generate the `number_authentic_city` data frame using `select`, `group_by`, `summarise` and `n()`.
+- Print the resulting total number of authentic users in each city.
 *** =hint
-When generating the table, you want to display the column that contains the user names of the reviewers. If you aren't sure what column that is, the function `names(authentic_users)` will display the column names.  
+- Subset the `indian` data frame with `subset(indian, ...)`
+- There is no need to change the given code to produce `number_authentic_city`
+- Simply use `print(___)` to display the number of authentic users in each city
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
