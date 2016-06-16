@@ -234,9 +234,9 @@ number_authentic_city
 *** =sct
 ```{r,eval=FALSE}
 # First instruction
-test_function("subset", args = c("x","subset"), incorrect_msg = "Something went wrong with your `subset()`. The data frame `indian` should be included as the first argument, but the column we are subsetting from has already been specified.")
+test_function("subset", args = c("x","subset"), incorrect_msg = "Something went wrong with your `subset()`. The data frame `indian` should be included as the first argument. The column we are subsetting from has already been specified. If you chagned it hit the refresh button to see the original sample code.")
 
-test_object("authentic_users", undefined_msg = "The `authentic_users` object wasn't defined. Make sure you fix the code to find the subset the `indian` data set and assign that subset to `authentic_users`.", incorrect_msg = "The `authentic_users` object wasn't defined correctly. Something went wrong with your `subset()`. The data frame `indian` should be included as the first argument, but the column we are subsetting from has already been specified.") 
+test_object("authentic_users", undefined_msg = "The `authentic_users` object wasn't defined. Make sure you fix the code to find the subset of the `indian` data set and assign results to `authentic_users`.", incorrect_msg = "The `authentic_users` object wasn't defined correctly. Something went wrong with your `subset()`. The data frame `indian` should be included as the first argument, but the column we are subsetting from has already been specified. If you changed it hit the refresh button to see the original sample code.") 
 
 # Second instruction
 test_data_frame("number_authentic_city", undefined_msg = NULL, incorrect_msg = "Something went wrong with your 
