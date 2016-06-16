@@ -179,11 +179,11 @@ Take a look at the number of users in each city. The `select`, `group_by`, `summ
  
 *** =instructions
 - Subset the `indian` data set to just the users with native Indian names. Use the operator `%in%` with the `indian_names_clean` data set as the subset terms.
-- Generate a table of the `authentic_users`.
+- Generate a table of the authentic 'user_name's`.
 - Generate the `number_authentic_city` data frame using `select`, `group_by`, `summarise` and `n()`.
 - Display the total number of authentic users in each city.
 *** =hint
-When loading the names don't change the sample_code! Just remove the `#`
+When generating the table, you wnat to display the column that contains the user names of the reviews. If you aren't sure what column that is, the funciton `names(authentic_users)` will display the column names. 
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -205,7 +205,7 @@ indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
 authentic_users <- subset(___, indian$user_name %in% indian_names_clean)
 
 # Table of the authentic user names 
-table(___)
+table(authentic_users$___)
 
 # Find the number of users in each city
 number_authentic_city <- authentic_users %>%
@@ -214,6 +214,8 @@ number_authentic_city <- authentic_users %>%
   summarise(users = n())
 
 # Print the number of users per city
+
+
 ```
 
 *** =solution
