@@ -184,7 +184,7 @@ Take a look at the number of users in each city. The `select`, `group_by`, `summ
 *** =hint
 - Subset the `indian` data frame with `subset(indian, ...)`
 - There is no need to change the given code to produce `number_authentic_city`
-- Simply use `print(___)` to display the number of authentic users in each city
+- Simply use type the new variable name to display the number of authentic users in each city
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
