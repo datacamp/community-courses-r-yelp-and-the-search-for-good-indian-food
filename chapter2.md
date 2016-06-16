@@ -179,11 +179,12 @@ Take a look at the number of users in each city. The `select`, `group_by`, `summ
  
 *** =instructions
 - Subset the `indian` data set to just the users with native Indian names. Use the operator `%in%` with the `indian_names_clean` data set as the subset terms.
-- Generate a table of the `authentic_users`.
-- Generate the `number_authentic_city` data frame using `select`, `group_by`, `summarise` and `n()`.
-- Display the total number of authentic users in each city.
+- Use the code provided to generate the `number_authentic_city` data frame using `select`, `group_by`, `summarise` and `n()`.
+- Print the resulting total number of authentic users in each city.
 *** =hint
-When loading the names don't change the sample_code! Just remove the `#`
+- Subset the `indian` data frame with `subset(indian, ...)`
+- There is no need to change the given code to produce `number_authentic_city`
+- Simply use type the new variable name to display the number of authentic users in each city
 
 *** =pre_exercise_code
 ```{r,eval=FALSE}
@@ -204,9 +205,6 @@ indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
 # Subset the `indian` data set to just the users with native Indian names
 authentic_users <- subset(___, indian$user_name %in% indian_names_clean)
 
-# Table of the authentic user names 
-table(___)
-
 # Find the number of users in each city
 number_authentic_city <- authentic_users %>%
   select(city,user_name) %>%
@@ -214,6 +212,8 @@ number_authentic_city <- authentic_users %>%
   summarise(users = n())
 
 # Print the number of users per city
+
+
 ```
 
 *** =solution
@@ -221,9 +221,6 @@ number_authentic_city <- authentic_users %>%
 # The package `dplyr` is available to use
 # Subset the `indian` data set to just the users with native Indian names
 authentic_users <- subset(indian,indian$user_name %in% indian_names_clean)
-
-# Table of the authentic user names 
-table(authentic_users$user_name)
 
 # Find the number of users in each city
 number_authentic_city <- authentic_users %>%
@@ -237,17 +234,17 @@ number_authentic_city
 
 *** =sct
 ```{r,eval=FALSE}
-# Fist instruction
-test_function("subset", args = c("x","subset"),incorrect_msg = "Something went wrong with your `subset()`. Did you remember to specify the column in the data frame that the subset is coming from. The data frame `indian` should be included the first arguemnt, but which column are we subsetting from?")
+# First instruction
+test_function("subset", args = c("x","subset"), args_not_specified_msg = "Something went wrong with your `subset()`. The data frame `indian` should be included as the first argument. The column we are subsetting from has already been specified. If you chagned it hit the refresh button to see the original sample code.", incorrect_msg = "Something went wrong with your `subset()`. The data frame `indian` should be included as the first argument. The column we are subsetting from has already been specified. If you chagned it hit the refresh button to see the original sample code.")
+
+test_object("authentic_users", undefined_msg = "The `authentic_users` object wasn't defined correclty. Make sure you fix the code to find the subset of the `indian` data set and assign results to `authentic_users`. Check the spelling of `authentic_users`.", incorrect_msg = "The `authentic_users` object wasn't defined correctly. Something went wrong with your `subset()`. The data frame `indian` should be included as the first argument, but the column we are subsetting from has already been specified. If you changed it hit the refresh button to see the original sample code.") 
 
 # Second instruction
-test_output_contains("table(authentic_users$user_name)", incorrect_msg = "You forgot to display the table of the authentic users. Don't forget to remove the # before the sample_code." )
+test_data_frame("number_authentic_city", undefined_msg = NULL, incorrect_msg = "Something went wrong with your 
+`number_authentic_city` data frame. Look at the `sample_code` that was given. Hit the refresh button to see it again.")
 
 # Third instruction
-test_data_frame("number_authentic_city", undefined_msg = NULL, incorrect_msg = "Something went wrong with your `number_authentic_city` data frame. Look at the `sample_code` that was given. Hit the refresh button to see it again.")
-
-# Fourth instruction
-test_output_contains("number_authentic_city", incorrect_msg = "Don't forget to remove the # before the sample_code." )
+test_output_contains("number_authentic_city", incorrect_msg = "Doesn't look like you printed the number of authentic users in each city. Simply writing the name of the object that you want to print and then running that line of code will print that object in the console." )
 
 # General
 test_error()
