@@ -318,7 +318,7 @@ library(dplyr)
 
 *** =sample_code
 ```{r,eval=FALSE}
-# The package dplyr is available ot use
+# The package dplyr is available to use
 # Generate a new data frame with the number of reviews by each reviewer
 number_reviews_indian <- indian %>% 
   select(___, ___) %>%
