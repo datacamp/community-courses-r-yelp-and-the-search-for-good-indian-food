@@ -84,7 +84,7 @@ You can do this by finding a regular expression that will find all the names wit
 - Display the names list with `unlist()`
 - Use `grep` and the regular expression `[A-z]\\.` to locate the names you want to eliminate
 - Double check that those are the right names
-- Remove the unwanted names from the `indain_names` list using `-indian_names_remove`
+- Remove the unwanted names from the `indain_names` list using `-indian_names_remove`; assign the result to `indian_names_clean`.
 - Display the cleaned names list with `unlist()`
 
 *** =hint
@@ -147,7 +147,7 @@ test_function("grep", args = c("pattern","x","perl"), incorrect_msg = "Did you i
 test_output_contains("indian_names[indian_names_remove]", incorrect_msg = "You didn't display the unwanted names. Just remove the # before the sample_code to print them.")
 
 # Fourth instruction
-test_output_contains("indian_names_clean <- indian_names[-indian_names_remove]", incorrect_msg = "Did you fill in the black space to remove the unwanted names?")
+test_object("indian_names_clean", incorrect_msg = "`indian_names_clean` is not correctly defined. Did you use `indian_names[-indian_names_remove]` to remove the unwanted names?")
 
 # Fifth instruction
 test_function("unlist",index = 2, not_called_msg = "You didn't dsplay the `indian_names_clean` list. Don't forget to remove the # before the sample_code.")
