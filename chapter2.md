@@ -104,7 +104,7 @@ indian_names <- scan(indian_names_url, what = character())
 #unlist(indian_names)
 
 # Locate the names that you want to eliminate
-indian_names_remove <- grep("___",indian_names, perl = TRUE)
+indian_names_remove <- grep("___", indian_names, perl = TRUE)
 
 # Check to make sure they are the correct names
 #indian_names[indian_names_remove]
@@ -114,8 +114,6 @@ indian_names_clean <- indian_names[-____]
 
 # Display a table of the cleaned names list
 #unlist(indian_names_clean)
-
-
 ```
 
 *** =solution
@@ -124,7 +122,7 @@ indian_names_clean <- indian_names[-____]
 unlist(indian_names)
 
 # Locate the names that you want to eliminate
-indian_names_remove <- grep("[A-z]\\.",indian_names, perl = TRUE)
+indian_names_remove <- grep("[A-z]\\.", indian_names, perl = TRUE)
 
 # Check to make sure they are the correct names
 indian_names[indian_names_remove]
@@ -134,8 +132,6 @@ indian_names_clean <- indian_names[-indian_names_remove]
 
 # Display a table of the cleaned names list
 unlist(indian_names_clean)
-
-
 ```
 
 *** =sct
