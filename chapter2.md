@@ -272,8 +272,6 @@ Take a look at the `authentic_uers` and `number_authentic_city` data sets with `
 load(url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian.RData"))
 
 indian_names_url <-url("http://s3.amazonaws.com/assets.datacamp.com/production/course_1073/datasets/indian_names.txt")
-
-# Read Indian names into a list
 indian_names <- scan(indian_names_url, what = character())
 close(indian_names_url)
 
