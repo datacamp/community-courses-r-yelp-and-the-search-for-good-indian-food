@@ -96,6 +96,7 @@ indian_names_url <-url("http://s3.amazonaws.com/assets.datacamp.com/production/c
 
 # Read Indian names into a list
 indian_names <- scan(indian_names_url, what = character())
+close(indian_names_url)
 ```
 
 *** =sample_code
@@ -189,6 +190,7 @@ indian_names_url <-url("http://s3.amazonaws.com/assets.datacamp.com/production/c
 
 # Read Indian names into a list
 indian_names <- scan(indian_names_url, what = character())
+close(indian_names_url)
 
 library(dplyr)
 
@@ -273,7 +275,7 @@ indian_names_url <-url("http://s3.amazonaws.com/assets.datacamp.com/production/c
 
 # Read Indian names into a list
 indian_names <- scan(indian_names_url, what = character())
-
+close(indian_names_url)
 
 indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
 authentic_users <- subset(indian,indian$user_name %in% indian_names_clean)
@@ -322,7 +324,7 @@ indian_names_url <-url("http://s3.amazonaws.com/assets.datacamp.com/production/c
 
 # Read Indian names into a list
 indian_names <- scan(indian_names_url, what = character())
-
+close(indian_names_url)
 indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
 authentic_users <- subset(indian,indian$user_name %in% indian_names_clean)
 
@@ -428,7 +430,7 @@ indian_names_url <-url("http://s3.amazonaws.com/assets.datacamp.com/production/c
 
 # Read Indian names into a list
 indian_names <- scan(indian_names_url, what = character())
-
+close(indian_names_url)
 indian_names_clean <- indian_names[-grep("[A-z]\\.",indian_names, perl = TRUE)]
 authentic_users <- subset(indian,indian$user_name %in% indian_names_clean)
 
