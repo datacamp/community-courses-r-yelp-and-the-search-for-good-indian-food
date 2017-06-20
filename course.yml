@@ -16,4 +16,4 @@ university       : DataCamp
 difficulty_level : 1
 time_needed      : 1 hour
 programming_language : r
-from: 'r-base-prod:10'
+from: 'r-base-prod:27'
